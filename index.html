@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Магазин</title>
 
   <style>
@@ -24,6 +23,8 @@
       background: #f4efe7;
     }
 
+    /* ОСНОВНАЯ СЦЕНА */
+
     .game {
       position: relative;
       width: 100vw;
@@ -43,23 +44,20 @@
       top: 2%;
       left: 50%;
       transform: translateX(-50%);
-
       z-index: 30;
 
       background: rgba(255,255,255,.92);
-
       padding: 10px 28px;
       border-radius: 18px;
 
       font-size: clamp(20px, 2vw, 34px);
       font-weight: 800;
-
       color: #70472a;
 
       box-shadow: 0 5px 14px rgba(0,0,0,.12);
     }
 
-    /* ШКАФЫ */
+    /* ЗОНА ШКАФОВ */
 
     .shelves {
       position: absolute;
@@ -75,23 +73,87 @@
       justify-content: space-between;
 
       gap: 2%;
-
       z-index: 5;
     }
 
-    .shelf {
+    /* ОБЁРТКА КАЖДОГО ШКАФА */
+
+    .shelf-wrap {
+      position: relative;
+
       width: 31%;
+      height: 100%;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* КАРТИНКА ШКАФА */
+
+    .shelf {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
       height: 100%;
 
       object-fit: contain;
       object-position: bottom center;
 
-      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+
+      z-index: 1;
+    }
+
+    /* ТОВАРЫ НА ПЕРВОМ ШКАФУ */
+
+    .products-grid {
+      position: absolute;
+
+      left: 10%;
+      right: 10%;
+
+      top: 16%;
+      bottom: 12%;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+
+      gap: 4% 5%;
+
+      align-items: center;
+      justify-items: center;
+
+      z-index: 3;
+    }
+
+    .product {
+      width: 72%;
+      height: 72%;
+
+      object-fit: contain;
+
+      cursor: pointer;
+
+      transition:
+        transform .18s ease,
+        filter .18s ease;
 
       user-select: none;
       -webkit-user-drag: none;
+    }
 
-      pointer-events: none;
+    .product:hover {
+      transform: scale(1.12);
+      filter: brightness(1.05);
+    }
+
+    .product:active {
+      transform: scale(.95);
     }
 
     /* ПРАВАЯ ЗОНА */
@@ -158,11 +220,6 @@
       font-weight: 700;
     }
 
-    .list-row.done {
-      background: #e9f8e9;
-      border-color: #9bd3a4;
-    }
-
     .list-left {
       display: flex;
       align-items: center;
@@ -195,8 +252,6 @@
       object-fit: contain;
 
       display: block;
-
-      transform: translateX(0);
 
       transition:
         transform .75s ease,
@@ -300,10 +355,7 @@
       opacity: 1;
     }
 
-    /* АДАПТАЦИЯ */
-
     @media (max-width: 1100px) {
-
       .shelves {
         width: 68%;
         height: 56%;
@@ -317,7 +369,6 @@
       .buyer-zone {
         height: 50%;
       }
-
     }
   </style>
 </head>
@@ -338,31 +389,63 @@
 
     <div class="shelves">
 
-      <img
-        src="assets/shelves/shelf-01.png"
-        class="shelf"
-        alt=""
-      >
+      <!-- ШКАФ 1 С 9 ТОВАРАМИ -->
 
-      <img
-        src="assets/shelves/shelf-01.png"
-        class="shelf"
-        alt=""
-      >
+      <div class="shelf-wrap">
 
-      <img
-        src="assets/shelves/shelf-01.png"
-        class="shelf"
-        alt=""
-      >
+        <img
+          src="assets/shelves/shelf-01.png"
+          class="shelf"
+          alt=""
+        >
+
+        <div class="products-grid">
+
+          <img src="assets/products/pik-01.png" class="product" data-id="pik-01" alt="">
+          <img src="assets/products/pik-02.png" class="product" data-id="pik-02" alt="">
+          <img src="assets/products/pik-03.png" class="product" data-id="pik-03" alt="">
+
+          <img src="assets/products/pik-04.png" class="product" data-id="pik-04" alt="">
+          <img src="assets/products/pik-05.png" class="product" data-id="pik-05" alt="">
+          <img src="assets/products/pik-06.png" class="product" data-id="pik-06" alt="">
+
+          <img src="assets/products/pik-07.png" class="product" data-id="pik-07" alt="">
+          <img src="assets/products/pik-08.png" class="product" data-id="pik-08" alt="">
+          <img src="assets/products/pik-09.png" class="product" data-id="pik-09" alt="">
+
+        </div>
+
+      </div>
+
+      <!-- ШКАФ 2 -->
+
+      <div class="shelf-wrap">
+
+        <img
+          src="assets/shelves/shelf-01.png"
+          class="shelf"
+          alt=""
+        >
+
+      </div>
+
+      <!-- ШКАФ 3 -->
+
+      <div class="shelf-wrap">
+
+        <img
+          src="assets/shelves/shelf-01.png"
+          class="shelf"
+          alt=""
+        >
+
+      </div>
 
     </div>
 
     <!-- ПРАВАЯ ЗОНА -->
 
     <div class="right-zone">
-
-      <!-- СПИСОК ПОКУПОК -->
 
       <div class="shopping-list">
 
@@ -376,8 +459,6 @@
         </div>
 
       </div>
-
-      <!-- ПОКУПАТЕЛЬ -->
 
       <div class="buyer-zone">
 
@@ -399,361 +480,198 @@
       <button
         id="checkBtn"
         class="btn btn-check">
-
         Проверить
-
       </button>
-
-      <!-- ВРЕМЕННАЯ КНОПКА ДЛЯ ТЕСТА СМЕНЫ ПОКУПАТЕЛЯ -->
 
       <button
         id="nextBtn"
         class="btn btn-next">
-
         Следующий покупатель
-
       </button>
 
     </div>
 
   </div>
 
-
   <script>
 
-    /* ==========================================
-       ПОКУПАТЕЛИ
-    ========================================== */
-
     const BUYERS = [
-
       {
-        image:
-          "assets/buyers/buyer-cart-01.png",
-
+        image: "assets/buyers/buyer-cart-01.png",
         list: [
-          {
-            name: "Бананы",
-            icon: "🍌",
-            need: 2
-          },
-
-          {
-            name: "Яблоки",
-            icon: "🍎",
-            need: 3
-          },
-
-          {
-            name: "Картошка",
-            icon: "🥔",
-            need: 4
-          }
+          { name: "Покупка 1", icon: "🛍️", need: 2 },
+          { name: "Покупка 2", icon: "🛍️", need: 1 },
+          { name: "Покупка 3", icon: "🛍️", need: 3 }
         ]
       },
 
-
       {
-        image:
-          "assets/buyers/buyer-cart-02.png",
-
+        image: "assets/buyers/buyer-cart-02.png",
         list: [
-          {
-            name: "Молоко",
-            icon: "🥛",
-            need: 1
-          },
-
-          {
-            name: "Хлеб",
-            icon: "🍞",
-            need: 2
-          },
-
-          {
-            name: "Помидоры",
-            icon: "🍅",
-            need: 3
-          }
+          { name: "Покупка 1", icon: "🛍️", need: 1 },
+          { name: "Покупка 2", icon: "🛍️", need: 2 },
+          { name: "Покупка 3", icon: "🛍️", need: 2 }
         ]
       },
 
-
       {
-        image:
-          "assets/buyers/buyer-cart-03.png",
-
+        image: "assets/buyers/buyer-cart-03.png",
         list: [
-          {
-            name: "Груши",
-            icon: "🍐",
-            need: 2
-          },
-
-          {
-            name: "Морковь",
-            icon: "🥕",
-            need: 3
-          },
-
-          {
-            name: "Сыр",
-            icon: "🧀",
-            need: 1
-          }
+          { name: "Покупка 1", icon: "🛍️", need: 3 },
+          { name: "Покупка 2", icon: "🛍️", need: 1 },
+          { name: "Покупка 3", icon: "🛍️", need: 2 }
         ]
       },
 
-
       {
-        image:
-          "assets/buyers/buyer-cart-04.png",
-
+        image: "assets/buyers/buyer-cart-04.png",
         list: [
-          {
-            name: "Виноград",
-            icon: "🍇",
-            need: 2
-          },
-
-          {
-            name: "Огурцы",
-            icon: "🥒",
-            need: 2
-          },
-
-          {
-            name: "Торт",
-            icon: "🍰",
-            need: 1
-          }
+          { name: "Покупка 1", icon: "🛍️", need: 2 },
+          { name: "Покупка 2", icon: "🛍️", need: 2 },
+          { name: "Покупка 3", icon: "🛍️", need: 1 }
         ]
       }
-
     ];
-
 
     let currentBuyer = 0;
 
-
     const buyerImage =
-      document.getElementById(
-        "buyerImage"
-      );
-
+      document.getElementById("buyerImage");
 
     const listItems =
-      document.getElementById(
-        "listItems"
-      );
-
+      document.getElementById("listItems");
 
     const message =
-      document.getElementById(
-        "message"
-      );
-
-
-    /* ==========================================
-       ПОКАЗЫВАЕМ СПИСОК
-    ========================================== */
+      document.getElementById("message");
 
     function renderList() {
 
       const buyer =
         BUYERS[currentBuyer];
 
-
       listItems.innerHTML = "";
 
+      buyer.list.forEach(item => {
 
-      buyer.list.forEach(
-        item => {
+        const row =
+          document.createElement("div");
 
-          const row =
-            document.createElement(
-              "div"
-            );
+        row.className =
+          "list-row";
 
-
-          row.className =
-            "list-row";
-
-
-          row.innerHTML = `
-
-            <div class="list-left">
-
-              <span class="list-icon">
-                ${item.icon}
-              </span>
-
-              <span>
-                ${item.name}
-              </span>
-
-            </div>
-
-
-            <span>
-              × ${item.need}
+        row.innerHTML = `
+          <div class="list-left">
+            <span class="list-icon">
+              ${item.icon}
             </span>
 
-          `;
+            <span>
+              ${item.name}
+            </span>
+          </div>
 
+          <span>
+            × ${item.need}
+          </span>
+        `;
 
-          listItems.appendChild(
-            row
-          );
+        listItems.appendChild(row);
 
-        }
-      );
+      });
 
     }
-
-
-    /* ==========================================
-       ПОКАЗЫВАЕМ ПОКУПАТЕЛЯ
-    ========================================== */
 
     function renderBuyer() {
 
       const buyer =
         BUYERS[currentBuyer];
 
-
       buyerImage.src =
         buyer.image;
 
-
-      buyerImage.classList.remove(
-        "enter"
-      );
-
+      buyerImage.classList.remove("enter");
 
       void buyerImage.offsetWidth;
 
-
-      buyerImage.classList.add(
-        "enter"
-      );
-
+      buyerImage.classList.add("enter");
 
       renderList();
-
     }
-
-
-    /* ==========================================
-       СЛЕДУЮЩИЙ ПОКУПАТЕЛЬ
-    ========================================== */
 
     function nextBuyer() {
 
-      buyerImage.classList.add(
-        "exit"
-      );
+      buyerImage.classList.add("exit");
 
+      setTimeout(() => {
 
-      setTimeout(
-        () => {
+        currentBuyer++;
 
-          currentBuyer++;
+        if (currentBuyer >= BUYERS.length) {
+          currentBuyer = 0;
+        }
 
+        buyerImage.classList.remove("exit");
 
-          if (
-            currentBuyer >= BUYERS.length
-          ) {
+        renderBuyer();
 
-            currentBuyer = 0;
+        showMessage("Пришёл новый покупатель!");
 
-          }
-
-
-          buyerImage.classList.remove(
-            "exit"
-          );
-
-
-          renderBuyer();
-
-
-          showMessage(
-            "Пришёл новый покупатель!"
-          );
-
-        },
-
-        750
-
-      );
+      }, 750);
 
     }
-
-
-    /* ==========================================
-       СООБЩЕНИЕ
-    ========================================== */
 
     function showMessage(text) {
 
       message.textContent =
         text;
 
+      message.classList.add("show");
 
-      message.classList.add(
-        "show"
-      );
-
-
-      setTimeout(
-        () => {
-
-          message.classList.remove(
-            "show"
-          );
-
-        },
-
-        1500
-      );
+      setTimeout(() => {
+        message.classList.remove("show");
+      }, 1500);
 
     }
 
-
-    /* ==========================================
-       КНОПКИ
-    ========================================== */
+    /* ТЕСТ КЛИКА ПО ТОВАРУ */
 
     document
-      .getElementById(
-        "nextBtn"
-      )
+      .querySelectorAll(".product")
+      .forEach(product => {
+
+        product.addEventListener(
+          "click",
+          () => {
+
+            showMessage(
+              "Вы выбрали " +
+              product.dataset.id
+            );
+
+          }
+        );
+
+      });
+
+    document
+      .getElementById("nextBtn")
       .addEventListener(
         "click",
         nextBuyer
       );
 
-
     document
-      .getElementById(
-        "checkBtn"
-      )
+      .getElementById("checkBtn")
       .addEventListener(
         "click",
         () => {
 
           showMessage(
-            "Проверка появится после добавления продуктов."
+            "Следующим шагом подключим список покупок и полёт товара в тележку."
           );
 
         }
       );
-
-
-    /* ==========================================
-       СТАРТ
-    ========================================== */
 
     renderBuyer();
 
