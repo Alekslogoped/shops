@@ -73,7 +73,9 @@
       position: absolute;
 
       left: 2%;
-      bottom: 5%;
+
+      /* ПОДНЯЛИ ШКАФЫ ВЫШЕ */
+      bottom: 10%;
 
       width: 70%;
       height: 60%;
@@ -106,7 +108,7 @@
       pointer-events: none;
     }
 
-    /* ЗОНА СПРАВА */
+    /* ПРАВАЯ ЗОНА */
 
     .right-zone {
       position: absolute;
@@ -127,7 +129,7 @@
       pointer-events: none;
     }
 
-    /* БУДУЩИЙ СПИСОК ПОКУПОК */
+    /* СПИСОК ПОКУПОК */
 
     .shopping-list-placeholder {
       width: 100%;
@@ -175,8 +177,6 @@
       justify-content: center;
     }
 
-    /* ВРЕМЕННАЯ ПОДСКАЗКА */
-
     .buyer-hint {
       background: rgba(255,255,255,.85);
 
@@ -202,12 +202,12 @@
       .shelves {
         width: 68%;
         height: 56%;
+        bottom: 10%;
       }
 
       .right-zone {
         width: 27%;
       }
-
     }
 
   </style>
@@ -249,8 +249,6 @@
 
     <div class="right-zone">
 
-      <!-- ЗДЕСЬ ПОТОМ БУДЕТ СПИСОК -->
-
       <div class="shopping-list-placeholder">
 
         <h3>Список покупок</h3>
@@ -260,8 +258,6 @@
         </p>
 
       </div>
-
-      <!-- ЗДЕСЬ ПОТОМ БУДЕТ ПОКУПАТЕЛЬ С ТЕЛЕЖКОЙ -->
 
       <div class="buyer-placeholder">
 
