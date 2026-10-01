@@ -61,18 +61,16 @@
 
     .shelves {
       position: absolute;
-
       left: 2%;
       bottom: 13%;
-
       width: 70%;
       height: 60%;
 
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-
       gap: 2%;
+
       z-index: 5;
     }
 
@@ -80,7 +78,6 @@
 
     .shelf-wrap {
       position: relative;
-
       width: 31%;
       height: 100%;
 
@@ -108,32 +105,21 @@
       z-index: 1;
     }
 
-    /* ТОВАРЫ НА ПЕРВОМ ШКАФУ */
+    /* СЛОЙ ТОВАРОВ */
 
-    .products-grid {
+    .products-layer {
       position: absolute;
-
-      left: 10%;
-      right: 10%;
-
-      top: 16%;
-      bottom: 12%;
-
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-
-      gap: 4% 5%;
-
-      align-items: center;
-      justify-items: center;
-
+      inset: 0;
       z-index: 3;
     }
 
+    /* ОДИН ТОВАР */
+
     .product {
-      width: 72%;
-      height: 72%;
+      position: absolute;
+
+      width: 18%;
+      height: auto;
 
       object-fit: contain;
 
@@ -148,23 +134,21 @@
     }
 
     .product:hover {
-      transform: scale(1.12);
+      transform: scale(1.08);
       filter: brightness(1.05);
     }
 
     .product:active {
-      transform: scale(.95);
+      transform: scale(.96);
     }
 
     /* ПРАВАЯ ЗОНА */
 
     .right-zone {
       position: absolute;
-
       right: 1.2%;
       top: 11%;
       bottom: 2%;
-
       width: 27%;
 
       z-index: 20;
@@ -174,27 +158,20 @@
       justify-content: space-between;
     }
 
-    /* СПИСОК */
+    /* СПИСОК ПОКУПОК */
 
     .shopping-list {
       width: 100%;
-
       background: rgba(255,255,255,.93);
-
       border-radius: 22px;
-
       box-shadow: 0 6px 18px rgba(0,0,0,.12);
-
       padding: 16px 18px;
-
       color: #70472a;
     }
 
     .shopping-list h3 {
       margin: 0 0 12px;
-
       text-align: center;
-
       font-size: clamp(18px, 1.5vw, 26px);
     }
 
@@ -210,7 +187,6 @@
       justify-content: space-between;
 
       background: #fffaf4;
-
       border: 2px solid #efdcc7;
       border-radius: 14px;
 
@@ -234,7 +210,6 @@
 
     .buyer-zone {
       position: relative;
-
       width: 100%;
       height: 53%;
 
@@ -248,9 +223,7 @@
     .buyer-img {
       max-width: 100%;
       max-height: 100%;
-
       object-fit: contain;
-
       display: block;
 
       transition:
@@ -274,7 +247,6 @@
         transform: translateX(130%);
         opacity: 0;
       }
-
       to {
         transform: translateX(0);
         opacity: 1;
@@ -285,12 +257,9 @@
 
     .controls {
       position: absolute;
-
       left: 50%;
       bottom: 2%;
-
       transform: translateX(-50%);
-
       z-index: 50;
 
       display: flex;
@@ -299,16 +268,11 @@
 
     .btn {
       border: none;
-
       padding: 14px 22px;
-
       border-radius: 16px;
-
       font-size: 18px;
       font-weight: 800;
-
       cursor: pointer;
-
       box-shadow: 0 5px 12px rgba(0,0,0,.14);
     }
 
@@ -326,26 +290,19 @@
 
     .message {
       position: absolute;
-
       left: 50%;
       top: 10%;
-
       transform: translateX(-50%);
-
       z-index: 60;
 
       background: rgba(255,255,255,.95);
-
       border-radius: 14px;
-
       padding: 10px 18px;
 
       font-weight: 800;
-
       color: #7b4b2c;
 
       opacity: 0;
-
       pointer-events: none;
 
       transition: opacity .25s;
@@ -354,6 +311,8 @@
     .message.show {
       opacity: 1;
     }
+
+    /* АДАПТАЦИЯ */
 
     @media (max-width: 1100px) {
       .shelves {
@@ -369,7 +328,12 @@
       .buyer-zone {
         height: 50%;
       }
+
+      .product {
+        width: 20%;
+      }
     }
+
   </style>
 </head>
 
@@ -389,7 +353,7 @@
 
     <div class="shelves">
 
-      <!-- ШКАФ 1 С 9 ТОВАРАМИ -->
+      <!-- ШКАФ 1 С ТОВАРАМИ -->
 
       <div class="shelf-wrap">
 
@@ -399,19 +363,22 @@
           alt=""
         >
 
-        <div class="products-grid">
+        <div class="products-layer">
 
-          <img src="assets/products/pik-01.png" class="product" data-id="pik-01" alt="">
-          <img src="assets/products/pik-02.png" class="product" data-id="pik-02" alt="">
-          <img src="assets/products/pik-03.png" class="product" data-id="pik-03" alt="">
+          <!-- верхняя полка -->
+          <img src="assets/products/pik-01.png" class="product" data-id="pik-01" style="left: 7%; top: 16%;" alt="">
+          <img src="assets/products/pik-02.png" class="product" data-id="pik-02" style="left: 39%; top: 14%;" alt="">
+          <img src="assets/products/pik-03.png" class="product" data-id="pik-03" style="left: 71%; top: 16%;" alt="">
 
-          <img src="assets/products/pik-04.png" class="product" data-id="pik-04" alt="">
-          <img src="assets/products/pik-05.png" class="product" data-id="pik-05" alt="">
-          <img src="assets/products/pik-06.png" class="product" data-id="pik-06" alt="">
+          <!-- средняя полка -->
+          <img src="assets/products/pik-04.png" class="product" data-id="pik-04" style="left: 8%; top: 42%;" alt="">
+          <img src="assets/products/pik-05.png" class="product" data-id="pik-05" style="left: 39%; top: 40%;" alt="">
+          <img src="assets/products/pik-06.png" class="product" data-id="pik-06" style="left: 72%; top: 40%;" alt="">
 
-          <img src="assets/products/pik-07.png" class="product" data-id="pik-07" alt="">
-          <img src="assets/products/pik-08.png" class="product" data-id="pik-08" alt="">
-          <img src="assets/products/pik-09.png" class="product" data-id="pik-09" alt="">
+          <!-- нижняя полка -->
+          <img src="assets/products/pik-07.png" class="product" data-id="pik-07" style="left: 7%; top: 69%;" alt="">
+          <img src="assets/products/pik-08.png" class="product" data-id="pik-08" style="left: 39%; top: 67%;" alt="">
+          <img src="assets/products/pik-09.png" class="product" data-id="pik-09" style="left: 72%; top: 67%;" alt="">
 
         </div>
 
@@ -420,25 +387,21 @@
       <!-- ШКАФ 2 -->
 
       <div class="shelf-wrap">
-
         <img
           src="assets/shelves/shelf-01.png"
           class="shelf"
           alt=""
         >
-
       </div>
 
       <!-- ШКАФ 3 -->
 
       <div class="shelf-wrap">
-
         <img
           src="assets/shelves/shelf-01.png"
           class="shelf"
           alt=""
         >
-
       </div>
 
     </div>
@@ -448,27 +411,18 @@
     <div class="right-zone">
 
       <div class="shopping-list">
+        <h3>Список покупок</h3>
 
-        <h3>
-          Список покупок
-        </h3>
-
-        <div
-          id="listItems"
-          class="list-items">
-        </div>
-
+        <div id="listItems" class="list-items"></div>
       </div>
 
       <div class="buyer-zone">
-
         <img
           id="buyerImage"
           class="buyer-img"
           src="assets/buyers/buyer-cart-01.png"
           alt="Покупатель с тележкой"
         >
-
       </div>
 
     </div>
@@ -476,25 +430,18 @@
     <!-- КНОПКИ -->
 
     <div class="controls">
-
-      <button
-        id="checkBtn"
-        class="btn btn-check">
+      <button id="checkBtn" class="btn btn-check">
         Проверить
       </button>
 
-      <button
-        id="nextBtn"
-        class="btn btn-next">
+      <button id="nextBtn" class="btn btn-next">
         Следующий покупатель
       </button>
-
     </div>
 
   </div>
 
   <script>
-
     const BUYERS = [
       {
         image: "assets/buyers/buyer-cart-01.png",
@@ -535,75 +482,45 @@
 
     let currentBuyer = 0;
 
-    const buyerImage =
-      document.getElementById("buyerImage");
-
-    const listItems =
-      document.getElementById("listItems");
-
-    const message =
-      document.getElementById("message");
+    const buyerImage = document.getElementById("buyerImage");
+    const listItems = document.getElementById("listItems");
+    const message = document.getElementById("message");
 
     function renderList() {
-
-      const buyer =
-        BUYERS[currentBuyer];
-
+      const buyer = BUYERS[currentBuyer];
       listItems.innerHTML = "";
 
       buyer.list.forEach(item => {
-
-        const row =
-          document.createElement("div");
-
-        row.className =
-          "list-row";
+        const row = document.createElement("div");
+        row.className = "list-row";
 
         row.innerHTML = `
           <div class="list-left">
-            <span class="list-icon">
-              ${item.icon}
-            </span>
-
-            <span>
-              ${item.name}
-            </span>
+            <span class="list-icon">${item.icon}</span>
+            <span>${item.name}</span>
           </div>
-
-          <span>
-            × ${item.need}
-          </span>
+          <span>× ${item.need}</span>
         `;
 
         listItems.appendChild(row);
-
       });
-
     }
 
     function renderBuyer() {
-
-      const buyer =
-        BUYERS[currentBuyer];
-
-      buyerImage.src =
-        buyer.image;
+      const buyer = BUYERS[currentBuyer];
+      buyerImage.src = buyer.image;
 
       buyerImage.classList.remove("enter");
-
       void buyerImage.offsetWidth;
-
       buyerImage.classList.add("enter");
 
       renderList();
     }
 
     function nextBuyer() {
-
       buyerImage.classList.add("exit");
 
       setTimeout(() => {
-
         currentBuyer++;
 
         if (currentBuyer >= BUYERS.length) {
@@ -611,70 +528,33 @@
         }
 
         buyerImage.classList.remove("exit");
-
         renderBuyer();
-
         showMessage("Пришёл новый покупатель!");
-
       }, 750);
-
     }
 
     function showMessage(text) {
-
-      message.textContent =
-        text;
-
+      message.textContent = text;
       message.classList.add("show");
 
       setTimeout(() => {
         message.classList.remove("show");
       }, 1500);
-
     }
 
-    /* ТЕСТ КЛИКА ПО ТОВАРУ */
-
-    document
-      .querySelectorAll(".product")
-      .forEach(product => {
-
-        product.addEventListener(
-          "click",
-          () => {
-
-            showMessage(
-              "Вы выбрали " +
-              product.dataset.id
-            );
-
-          }
-        );
-
+    document.querySelectorAll(".product").forEach(product => {
+      product.addEventListener("click", () => {
+        showMessage("Вы выбрали " + product.dataset.id);
       });
+    });
 
-    document
-      .getElementById("nextBtn")
-      .addEventListener(
-        "click",
-        nextBuyer
-      );
+    document.getElementById("nextBtn").addEventListener("click", nextBuyer);
 
-    document
-      .getElementById("checkBtn")
-      .addEventListener(
-        "click",
-        () => {
-
-          showMessage(
-            "Следующим шагом подключим список покупок и полёт товара в тележку."
-          );
-
-        }
-      );
+    document.getElementById("checkBtn").addEventListener("click", () => {
+      showMessage("Следующим шагом подключим список покупок и полёт товара в тележку.");
+    });
 
     renderBuyer();
-
   </script>
 
 </body>
