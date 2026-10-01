@@ -93,49 +93,20 @@
       z-index: 1;
     }
 
-    /* ТОВАРЫ НА ПЕРВОМ ШКАФУ */
+    /* ТОВАРЫ */
 
     .products-layer {
       position: absolute;
       inset: 0;
       z-index: 3;
-      pointer-events: none;
-    }
-
-    /* ОДИН РЯД НА ПОЛКЕ */
-
-    .shelf-row {
-      position: absolute;
-      left: 7%;
-      width: 86%;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      pointer-events: none;
-    }
-
-    /* Координаты рядов — стоят на линиях полок */
-    .row-top {
-      bottom: 67.5%;
-      height: 18%;
-    }
-
-    .row-middle {
-      bottom: 44.2%;
-      height: 18%;
-    }
-
-    .row-bottom {
-      bottom: 21%;
-      height: 18%;
     }
 
     .product {
-      display: block;
+      position: absolute;
       object-fit: contain;
+      cursor: pointer;
       user-select: none;
       -webkit-user-drag: none;
-      cursor: pointer;
       pointer-events: auto;
 
       transition: transform .18s ease, filter .18s ease;
@@ -151,21 +122,21 @@
       transform: scale(.97);
     }
 
-    /* Размеры предметов */
-    .product.small {
-      width: 20%;
-      max-height: 92%;
-    }
+    /* ---------- ПРЕДМЕТЫ НА 1 ШКАФУ ---------- */
+    /* верхняя полка */
+    .p1 { left: 3.5%;  bottom: 66.8%; width: 17%; }  /* мишка */
+    .p2 { left: 35%;   bottom: 67.0%; width: 15%; }  /* погремушка */
+    .p3 { left: 72.5%; bottom: 66.3%; width: 18%; }  /* шут */
 
-    .product.medium {
-      width: 23%;
-      max-height: 94%;
-    }
+    /* средняя полка */
+    .p4 { left: 4%;    bottom: 43.7%; width: 17%; }  /* машинка */
+    .p5 { left: 36%;   bottom: 43.6%; width: 18%; }  /* пушка */
+    .p6 { left: 73%;   bottom: 43.2%; width: 17%; }  /* лягушка */
 
-    .product.large {
-      width: 26%;
-      max-height: 96%;
-    }
+    /* нижняя полка */
+    .p7 { left: 3%;    bottom: 20.8%; width: 16%; }  /* шахматы */
+    .p8 { left: 34%;   bottom: 20.5%; width: 16%; }  /* шарик */
+    .p9 { left: 74%;   bottom: 21.2%; width: 14%; }  /* шайба и клюшка */
 
     /* ПРАВАЯ ЗОНА */
 
@@ -347,12 +318,6 @@
       .buyer-zone {
         height: 50%;
       }
-
-      .row-top,
-      .row-middle,
-      .row-bottom {
-        height: 19%;
-      }
     }
   </style>
 </head>
@@ -370,7 +335,7 @@
 
     <div class="shelves">
 
-      <!-- ПЕРВЫЙ ШКАФ С ПРЕДМЕТАМИ -->
+      <!-- ПЕРВЫЙ ШКАФ -->
       <div class="shelf-wrap">
 
         <img
@@ -380,29 +345,17 @@
         >
 
         <div class="products-layer">
-
-          <!-- верхняя полка -->
-          <div class="shelf-row row-top">
-            <img src="assets/products/pik-01.png" class="product medium" data-id="pik-01" alt="">
-            <img src="assets/products/pik-02.png" class="product medium" data-id="pik-02" alt="">
-            <img src="assets/products/pik-03.png" class="product medium" data-id="pik-03" alt="">
-          </div>
-
-          <!-- средняя полка -->
-          <div class="shelf-row row-middle">
-            <img src="assets/products/pik-04.png" class="product medium" data-id="pik-04" alt="">
-            <img src="assets/products/pik-05.png" class="product medium" data-id="pik-05" alt="">
-            <img src="assets/products/pik-06.png" class="product medium" data-id="pik-06" alt="">
-          </div>
-
-          <!-- нижняя полка -->
-          <div class="shelf-row row-bottom">
-            <img src="assets/products/pik-07.png" class="product medium" data-id="pik-07" alt="">
-            <img src="assets/products/pik-08.png" class="product medium" data-id="pik-08" alt="">
-            <img src="assets/products/pik-09.png" class="product medium" data-id="pik-09" alt="">
-          </div>
-
+          <img src="assets/products/pik-01.png" class="product p1" data-id="pik-01" alt="">
+          <img src="assets/products/pik-02.png" class="product p2" data-id="pik-02" alt="">
+          <img src="assets/products/pik-03.png" class="product p3" data-id="pik-03" alt="">
+          <img src="assets/products/pik-04.png" class="product p4" data-id="pik-04" alt="">
+          <img src="assets/products/pik-05.png" class="product p5" data-id="pik-05" alt="">
+          <img src="assets/products/pik-06.png" class="product p6" data-id="pik-06" alt="">
+          <img src="assets/products/pik-07.png" class="product p7" data-id="pik-07" alt="">
+          <img src="assets/products/pik-08.png" class="product p8" data-id="pik-08" alt="">
+          <img src="assets/products/pik-09.png" class="product p9" data-id="pik-09" alt="">
         </div>
+
       </div>
 
       <!-- ВТОРОЙ ШКАФ -->
