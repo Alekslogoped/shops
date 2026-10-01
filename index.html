@@ -23,14 +23,11 @@
       background: #f4efe7;
     }
 
-    /* ОСНОВНАЯ СЦЕНА */
-
     .game {
       position: relative;
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-
       background-image: url("fon.png");
       background-size: cover;
       background-position: center;
@@ -57,7 +54,7 @@
       box-shadow: 0 5px 14px rgba(0,0,0,.12);
     }
 
-    /* ЗОНА ШКАФОВ */
+    /* ШКАФЫ */
 
     .shelves {
       position: absolute;
@@ -74,72 +71,100 @@
       z-index: 5;
     }
 
-    /* ОБЁРТКА КАЖДОГО ШКАФА */
-
     .shelf-wrap {
       position: relative;
       width: 31%;
       height: 100%;
-
       display: flex;
       align-items: flex-end;
       justify-content: center;
     }
 
-    /* КАРТИНКА ШКАФА */
-
     .shelf {
       position: absolute;
       inset: 0;
-
       width: 100%;
       height: 100%;
-
       object-fit: contain;
       object-position: bottom center;
-
       user-select: none;
       -webkit-user-drag: none;
       pointer-events: none;
-
       z-index: 1;
     }
 
-    /* СЛОЙ ТОВАРОВ */
+    /* ТОВАРЫ НА ПЕРВОМ ШКАФУ */
 
     .products-layer {
       position: absolute;
       inset: 0;
       z-index: 3;
+      pointer-events: none;
     }
 
-    /* ОДИН ТОВАР */
+    /* ОДИН РЯД НА ПОЛКЕ */
+
+    .shelf-row {
+      position: absolute;
+      left: 7%;
+      width: 86%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+
+    /* Координаты рядов — стоят на линиях полок */
+    .row-top {
+      bottom: 67.5%;
+      height: 18%;
+    }
+
+    .row-middle {
+      bottom: 44.2%;
+      height: 18%;
+    }
+
+    .row-bottom {
+      bottom: 21%;
+      height: 18%;
+    }
 
     .product {
-      position: absolute;
-
-      width: 18%;
-      height: auto;
-
+      display: block;
       object-fit: contain;
-
-      cursor: pointer;
-
-      transition:
-        transform .18s ease,
-        filter .18s ease;
-
       user-select: none;
       -webkit-user-drag: none;
+      cursor: pointer;
+      pointer-events: auto;
+
+      transition: transform .18s ease, filter .18s ease;
+      transform-origin: bottom center;
     }
 
     .product:hover {
       transform: scale(1.08);
-      filter: brightness(1.05);
+      filter: brightness(1.04);
     }
 
     .product:active {
-      transform: scale(.96);
+      transform: scale(.97);
+    }
+
+    /* Размеры предметов */
+    .product.small {
+      width: 20%;
+      max-height: 92%;
+    }
+
+    .product.medium {
+      width: 23%;
+      max-height: 94%;
+    }
+
+    .product.large {
+      width: 26%;
+      max-height: 96%;
     }
 
     /* ПРАВАЯ ЗОНА */
@@ -226,10 +251,7 @@
       object-fit: contain;
       display: block;
 
-      transition:
-        transform .75s ease,
-        opacity .75s ease;
-
+      transition: transform .75s ease, opacity .75s ease;
       opacity: 1;
     }
 
@@ -304,15 +326,12 @@
 
       opacity: 0;
       pointer-events: none;
-
       transition: opacity .25s;
     }
 
     .message.show {
       opacity: 1;
     }
-
-    /* АДАПТАЦИЯ */
 
     @media (max-width: 1100px) {
       .shelves {
@@ -329,16 +348,16 @@
         height: 50%;
       }
 
-      .product {
-        width: 20%;
+      .row-top,
+      .row-middle,
+      .row-bottom {
+        height: 19%;
       }
     }
-
   </style>
 </head>
 
 <body>
-
   <div class="game">
 
     <div class="game-title">
@@ -349,12 +368,9 @@
       Готово!
     </div>
 
-    <!-- ТРИ ШКАФА -->
-
     <div class="shelves">
 
-      <!-- ШКАФ 1 С ТОВАРАМИ -->
-
+      <!-- ПЕРВЫЙ ШКАФ С ПРЕДМЕТАМИ -->
       <div class="shelf-wrap">
 
         <img
@@ -366,26 +382,30 @@
         <div class="products-layer">
 
           <!-- верхняя полка -->
-          <img src="assets/products/pik-01.png" class="product" data-id="pik-01" style="left: 7%; top: 16%;" alt="">
-          <img src="assets/products/pik-02.png" class="product" data-id="pik-02" style="left: 39%; top: 14%;" alt="">
-          <img src="assets/products/pik-03.png" class="product" data-id="pik-03" style="left: 71%; top: 16%;" alt="">
+          <div class="shelf-row row-top">
+            <img src="assets/products/pik-01.png" class="product medium" data-id="pik-01" alt="">
+            <img src="assets/products/pik-02.png" class="product medium" data-id="pik-02" alt="">
+            <img src="assets/products/pik-03.png" class="product medium" data-id="pik-03" alt="">
+          </div>
 
           <!-- средняя полка -->
-          <img src="assets/products/pik-04.png" class="product" data-id="pik-04" style="left: 8%; top: 42%;" alt="">
-          <img src="assets/products/pik-05.png" class="product" data-id="pik-05" style="left: 39%; top: 40%;" alt="">
-          <img src="assets/products/pik-06.png" class="product" data-id="pik-06" style="left: 72%; top: 40%;" alt="">
+          <div class="shelf-row row-middle">
+            <img src="assets/products/pik-04.png" class="product medium" data-id="pik-04" alt="">
+            <img src="assets/products/pik-05.png" class="product medium" data-id="pik-05" alt="">
+            <img src="assets/products/pik-06.png" class="product medium" data-id="pik-06" alt="">
+          </div>
 
           <!-- нижняя полка -->
-          <img src="assets/products/pik-07.png" class="product" data-id="pik-07" style="left: 7%; top: 69%;" alt="">
-          <img src="assets/products/pik-08.png" class="product" data-id="pik-08" style="left: 39%; top: 67%;" alt="">
-          <img src="assets/products/pik-09.png" class="product" data-id="pik-09" style="left: 72%; top: 67%;" alt="">
+          <div class="shelf-row row-bottom">
+            <img src="assets/products/pik-07.png" class="product medium" data-id="pik-07" alt="">
+            <img src="assets/products/pik-08.png" class="product medium" data-id="pik-08" alt="">
+            <img src="assets/products/pik-09.png" class="product medium" data-id="pik-09" alt="">
+          </div>
 
         </div>
-
       </div>
 
-      <!-- ШКАФ 2 -->
-
+      <!-- ВТОРОЙ ШКАФ -->
       <div class="shelf-wrap">
         <img
           src="assets/shelves/shelf-01.png"
@@ -394,8 +414,7 @@
         >
       </div>
 
-      <!-- ШКАФ 3 -->
-
+      <!-- ТРЕТИЙ ШКАФ -->
       <div class="shelf-wrap">
         <img
           src="assets/shelves/shelf-01.png"
@@ -407,12 +426,10 @@
     </div>
 
     <!-- ПРАВАЯ ЗОНА -->
-
     <div class="right-zone">
 
       <div class="shopping-list">
         <h3>Список покупок</h3>
-
         <div id="listItems" class="list-items"></div>
       </div>
 
@@ -424,11 +441,9 @@
           alt="Покупатель с тележкой"
         >
       </div>
-
     </div>
 
     <!-- КНОПКИ -->
-
     <div class="controls">
       <button id="checkBtn" class="btn btn-check">
         Проверить
@@ -451,7 +466,6 @@
           { name: "Покупка 3", icon: "🛍️", need: 3 }
         ]
       },
-
       {
         image: "assets/buyers/buyer-cart-02.png",
         list: [
@@ -460,7 +474,6 @@
           { name: "Покупка 3", icon: "🛍️", need: 2 }
         ]
       },
-
       {
         image: "assets/buyers/buyer-cart-03.png",
         list: [
@@ -469,7 +482,6 @@
           { name: "Покупка 3", icon: "🛍️", need: 2 }
         ]
       },
-
       {
         image: "assets/buyers/buyer-cart-04.png",
         list: [
@@ -493,7 +505,6 @@
       buyer.list.forEach(item => {
         const row = document.createElement("div");
         row.className = "list-row";
-
         row.innerHTML = `
           <div class="list-left">
             <span class="list-icon">${item.icon}</span>
@@ -501,7 +512,6 @@
           </div>
           <span>× ${item.need}</span>
         `;
-
         listItems.appendChild(row);
       });
     }
@@ -522,7 +532,6 @@
 
       setTimeout(() => {
         currentBuyer++;
-
         if (currentBuyer >= BUYERS.length) {
           currentBuyer = 0;
         }
@@ -556,6 +565,5 @@
 
     renderBuyer();
   </script>
-
 </body>
 </html>
