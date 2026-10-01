@@ -28,6 +28,7 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
+
       background-image: url("fon.png");
       background-size: cover;
       background-position: center;
@@ -71,6 +72,7 @@
       position: relative;
       width: 31%;
       height: 100%;
+
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -79,13 +81,17 @@
     .shelf {
       position: absolute;
       inset: 0;
+
       width: 100%;
       height: 100%;
+
       object-fit: contain;
       object-position: bottom center;
+
       user-select: none;
       -webkit-user-drag: none;
       pointer-events: none;
+
       z-index: 1;
     }
 
@@ -98,12 +104,17 @@
     .product {
       position: absolute;
       object-fit: contain;
+
       cursor: pointer;
+
       user-select: none;
       -webkit-user-drag: none;
       pointer-events: auto;
 
-      transition: transform .18s ease, filter .18s ease;
+      transition:
+        transform .18s ease,
+        filter .18s ease;
+
       transform-origin: bottom center;
     }
 
@@ -116,17 +127,21 @@
       transform: scale(.97);
     }
 
-    /* ПРЕДМЕТЫ НА 1 ШКАФУ */
+    /* =========================
+       ПРЕДМЕТЫ НА 1 ШКАФУ
+    ========================= */
 
+    /* Мишка */
     .p1 {
-      left: 8%;
-      bottom: 62.6%;
+      left: 12%;
+      bottom: 60.8%;
       width: 19%;
     }
 
+    /* Погремушка */
     .p2 {
-      left: 39%;
-      bottom: 63.2%;
+      left: 40%;
+      bottom: 61.2%;
       width: 18%;
       transform: rotate(90deg);
     }
@@ -139,47 +154,58 @@
       transform: rotate(90deg) scale(.97);
     }
 
+    /* Шут */
     .p3 {
-      left: 73.5%;
-      bottom: 61.8%;
+      left: 69.5%;
+      bottom: 60.3%;
       width: 20%;
     }
 
+    /* Машинка */
     .p4 {
-      left: 9%;
-      bottom: 39.8%;
+      left: 11.5%;
+      bottom: 37.9%;
       width: 19%;
     }
 
+    /* Пушка */
     .p5 {
       left: 38.5%;
-      bottom: 39.9%;
+      bottom: 39.2%;
       width: 20%;
     }
 
+    /* Лягушка */
     .p6 {
-      left: 73%;
-      bottom: 39.4%;
+      left: 70.5%;
+      bottom: 39%;
       width: 19%;
     }
 
+    /* Шахматы */
     .p7 {
       left: 8%;
       bottom: 19.9%;
       width: 18%;
     }
 
+    /* Шарик */
     .p8 {
       left: 35%;
       bottom: 19.6%;
       width: 18%;
     }
 
+    /* Шайба и клюшка */
     .p9 {
-      left: 73%;
-      bottom: 20.3%;
+      left: 69.5%;
+      bottom: 20.1%;
       width: 16%;
     }
+
+    /* =========================
+       ПРАВАЯ ЗОНА
+    ========================= */
 
     .right-zone {
       position: absolute;
@@ -197,16 +223,23 @@
 
     .shopping-list {
       width: 100%;
+
       background: rgba(255,255,255,.93);
+
       border-radius: 22px;
+
       box-shadow: 0 6px 18px rgba(0,0,0,.12);
+
       padding: 16px 18px;
+
       color: #70472a;
     }
 
     .shopping-list h3 {
       margin: 0 0 12px;
+
       text-align: center;
+
       font-size: clamp(18px, 1.5vw, 26px);
     }
 
@@ -222,6 +255,7 @@
       justify-content: space-between;
 
       background: #fffaf4;
+
       border: 2px solid #efdcc7;
       border-radius: 14px;
 
@@ -241,8 +275,13 @@
       font-size: 30px;
     }
 
+    /* =========================
+       ПОКУПАТЕЛЬ
+    ========================= */
+
     .buyer-zone {
       position: relative;
+
       width: 100%;
       height: 53%;
 
@@ -256,10 +295,15 @@
     .buyer-img {
       max-width: 100%;
       max-height: 100%;
+
       object-fit: contain;
+
       display: block;
 
-      transition: transform .75s ease, opacity .75s ease;
+      transition:
+        transform .75s ease,
+        opacity .75s ease;
+
       opacity: 1;
     }
 
@@ -277,17 +321,25 @@
         transform: translateX(130%);
         opacity: 0;
       }
+
       to {
         transform: translateX(0);
         opacity: 1;
       }
     }
 
+    /* =========================
+       КНОПКИ
+    ========================= */
+
     .controls {
       position: absolute;
+
       left: 50%;
       bottom: 2%;
+
       transform: translateX(-50%);
+
       z-index: 50;
 
       display: flex;
@@ -296,11 +348,16 @@
 
     .btn {
       border: none;
+
       padding: 14px 22px;
+
       border-radius: 16px;
+
       font-size: 18px;
       font-weight: 800;
+
       cursor: pointer;
+
       box-shadow: 0 5px 12px rgba(0,0,0,.14);
     }
 
@@ -314,22 +371,34 @@
       color: #5b4027;
     }
 
+    /* =========================
+       СООБЩЕНИЕ
+    ========================= */
+
     .message {
       position: absolute;
+
       left: 50%;
       top: 10%;
+
       transform: translateX(-50%);
+
       z-index: 60;
 
       background: rgba(255,255,255,.95);
+
       border-radius: 14px;
+
       padding: 10px 18px;
 
       font-weight: 800;
+
       color: #7b4b2c;
 
       opacity: 0;
+
       pointer-events: none;
+
       transition: opacity .25s;
     }
 
@@ -338,6 +407,7 @@
     }
 
     @media (max-width: 1100px) {
+
       .shelves {
         width: 68%;
         height: 56%;
@@ -351,11 +421,14 @@
       .buyer-zone {
         height: 50%;
       }
+
     }
+
   </style>
 </head>
 
 <body>
+
   <div class="game">
 
     <div class="game-title">
@@ -366,9 +439,14 @@
       Готово!
     </div>
 
+    <!-- ======================
+         ШКАФЫ
+    ======================= -->
+
     <div class="shelves">
 
       <!-- ПЕРВЫЙ ШКАФ -->
+
       <div class="shelf-wrap">
 
         <img
@@ -378,183 +456,489 @@
         >
 
         <div class="products-layer">
-          <img src="assets/products/pik-01.png" class="product p1" data-id="pik-01" alt="">
-          <img src="assets/products/pik-02.png" class="product p2" data-id="pik-02" alt="">
-          <img src="assets/products/pik-03.png" class="product p3" data-id="pik-03" alt="">
-          <img src="assets/products/pik-04.png" class="product p4" data-id="pik-04" alt="">
-          <img src="assets/products/pik-05.png" class="product p5" data-id="pik-05" alt="">
-          <img src="assets/products/pik-06.png" class="product p6" data-id="pik-06" alt="">
-          <img src="assets/products/pik-07.png" class="product p7" data-id="pik-07" alt="">
-          <img src="assets/products/pik-08.png" class="product p8" data-id="pik-08" alt="">
-          <img src="assets/products/pik-09.png" class="product p9" data-id="pik-09" alt="">
+
+          <img
+            src="assets/products/pik-01.png"
+            class="product p1"
+            data-id="pik-01"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-02.png"
+            class="product p2"
+            data-id="pik-02"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-03.png"
+            class="product p3"
+            data-id="pik-03"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-04.png"
+            class="product p4"
+            data-id="pik-04"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-05.png"
+            class="product p5"
+            data-id="pik-05"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-06.png"
+            class="product p6"
+            data-id="pik-06"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-07.png"
+            class="product p7"
+            data-id="pik-07"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-08.png"
+            class="product p8"
+            data-id="pik-08"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-09.png"
+            class="product p9"
+            data-id="pik-09"
+            alt=""
+          >
+
         </div>
 
       </div>
 
       <!-- ВТОРОЙ ШКАФ -->
+
       <div class="shelf-wrap">
+
         <img
           src="assets/shelves/shelf-01.png"
           class="shelf"
           alt=""
         >
+
       </div>
 
       <!-- ТРЕТИЙ ШКАФ -->
+
       <div class="shelf-wrap">
+
         <img
           src="assets/shelves/shelf-01.png"
           class="shelf"
           alt=""
         >
+
       </div>
 
     </div>
 
+    <!-- ======================
+         ПРАВАЯ ЗОНА
+    ======================= -->
+
     <div class="right-zone">
 
       <div class="shopping-list">
-        <h3>Список покупок</h3>
-        <div id="listItems" class="list-items"></div>
+
+        <h3>
+          Список покупок
+        </h3>
+
+        <div
+          id="listItems"
+          class="list-items">
+        </div>
+
       </div>
 
       <div class="buyer-zone">
+
         <img
           id="buyerImage"
           class="buyer-img"
           src="assets/buyers/buyer-cart-01.png"
           alt="Покупатель с тележкой"
         >
+
       </div>
+
     </div>
 
+    <!-- ======================
+         КНОПКИ
+    ======================= -->
+
     <div class="controls">
-      <button id="checkBtn" class="btn btn-check">
+
+      <button
+        id="checkBtn"
+        class="btn btn-check">
         Проверить
       </button>
 
-      <button id="nextBtn" class="btn btn-next">
+      <button
+        id="nextBtn"
+        class="btn btn-next">
         Следующий покупатель
       </button>
+
     </div>
 
   </div>
 
   <script>
+
     const BUYERS = [
+
       {
-        image: "assets/buyers/buyer-cart-01.png",
+        image:
+          "assets/buyers/buyer-cart-01.png",
+
         list: [
-          { name: "Покупка 1", icon: "🛍️", need: 2 },
-          { name: "Покупка 2", icon: "🛍️", need: 1 },
-          { name: "Покупка 3", icon: "🛍️", need: 3 }
+          {
+            name: "Покупка 1",
+            icon: "🛍️",
+            need: 2
+          },
+
+          {
+            name: "Покупка 2",
+            icon: "🛍️",
+            need: 1
+          },
+
+          {
+            name: "Покупка 3",
+            icon: "🛍️",
+            need: 3
+          }
         ]
       },
+
+
       {
-        image: "assets/buyers/buyer-cart-02.png",
+        image:
+          "assets/buyers/buyer-cart-02.png",
+
         list: [
-          { name: "Покупка 1", icon: "🛍️", need: 1 },
-          { name: "Покупка 2", icon: "🛍️", need: 2 },
-          { name: "Покупка 3", icon: "🛍️", need: 2 }
+          {
+            name: "Покупка 1",
+            icon: "🛍️",
+            need: 1
+          },
+
+          {
+            name: "Покупка 2",
+            icon: "🛍️",
+            need: 2
+          },
+
+          {
+            name: "Покупка 3",
+            icon: "🛍️",
+            need: 2
+          }
         ]
       },
+
+
       {
-        image: "assets/buyers/buyer-cart-03.png",
+        image:
+          "assets/buyers/buyer-cart-03.png",
+
         list: [
-          { name: "Покупка 1", icon: "🛍️", need: 3 },
-          { name: "Покупка 2", icon: "🛍️", need: 1 },
-          { name: "Покупка 3", icon: "🛍️", need: 2 }
+          {
+            name: "Покупка 1",
+            icon: "🛍️",
+            need: 3
+          },
+
+          {
+            name: "Покупка 2",
+            icon: "🛍️",
+            need: 1
+          },
+
+          {
+            name: "Покупка 3",
+            icon: "🛍️",
+            need: 2
+          }
         ]
       },
+
+
       {
-        image: "assets/buyers/buyer-cart-04.png",
+        image:
+          "assets/buyers/buyer-cart-04.png",
+
         list: [
-          { name: "Покупка 1", icon: "🛍️", need: 2 },
-          { name: "Покупка 2", icon: "🛍️", need: 2 },
-          { name: "Покупка 3", icon: "🛍️", need: 1 }
+          {
+            name: "Покупка 1",
+            icon: "🛍️",
+            need: 2
+          },
+
+          {
+            name: "Покупка 2",
+            icon: "🛍️",
+            need: 2
+          },
+
+          {
+            name: "Покупка 3",
+            icon: "🛍️",
+            need: 1
+          }
         ]
       }
+
     ];
+
 
     let currentBuyer = 0;
 
-    const buyerImage = document.getElementById("buyerImage");
-    const listItems = document.getElementById("listItems");
-    const message = document.getElementById("message");
+
+    const buyerImage =
+      document.getElementById(
+        "buyerImage"
+      );
+
+
+    const listItems =
+      document.getElementById(
+        "listItems"
+      );
+
+
+    const message =
+      document.getElementById(
+        "message"
+      );
+
 
     function renderList() {
-      const buyer = BUYERS[currentBuyer];
+
+      const buyer =
+        BUYERS[currentBuyer];
+
+
       listItems.innerHTML = "";
 
-      buyer.list.forEach(item => {
-        const row = document.createElement("div");
-        row.className = "list-row";
 
-        row.innerHTML = `
-          <div class="list-left">
-            <span class="list-icon">${item.icon}</span>
-            <span>${item.name}</span>
-          </div>
-          <span>× ${item.need}</span>
-        `;
+      buyer.list.forEach(
+        item => {
 
-        listItems.appendChild(row);
-      });
+          const row =
+            document.createElement(
+              "div"
+            );
+
+
+          row.className =
+            "list-row";
+
+
+          row.innerHTML = `
+
+            <div class="list-left">
+
+              <span class="list-icon">
+                ${item.icon}
+              </span>
+
+              <span>
+                ${item.name}
+              </span>
+
+            </div>
+
+
+            <span>
+              × ${item.need}
+            </span>
+
+          `;
+
+
+          listItems.appendChild(
+            row
+          );
+
+        }
+      );
+
     }
+
 
     function renderBuyer() {
-      const buyer = BUYERS[currentBuyer];
-      buyerImage.src = buyer.image;
 
-      buyerImage.classList.remove("enter");
+      const buyer =
+        BUYERS[currentBuyer];
+
+
+      buyerImage.src =
+        buyer.image;
+
+
+      buyerImage.classList.remove(
+        "enter"
+      );
+
+
       void buyerImage.offsetWidth;
-      buyerImage.classList.add("enter");
+
+
+      buyerImage.classList.add(
+        "enter"
+      );
+
 
       renderList();
+
     }
+
 
     function nextBuyer() {
-      buyerImage.classList.add("exit");
 
-      setTimeout(() => {
-        currentBuyer++;
+      buyerImage.classList.add(
+        "exit"
+      );
 
-        if (currentBuyer >= BUYERS.length) {
-          currentBuyer = 0;
-        }
 
-        buyerImage.classList.remove("exit");
-        renderBuyer();
-        showMessage("Пришёл новый покупатель!");
-      }, 750);
+      setTimeout(
+        () => {
+
+          currentBuyer++;
+
+
+          if (
+            currentBuyer >=
+            BUYERS.length
+          ) {
+
+            currentBuyer = 0;
+
+          }
+
+
+          buyerImage.classList.remove(
+            "exit"
+          );
+
+
+          renderBuyer();
+
+
+          showMessage(
+            "Пришёл новый покупатель!"
+          );
+
+        },
+
+        750
+
+      );
+
     }
+
 
     function showMessage(text) {
-      message.textContent = text;
-      message.classList.add("show");
 
-      setTimeout(() => {
-        message.classList.remove("show");
-      }, 1500);
+      message.textContent =
+        text;
+
+
+      message.classList.add(
+        "show"
+      );
+
+
+      setTimeout(
+        () => {
+
+          message.classList.remove(
+            "show"
+          );
+
+        },
+
+        1500
+      );
+
     }
 
-    document.querySelectorAll(".product").forEach(product => {
-      product.addEventListener("click", () => {
-        showMessage("Вы выбрали " + product.dataset.id);
-      });
-    });
 
     document
-      .getElementById("nextBtn")
-      .addEventListener("click", nextBuyer);
+      .querySelectorAll(
+        ".product"
+      )
+      .forEach(
+        product => {
+
+          product.addEventListener(
+            "click",
+            () => {
+
+              showMessage(
+                "Вы выбрали " +
+                product.dataset.id
+              );
+
+            }
+          );
+
+        }
+      );
+
 
     document
-      .getElementById("checkBtn")
-      .addEventListener("click", () => {
-        showMessage("Следующим шагом подключим полёт товара в тележку.");
-      });
+      .getElementById(
+        "nextBtn"
+      )
+      .addEventListener(
+        "click",
+        nextBuyer
+      );
+
+
+    document
+      .getElementById(
+        "checkBtn"
+      )
+      .addEventListener(
+        "click",
+        () => {
+
+          showMessage(
+            "Следующим шагом подключим полёт товара в тележку."
+          );
+
+        }
+      );
+
 
     renderBuyer();
+
   </script>
+
 </body>
 </html>
