@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Игра «Магазин»</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<main id="game" class="game">
+
+  <!-- СТАРТ -->
+  <section id="startScreen" class="screen active">
+
+    <div class="card start-card">
+
+      <div class="eyebrow">
+        ИНТЕРАКТИВНАЯ ИГРА
+      </div>
+
+      <h1>Магазин</h1>
+
+      <p>
+        Запомни список покупок,
+        найди товары на полках
+        и положи их в корзину.
+      </p>
+
+      <button id="startBtn" class="primary">
+        Играть
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- СПИСОК ПОКУПОК -->
+  <section id="memoryScreen" class="screen">
+
+    <div class="memory-layout">
+
+      <div class="shopping-note">
+
+        <h2>Список покупок</h2>
+
+        <ul id="memoryList"></ul>
+
+      </div>
+
+
+      <div class="timer-card">
+
+        <div class="clock">⏱</div>
+
+        <div class="small">
+          Запомни список
+        </div>
+
+        <div id="countdown" class="countdown">
+          10
+        </div>
+
+        <button id="skipBtn" class="secondary">
+          Я запомнил(а)
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- МАГАЗИН -->
+  <section id="shopScreen" class="screen shop-screen">
+
+    <header class="topbar">
+
+      <button id="listBtn" class="icon-btn">
+        📋 Список
+      </button>
+
+
+      <div class="progress-wrap">
+
+        <span>
+          Корзина
+        </span>
+
+        <strong id="progressText">
+          0 / 3
+        </strong>
+
+      </div>
+
+
+      <button id="restartBtn" class="icon-btn">
+        ↻ Сначала
+      </button>
+
+    </header>
+
+
+    <div class="shop-title">
+      Супермаркет
+    </div>
+
+
+    <div
+      id="shelves"
+      class="shelves">
+    </div>
+
+
+    <!-- КОРЗИНА -->
+
+    <div class="cart">
+
+      <div class="cart-basket">
+        🛒
+      </div>
+
+      <div
+        id="cartItems"
+        class="cart-items">
+      </div>
+
+    </div>
+
+
+    <div
+      id="toast"
+      class="toast">
+    </div>
+
+  </section>
+
+
+  <!-- МОДАЛЬНОЕ ОКНО СПИСКА -->
+
+  <div
+    id="listModal"
+    class="modal hidden">
+
+    <div class="modal-card">
+
+      <button
+        id="closeListBtn"
+        class="close">
+        ×
+      </button>
+
+      <h2>
+        Что нужно купить?
+      </h2>
+
+      <ul
+        id="modalList"
+        class="check-list">
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <!-- МИНИ-ЗАДАНИЕ -->
+
+  <div
+    id="taskModal"
+    class="modal hidden">
+
+    <div class="modal-card task-card">
+
+      <div
+        id="taskEmoji"
+        class="task-emoji">
+      </div>
+
+      <h2 id="taskTitle">
+        Скажи слово
+      </h2>
+
+      <p id="taskText">
+        Назови предмет
+        и выбери правильный вариант.
+      </p>
+
+      <div
+        id="taskOptions"
+        class="task-options">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ФИНАЛ -->
+
+  <div
+    id="finishModal"
+    class="modal hidden">
+
+    <div class="modal-card finish-card">
+
+      <div class="stars">
+        ✨ ⭐ ✨
+      </div>
+
+      <h2>
+        Все покупки собраны!
+      </h2>
+
+      <p>
+        Отличная работа!
+      </p>
+
+      <button
+        id="againBtn"
+        class="primary">
+
+        Сыграть ещё раз
+
+      </button>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
