@@ -81,7 +81,6 @@
     .shelf {
       position: absolute;
       inset: 0;
-
       width: 100%;
       height: 100%;
 
@@ -131,17 +130,17 @@
        ПРЕДМЕТЫ НА 1 ШКАФУ
     ========================= */
 
-    /* Мишка — ниже */
+    /* Мишка — ещё ниже */
     .p1 {
       left: 12.5%;
-      bottom: 58.9%;
+      bottom: 57.4%;
       width: 19%;
     }
 
-    /* Погремушка — в центр */
+    /* Погремушка — ближе к центру */
     .p2 {
-      left: 43%;
-      bottom: 60.8%;
+      left: 41.5%;
+      bottom: 60.6%;
       width: 18%;
       transform: rotate(90deg);
     }
@@ -154,10 +153,10 @@
       transform: rotate(90deg) scale(.97);
     }
 
-    /* Шут — ниже и в конец */
+    /* Шут — ещё ниже */
     .p3 {
       left: 74%;
-      bottom: 59.1%;
+      bottom: 57.8%;
       width: 20%;
     }
 
@@ -182,7 +181,7 @@
       width: 19%;
     }
 
-    /* Шахматы — чуть выше */
+    /* Шахматы */
     .p7 {
       left: 8%;
       bottom: 20.8%;
@@ -196,12 +195,16 @@
       width: 18%;
     }
 
-    /* Шайба и клюшка — выше и ближе к центру */
+    /* Шайба и клюшка */
     .p9 {
       left: 66%;
       bottom: 21.2%;
       width: 16%;
     }
+
+    /* =========================
+       ПРАВАЯ ЗОНА
+    ========================= */
 
     .right-zone {
       position: absolute;
@@ -221,7 +224,6 @@
       width: 100%;
 
       background: rgba(255,255,255,.93);
-
       border-radius: 22px;
 
       box-shadow: 0 6px 18px rgba(0,0,0,.12);
@@ -270,6 +272,10 @@
     .list-icon {
       font-size: 30px;
     }
+
+    /* =========================
+       ПОКУПАТЕЛЬ
+    ========================= */
 
     .buyer-zone {
       position: relative;
@@ -320,6 +326,10 @@
       }
     }
 
+    /* =========================
+       КНОПКИ
+    ========================= */
+
     .controls {
       position: absolute;
 
@@ -358,6 +368,10 @@
       background: #ffca5b;
       color: #5b4027;
     }
+
+    /* =========================
+       СООБЩЕНИЕ
+    ========================= */
 
     .message {
       position: absolute;
@@ -425,6 +439,7 @@
     <div class="shelves">
 
       <!-- ПЕРВЫЙ ШКАФ -->
+
       <div class="shelf-wrap">
 
         <img
@@ -452,6 +467,7 @@
       </div>
 
       <!-- ВТОРОЙ ШКАФ -->
+
       <div class="shelf-wrap">
 
         <img
@@ -463,6 +479,7 @@
       </div>
 
       <!-- ТРЕТИЙ ШКАФ -->
+
       <div class="shelf-wrap">
 
         <img
@@ -474,6 +491,8 @@
       </div>
 
     </div>
+
+    <!-- ПРАВАЯ ЗОНА -->
 
     <div class="right-zone">
 
@@ -502,6 +521,8 @@
       </div>
 
     </div>
+
+    <!-- КНОПКИ -->
 
     <div class="controls">
 
@@ -577,8 +598,7 @@
       listItems.innerHTML = "";
 
       buyer.list.forEach(item => {
-        const row =
-          document.createElement("div");
+        const row = document.createElement("div");
 
         row.className = "list-row";
 
@@ -611,6 +631,7 @@
       buyerImage.classList.add("exit");
 
       setTimeout(() => {
+
         currentBuyer++;
 
         if (currentBuyer >= BUYERS.length) {
@@ -622,6 +643,7 @@
         renderBuyer();
 
         showMessage("Пришёл новый покупатель!");
+
       }, 750);
     }
 
@@ -638,11 +660,15 @@
     document
       .querySelectorAll(".product")
       .forEach(product => {
+
         product.addEventListener("click", () => {
+
           showMessage(
             "Вы выбрали " + product.dataset.id
           );
+
         });
+
       });
 
     document
@@ -652,9 +678,11 @@
     document
       .getElementById("checkBtn")
       .addEventListener("click", () => {
+
         showMessage(
           "Следующим шагом подключим полёт товара в тележку."
         );
+
       });
 
     renderBuyer();
