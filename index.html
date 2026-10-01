@@ -7,7 +7,6 @@
   <title>Магазин</title>
 
   <style>
-
     * {
       box-sizing: border-box;
     }
@@ -25,13 +24,9 @@
       background: #f4efe7;
     }
 
-
-    /* =========================================
-       ОСНОВНАЯ ИГРОВАЯ СЦЕНА
-    ========================================= */
+    /* ОСНОВНАЯ СЦЕНА */
 
     .game {
-
       position: relative;
 
       width: 100vw;
@@ -40,54 +35,66 @@
       overflow: hidden;
 
       background-image: url("fon.png");
-
       background-size: cover;
-
       background-position: center;
-
       background-repeat: no-repeat;
     }
 
+    /* НАЗВАНИЕ */
 
-    /* =========================================
-       КОНТЕЙНЕР ДЛЯ ШКАФОВ
-    ========================================= */
-
-    .shelves {
-
+    .game-title {
       position: absolute;
 
-      left: 3%;
-      right: 3%;
+      top: 2%;
+      left: 50%;
 
-      bottom: 4%;
+      transform: translateX(-50%);
 
-      height: 70%;
+      z-index: 30;
+
+      background: rgba(255,255,255,.92);
+
+      padding: 10px 28px;
+
+      border-radius: 18px;
+
+      font-size: clamp(20px, 2vw, 34px);
+
+      font-weight: 800;
+
+      color: #70472a;
+
+      box-shadow: 0 5px 14px rgba(0,0,0,.12);
+    }
+
+    /* ЗОНА ШКАФОВ */
+
+    .shelves {
+      position: absolute;
+
+      left: 2%;
+      bottom: 5%;
+
+      width: 70%;
+      height: 60%;
 
       display: flex;
 
       align-items: flex-end;
-
-      justify-content: center;
+      justify-content: space-between;
 
       gap: 2%;
 
       z-index: 5;
     }
 
-
-    /* =========================================
-       ОДИН ШКАФ
-    ========================================= */
+    /* ОДИН ШКАФ */
 
     .shelf {
-
       width: 31%;
-
       height: 100%;
 
       object-fit: contain;
-
       object-position: bottom center;
 
       display: block;
@@ -99,81 +106,106 @@
       pointer-events: none;
     }
 
+    /* ЗОНА СПРАВА */
 
-    /* =========================================
-       НАЗВАНИЕ ИГРЫ
-    ========================================= */
-
-    .game-title {
-
-      position: absolute;
-
-      top: 2.5%;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      z-index: 20;
-
-      background: rgba(255,255,255,.92);
-
-      padding: 10px 26px;
-
-      border-radius: 18px;
-
-      font-size: clamp(20px, 2vw, 34px);
-
-      font-weight: 800;
-
-      color: #80532e;
-
-      box-shadow:
-        0 5px 14px rgba(0,0,0,.12);
-    }
-
-
-    /* =========================================
-       ПОКА ПУСТАЯ ЗОНА ДЛЯ ПОКУПАТЕЛЯ
-       пригодится дальше
-    ========================================= */
-
-    .buyer-area {
-
+    .right-zone {
       position: absolute;
 
       right: 1.5%;
+      top: 12%;
+      bottom: 3%;
 
-      bottom: 2%;
+      width: 25%;
 
-      width: 20%;
+      z-index: 20;
 
-      height: 45%;
+      display: flex;
+      flex-direction: column;
 
-      z-index: 15;
+      justify-content: space-between;
 
       pointer-events: none;
     }
 
+    /* БУДУЩИЙ СПИСОК ПОКУПОК */
 
-    /* =========================================
-       АДАПТАЦИЯ
-    ========================================= */
+    .shopping-list-placeholder {
+      width: 100%;
 
-    @media (max-width: 1000px) {
+      min-height: 180px;
+
+      background: rgba(255,255,255,.9);
+
+      border-radius: 20px;
+
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+
+      padding: 18px;
+
+      color: #70472a;
+
+      text-align: center;
+    }
+
+    .shopping-list-placeholder h3 {
+      margin: 0 0 10px;
+
+      font-size: clamp(18px, 1.5vw, 26px);
+    }
+
+    .shopping-list-placeholder p {
+      margin: 0;
+
+      font-size: 15px;
+
+      color: #8a7567;
+    }
+
+    /* ЗОНА ПОКУПАТЕЛЯ */
+
+    .buyer-placeholder {
+      position: relative;
+
+      width: 100%;
+      height: 48%;
+
+      display: flex;
+
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* ВРЕМЕННАЯ ПОДСКАЗКА */
+
+    .buyer-hint {
+      background: rgba(255,255,255,.85);
+
+      border: 2px dashed #d8b58f;
+
+      border-radius: 18px;
+
+      padding: 16px;
+
+      text-align: center;
+
+      color: #7e604b;
+
+      font-weight: 700;
+
+      width: 90%;
+    }
+
+    /* АДАПТАЦИЯ */
+
+    @media (max-width: 1100px) {
 
       .shelves {
-
-        left: 2%;
-        right: 2%;
-
-        gap: 1%;
-
-        height: 66%;
+        width: 68%;
+        height: 56%;
       }
 
-      .shelf {
-
-        width: 32%;
+      .right-zone {
+        width: 27%;
       }
 
     }
@@ -181,22 +213,15 @@
   </style>
 </head>
 
-
 <body>
 
   <div class="game">
-
-
-    <!-- НАЗВАНИЕ -->
 
     <div class="game-title">
       Магазин
     </div>
 
-
-    <!-- =========================================
-         ТРИ ОДИНАКОВЫХ ШКАФА
-    ========================================== -->
+    <!-- ТРИ ОДИНАКОВЫХ ШКАФА -->
 
     <div class="shelves">
 
@@ -220,11 +245,33 @@
 
     </div>
 
+    <!-- ПРАВАЯ ЗОНА -->
 
-    <!-- МЕСТО ДЛЯ ПОКУПАТЕЛЯ С ТЕЛЕЖКОЙ -->
+    <div class="right-zone">
 
-    <div class="buyer-area"></div>
+      <!-- ЗДЕСЬ ПОТОМ БУДЕТ СПИСОК -->
 
+      <div class="shopping-list-placeholder">
+
+        <h3>Список покупок</h3>
+
+        <p>
+          Здесь будут картинки и количество
+        </p>
+
+      </div>
+
+      <!-- ЗДЕСЬ ПОТОМ БУДЕТ ПОКУПАТЕЛЬ С ТЕЛЕЖКОЙ -->
+
+      <div class="buyer-placeholder">
+
+        <div class="buyer-hint">
+          Здесь будет покупатель с тележкой
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
