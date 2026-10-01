@@ -35,6 +35,8 @@
       background-repeat: no-repeat;
     }
 
+    /* НАЗВАНИЕ */
+
     .game-title {
       position: absolute;
       top: 2%;
@@ -52,6 +54,8 @@
 
       box-shadow: 0 5px 14px rgba(0,0,0,.12);
     }
+
+    /* ШКАФЫ */
 
     .shelves {
       position: absolute;
@@ -81,6 +85,7 @@
     .shelf {
       position: absolute;
       inset: 0;
+
       width: 100%;
       height: 100%;
 
@@ -93,6 +98,8 @@
 
       z-index: 1;
     }
+
+    /* ТОВАРЫ */
 
     .products-layer {
       position: absolute;
@@ -130,18 +137,18 @@
        ПРЕДМЕТЫ НА 1 ШКАФУ
     ========================= */
 
-    /* Мишка — ещё ниже */
+    /* Мишка */
     .p1 {
-      left: 12.5%;
-      bottom: 57.4%;
-      width: 19%;
+      left: 11.5%;
+      bottom: 56.9%;
+      width: 21%;
     }
 
-    /* Погремушка — ближе к центру */
+    /* Погремушка */
     .p2 {
-      left: 41.5%;
-      bottom: 60.6%;
-      width: 18%;
+      left: 48%;
+      bottom: 59.8%;
+      width: 20%;
       transform: rotate(90deg);
     }
 
@@ -153,58 +160,56 @@
       transform: rotate(90deg) scale(.97);
     }
 
-    /* Шут — ещё ниже */
+    /* Шут */
     .p3 {
-      left: 74%;
-      bottom: 57.8%;
-      width: 20%;
+      left: 73%;
+      bottom: 57.2%;
+      width: 22%;
     }
 
     /* Машинка */
     .p4 {
-      left: 11.5%;
-      bottom: 37.9%;
-      width: 19%;
+      left: 10.5%;
+      bottom: 36.8%;
+      width: 21%;
     }
 
     /* Пушка */
     .p5 {
-      left: 38.5%;
-      bottom: 39.2%;
-      width: 20%;
+      left: 37%;
+      bottom: 38.2%;
+      width: 22%;
     }
 
     /* Лягушка */
     .p6 {
-      left: 70.5%;
-      bottom: 39%;
-      width: 19%;
+      left: 69.5%;
+      bottom: 38.1%;
+      width: 21%;
     }
 
     /* Шахматы */
     .p7 {
-      left: 8%;
-      bottom: 20.8%;
-      width: 18%;
+      left: 7%;
+      bottom: 19.8%;
+      width: 20%;
     }
 
     /* Шарик */
     .p8 {
-      left: 35%;
-      bottom: 19.6%;
-      width: 18%;
+      left: 34%;
+      bottom: 18.8%;
+      width: 20%;
     }
 
     /* Шайба и клюшка */
     .p9 {
-      left: 66%;
-      bottom: 21.2%;
-      width: 16%;
+      left: 64%;
+      bottom: 20.2%;
+      width: 18%;
     }
 
-    /* =========================
-       ПРАВАЯ ЗОНА
-    ========================= */
+    /* ПРАВАЯ ЗОНА */
 
     .right-zone {
       position: absolute;
@@ -220,10 +225,13 @@
       justify-content: space-between;
     }
 
+    /* СПИСОК ПОКУПОК */
+
     .shopping-list {
       width: 100%;
 
       background: rgba(255,255,255,.93);
+
       border-radius: 22px;
 
       box-shadow: 0 6px 18px rgba(0,0,0,.12);
@@ -273,9 +281,7 @@
       font-size: 30px;
     }
 
-    /* =========================
-       ПОКУПАТЕЛЬ
-    ========================= */
+    /* ПОКУПАТЕЛЬ */
 
     .buyer-zone {
       position: relative;
@@ -326,9 +332,7 @@
       }
     }
 
-    /* =========================
-       КНОПКИ
-    ========================= */
+    /* КНОПКИ */
 
     .controls {
       position: absolute;
@@ -369,9 +373,7 @@
       color: #5b4027;
     }
 
-    /* =========================
-       СООБЩЕНИЕ
-    ========================= */
+    /* СООБЩЕНИЕ */
 
     .message {
       position: absolute;
@@ -436,10 +438,11 @@
       Готово!
     </div>
 
+    <!-- ШКАФЫ -->
+
     <div class="shelves">
 
       <!-- ПЕРВЫЙ ШКАФ -->
-
       <div class="shelf-wrap">
 
         <img
@@ -467,27 +470,21 @@
       </div>
 
       <!-- ВТОРОЙ ШКАФ -->
-
       <div class="shelf-wrap">
-
         <img
           src="assets/shelves/shelf-01.png"
           class="shelf"
           alt=""
         >
-
       </div>
 
       <!-- ТРЕТИЙ ШКАФ -->
-
       <div class="shelf-wrap">
-
         <img
           src="assets/shelves/shelf-01.png"
           class="shelf"
           alt=""
         >
-
       </div>
 
     </div>
@@ -497,27 +494,17 @@
     <div class="right-zone">
 
       <div class="shopping-list">
-
-        <h3>
-          Список покупок
-        </h3>
-
-        <div
-          id="listItems"
-          class="list-items">
-        </div>
-
+        <h3>Список покупок</h3>
+        <div id="listItems" class="list-items"></div>
       </div>
 
       <div class="buyer-zone">
-
         <img
           id="buyerImage"
           class="buyer-img"
           src="assets/buyers/buyer-cart-01.png"
           alt="Покупатель с тележкой"
         >
-
       </div>
 
     </div>
@@ -593,12 +580,15 @@
       document.getElementById("message");
 
     function renderList() {
+
       const buyer = BUYERS[currentBuyer];
 
       listItems.innerHTML = "";
 
       buyer.list.forEach(item => {
-        const row = document.createElement("div");
+
+        const row =
+          document.createElement("div");
 
         row.className = "list-row";
 
@@ -616,18 +606,22 @@
     }
 
     function renderBuyer() {
+
       const buyer = BUYERS[currentBuyer];
 
       buyerImage.src = buyer.image;
 
       buyerImage.classList.remove("enter");
+
       void buyerImage.offsetWidth;
+
       buyerImage.classList.add("enter");
 
       renderList();
     }
 
     function nextBuyer() {
+
       buyerImage.classList.add("exit");
 
       setTimeout(() => {
@@ -648,6 +642,7 @@
     }
 
     function showMessage(text) {
+
       message.textContent = text;
 
       message.classList.add("show");
