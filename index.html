@@ -34,8 +34,6 @@
       background-repeat: no-repeat;
     }
 
-    /* НАЗВАНИЕ */
-
     .game-title {
       position: absolute;
       top: 2%;
@@ -53,8 +51,6 @@
 
       box-shadow: 0 5px 14px rgba(0,0,0,.12);
     }
-
-    /* ШКАФЫ */
 
     .shelves {
       position: absolute;
@@ -93,8 +89,6 @@
       z-index: 1;
     }
 
-    /* ТОВАРЫ */
-
     .products-layer {
       position: absolute;
       inset: 0;
@@ -122,23 +116,70 @@
       transform: scale(.97);
     }
 
-    /* ---------- ПРЕДМЕТЫ НА 1 ШКАФУ ---------- */
-    /* верхняя полка — опустили ниже */
-    .p1 { left: 3.5%;  bottom: 63.8%; width: 17%; }  /* мишка */
-    .p2 { left: 35%;   bottom: 64.0%; width: 15%; }  /* погремушка */
-    .p3 { left: 72.5%; bottom: 63.4%; width: 18%; }  /* шут */
+    /* ПРЕДМЕТЫ НА 1 ШКАФУ */
 
-    /* средняя полка — опустили ниже */
-    .p4 { left: 4%;    bottom: 40.8%; width: 17%; }  /* машинка */
-    .p5 { left: 36%;   bottom: 40.6%; width: 18%; }  /* пушка */
-    .p6 { left: 73%;   bottom: 40.3%; width: 17%; }  /* лягушка */
+    .p1 {
+      left: 8%;
+      bottom: 62.6%;
+      width: 19%;
+    }
 
-    /* нижняя полка — оставили как есть */
-    .p7 { left: 3%;    bottom: 20.8%; width: 16%; }  /* шахматы */
-    .p8 { left: 34%;   bottom: 20.5%; width: 16%; }  /* шарик */
-    .p9 { left: 74%;   bottom: 21.2%; width: 14%; }  /* шайба и клюшка */
+    .p2 {
+      left: 39%;
+      bottom: 63.2%;
+      width: 18%;
+      transform: rotate(90deg);
+    }
 
-    /* ПРАВАЯ ЗОНА */
+    .p2:hover {
+      transform: rotate(90deg) scale(1.08);
+    }
+
+    .p2:active {
+      transform: rotate(90deg) scale(.97);
+    }
+
+    .p3 {
+      left: 73.5%;
+      bottom: 61.8%;
+      width: 20%;
+    }
+
+    .p4 {
+      left: 9%;
+      bottom: 39.8%;
+      width: 19%;
+    }
+
+    .p5 {
+      left: 38.5%;
+      bottom: 39.9%;
+      width: 20%;
+    }
+
+    .p6 {
+      left: 73%;
+      bottom: 39.4%;
+      width: 19%;
+    }
+
+    .p7 {
+      left: 8%;
+      bottom: 19.9%;
+      width: 18%;
+    }
+
+    .p8 {
+      left: 35%;
+      bottom: 19.6%;
+      width: 18%;
+    }
+
+    .p9 {
+      left: 73%;
+      bottom: 20.3%;
+      width: 16%;
+    }
 
     .right-zone {
       position: absolute;
@@ -153,8 +194,6 @@
       flex-direction: column;
       justify-content: space-between;
     }
-
-    /* СПИСОК ПОКУПОК */
 
     .shopping-list {
       width: 100%;
@@ -202,8 +241,6 @@
       font-size: 30px;
     }
 
-    /* ПОКУПАТЕЛЬ */
-
     .buyer-zone {
       position: relative;
       width: 100%;
@@ -246,8 +283,6 @@
       }
     }
 
-    /* КНОПКИ */
-
     .controls {
       position: absolute;
       left: 50%;
@@ -278,8 +313,6 @@
       background: #ffca5b;
       color: #5b4027;
     }
-
-    /* СООБЩЕНИЕ */
 
     .message {
       position: absolute;
@@ -378,7 +411,6 @@
 
     </div>
 
-    <!-- ПРАВАЯ ЗОНА -->
     <div class="right-zone">
 
       <div class="shopping-list">
@@ -396,7 +428,6 @@
       </div>
     </div>
 
-    <!-- КНОПКИ -->
     <div class="controls">
       <button id="checkBtn" class="btn btn-check">
         Проверить
@@ -458,6 +489,7 @@
       buyer.list.forEach(item => {
         const row = document.createElement("div");
         row.className = "list-row";
+
         row.innerHTML = `
           <div class="list-left">
             <span class="list-icon">${item.icon}</span>
@@ -465,6 +497,7 @@
           </div>
           <span>× ${item.need}</span>
         `;
+
         listItems.appendChild(row);
       });
     }
@@ -485,6 +518,7 @@
 
       setTimeout(() => {
         currentBuyer++;
+
         if (currentBuyer >= BUYERS.length) {
           currentBuyer = 0;
         }
@@ -510,11 +544,15 @@
       });
     });
 
-    document.getElementById("nextBtn").addEventListener("click", nextBuyer);
+    document
+      .getElementById("nextBtn")
+      .addEventListener("click", nextBuyer);
 
-    document.getElementById("checkBtn").addEventListener("click", () => {
-      showMessage("Следующим шагом подключим список покупок и полёт товара в тележку.");
-    });
+    document
+      .getElementById("checkBtn")
+      .addEventListener("click", () => {
+        showMessage("Следующим шагом подключим полёт товара в тележку.");
+      });
 
     renderBuyer();
   </script>
