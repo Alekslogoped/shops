@@ -6,6 +6,7 @@
   <title>Магазин</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -35,6 +36,11 @@
       background-repeat: no-repeat;
     }
 
+
+    /* ==================================================
+       НАЗВАНИЕ
+    ================================================== */
+
     .game-title {
       position: absolute;
       top: 2%;
@@ -53,9 +59,287 @@
       box-shadow: 0 5px 14px rgba(0,0,0,.12);
     }
 
-    /* =========================
+
+    /* ==================================================
+       СТАРТОВАЯ ПЛАШКА С ПРАВИЛАМИ
+    ================================================== */
+
+    .rules-overlay {
+      position: absolute;
+      inset: 0;
+
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(70, 48, 28, .38);
+
+      backdrop-filter: blur(4px);
+
+      opacity: 1;
+
+      transition:
+        opacity .4s ease;
+    }
+
+    .rules-overlay.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .rules-card {
+      position: relative;
+
+      width: min(700px, 88vw);
+      max-height: 88vh;
+
+      overflow-y: auto;
+
+      padding:
+        26px 34px 28px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #fffdf7 0%,
+          #fff6df 100%
+        );
+
+      border:
+        4px solid #e5a848;
+
+      border-radius:
+        30px;
+
+      box-shadow:
+        0 18px 50px
+        rgba(70, 40, 15, .28);
+
+      text-align: center;
+    }
+
+    .rules-card::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 9px;
+
+      border:
+        2px dashed
+        rgba(201, 135, 47, .38);
+
+      border-radius:
+        22px;
+
+      pointer-events: none;
+    }
+
+    .rules-title {
+      position: relative;
+
+      margin:
+        0 0 15px;
+
+      font-size:
+        clamp(28px, 3vw, 42px);
+
+      color:
+        #8b4c23;
+
+      font-weight: 900;
+    }
+
+    .rules-subtitle {
+      position: relative;
+
+      margin:
+        0 auto 18px;
+
+      font-size:
+        clamp(19px, 2vw, 27px);
+
+      color:
+        #d67827;
+
+      font-weight: 900;
+    }
+
+    .rules-text {
+      position: relative;
+
+      margin:
+        0 auto;
+
+      max-width:
+        600px;
+
+      text-align: left;
+
+      color:
+        #65432d;
+
+      font-size:
+        clamp(16px, 1.55vw, 22px);
+
+      line-height:
+        1.45;
+
+      font-weight:
+        700;
+    }
+
+    .rule-line {
+      display: flex;
+      align-items: flex-start;
+
+      gap: 12px;
+
+      margin:
+        11px 0;
+    }
+
+    .rule-icon {
+      flex:
+        0 0 36px;
+
+      width:
+        36px;
+
+      font-size:
+        27px;
+
+      text-align:
+        center;
+    }
+
+    .speech-task {
+      position: relative;
+
+      margin:
+        18px auto;
+
+      padding:
+        14px 18px;
+
+      max-width:
+        590px;
+
+      border-radius:
+        18px;
+
+      background:
+        #fff0c7;
+
+      border:
+        2px solid
+        #efc068;
+
+      color:
+        #75461e;
+
+      font-size:
+        clamp(17px, 1.7vw, 23px);
+
+      font-weight:
+        900;
+
+      line-height:
+        1.35;
+    }
+
+    .examples {
+      position: relative;
+
+      margin:
+        14px auto 19px;
+
+      padding:
+        13px 18px;
+
+      max-width:
+        570px;
+
+      border-radius:
+        18px;
+
+      background:
+        #ffffff;
+
+      box-shadow:
+        0 4px 12px
+        rgba(0,0,0,.08);
+
+      color:
+        #69472f;
+
+      font-size:
+        clamp(15px, 1.45vw, 20px);
+
+      line-height:
+        1.55;
+
+      font-weight:
+        800;
+    }
+
+    .start-btn {
+      position: relative;
+
+      border:
+        none;
+
+      padding:
+        15px 42px;
+
+      border-radius:
+        18px;
+
+      background:
+        #67bd68;
+
+      color:
+        white;
+
+      font-size:
+        clamp(20px, 2vw, 28px);
+
+      font-weight:
+        900;
+
+      cursor:
+        pointer;
+
+      box-shadow:
+        0 6px 0 #46964b,
+        0 9px 18px
+        rgba(0,0,0,.14);
+
+      transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+    }
+
+    .start-btn:hover {
+      transform:
+        translateY(-2px);
+    }
+
+    .start-btn:active {
+      transform:
+        translateY(3px);
+
+      box-shadow:
+        0 3px 0 #46964b;
+    }
+
+
+    /* ==================================================
        ШКАФЫ
-    ========================= */
+    ================================================== */
 
     .shelves {
       position: absolute;
@@ -130,111 +414,280 @@
     }
 
     .product.correct-pulse {
-      animation: correctPulse .35s ease;
+      animation:
+        correctPulse .35s ease;
     }
 
     .product.wrong-shake {
-      animation: wrongShake .4s ease;
+      animation:
+        wrongShake .4s ease;
     }
 
     @keyframes correctPulse {
-      0%   { filter: brightness(1); }
-      50%  { filter: brightness(1.4); }
-      100% { filter: brightness(1); }
+
+      0% {
+        filter:
+          brightness(1);
+      }
+
+      50% {
+        filter:
+          brightness(1.4);
+      }
+
+      100% {
+        filter:
+          brightness(1);
+      }
+
     }
 
     @keyframes wrongShake {
-      0%   { margin-left: 0; }
-      20%  { margin-left: -8px; }
-      40%  { margin-left: 8px; }
-      60%  { margin-left: -6px; }
-      80%  { margin-left: 6px; }
-      100% { margin-left: 0; }
+
+      0% {
+        margin-left: 0;
+      }
+
+      20% {
+        margin-left: -8px;
+      }
+
+      40% {
+        margin-left: 8px;
+      }
+
+      60% {
+        margin-left: -6px;
+      }
+
+      80% {
+        margin-left: 6px;
+      }
+
+      100% {
+        margin-left: 0;
+      }
+
     }
 
-    /* =========================
+
+    /* ==================================================
        ПЕРВЫЙ ШКАФ
-    ========================= */
+    ================================================== */
 
-    .p1 { left: 6.5%; bottom: 55.5%; width: 27%; }
-    .p2 { left: 38%; bottom: 55.5%; width: 24%; }
-    .p3 { left: 67%; bottom: 54.8%; width: 28%; }
+    .p1 {
+      left: 6.5%;
+      bottom: 55.5%;
+      width: 27%;
+    }
 
-    .p4 { left: 6%; bottom: 36.5%; width: 27%; }
-    .p5 { left: 35%; bottom: 37%; width: 28%; }
-    .p6 { left: 67%; bottom: 36.2%; width: 27%; }
+    .p2 {
+      left: 38%;
+      bottom: 55.5%;
+      width: 24%;
+    }
 
-    .p7 { left: 5%; bottom: 20.5%; width: 26%; }
-    .p8 { left: 34%; bottom: 18.5%; width: 28%; }
-    .p9 { left: 64%; bottom: 20%; width: 25%; }
+    .p3 {
+      left: 67%;
+      bottom: 54.8%;
+      width: 28%;
+    }
 
-    /* =========================
+    .p4 {
+      left: 6%;
+      bottom: 36.5%;
+      width: 27%;
+    }
+
+    .p5 {
+      left: 35%;
+      bottom: 37%;
+      width: 28%;
+    }
+
+    .p6 {
+      left: 67%;
+      bottom: 36.2%;
+      width: 27%;
+    }
+
+    .p7 {
+      left: 5%;
+      bottom: 20.5%;
+      width: 26%;
+    }
+
+    .p8 {
+      left: 34%;
+      bottom: 18.5%;
+      width: 28%;
+    }
+
+    .p9 {
+      left: 64%;
+      bottom: 20%;
+      width: 25%;
+    }
+
+
+    /* ==================================================
        ВТОРОЙ ШКАФ
-    ========================= */
+    ================================================== */
 
-    .q1 { left: 8%; bottom: 56%; width: 24%; }
-    .q2 { left: 38%; bottom: 57%; width: 25%; }
+    .q1 {
+      left: 8%;
+      bottom: 56%;
+      width: 24%;
+    }
+
+    .q2 {
+      left: 38%;
+      bottom: 57%;
+      width: 25%;
+    }
 
     .q3 {
       left: 68%;
       bottom: 56%;
       width: 25%;
-      transform: rotate(-8deg);
+      transform:
+        rotate(-8deg);
     }
 
     .q3:hover {
-      transform: rotate(-8deg) scale(1.08);
+      transform:
+        rotate(-8deg)
+        scale(1.08);
     }
 
     .q3:active {
-      transform: rotate(-8deg) scale(.97);
+      transform:
+        rotate(-8deg)
+        scale(.97);
     }
 
-    .q4 { left: 8%; bottom: 37%; width: 25%; }
-    .q5 { left: 38%; bottom: 36%; width: 23%; }
-    .q6 { left: 67%; bottom: 37%; width: 26%; }
+    .q4 {
+      left: 8%;
+      bottom: 37%;
+      width: 25%;
+    }
 
-    .q7 { left: 7%; bottom: 19%; width: 25%; }
-    .q8 { left: 37%; bottom: 19%; width: 25%; }
-    .q9 { left: 68%; bottom: 19%; width: 24%; }
+    .q5 {
+      left: 38%;
+      bottom: 36%;
+      width: 23%;
+    }
 
-    /* =========================
+    .q6 {
+      left: 67%;
+      bottom: 37%;
+      width: 26%;
+    }
+
+    .q7 {
+      left: 7%;
+      bottom: 19%;
+      width: 25%;
+    }
+
+    .q8 {
+      left: 37%;
+      bottom: 19%;
+      width: 25%;
+    }
+
+    .q9 {
+      left: 68%;
+      bottom: 19%;
+      width: 24%;
+    }
+
+
+    /* ==================================================
        ТРЕТИЙ ШКАФ
-    ========================= */
+    ================================================== */
 
-    .r1 { left: 7%; bottom: 54.5%; width: 25%; }
-    .r2 { left: 37%; bottom: 54%; width: 24%; }
-    .r3 { left: 68%; bottom: 55%; width: 24%; }
+    .r1 {
+      left: 7%;
+      bottom: 54.5%;
+      width: 25%;
+    }
 
-    .r4 { left: 8%; bottom: 36.5%; width: 24%; }
-    .r5 { left: 37%; bottom: 36%; width: 25%; }
-    .r6 { left: 68%; bottom: 35.5%; width: 25%; }
+    .r2 {
+      left: 37%;
+      bottom: 54%;
+      width: 24%;
+    }
 
-    .r7 { left: 7%; bottom: 19%; width: 25%; }
-    .r8 { left: 37%; bottom: 18.5%; width: 24%; }
-    .r9 { left: 68%; bottom: 19%; width: 24%; }
+    .r3 {
+      left: 68%;
+      bottom: 55%;
+      width: 24%;
+    }
 
-    /* =========================
+    .r4 {
+      left: 8%;
+      bottom: 36.5%;
+      width: 24%;
+    }
+
+    .r5 {
+      left: 37%;
+      bottom: 36%;
+      width: 25%;
+    }
+
+    .r6 {
+      left: 68%;
+      bottom: 35.5%;
+      width: 25%;
+    }
+
+    .r7 {
+      left: 7%;
+      bottom: 19%;
+      width: 25%;
+    }
+
+    .r8 {
+      left: 37%;
+      bottom: 18.5%;
+      width: 24%;
+    }
+
+    .r9 {
+      left: 68%;
+      bottom: 19%;
+      width: 24%;
+    }
+
+
+    /* ==================================================
        СПИСОК ПОКУПОК
-       ПРАВЕЕ И МЕНЬШЕ
-    ========================= */
+    ================================================== */
 
     .shopping-list {
       position: absolute;
 
       top: 0.8%;
       right: 1.2%;
-      left: auto;
 
       width: 34%;
-      aspect-ratio: 1600 / 900;
+
+      aspect-ratio:
+        1600 / 900;
 
       background-image:
         url("assets/ui/shopping-list-horizontal.png");
 
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
+      background-size:
+        contain;
+
+      background-position:
+        center;
+
+      background-repeat:
+        no-repeat;
 
       z-index: 14;
     }
@@ -285,12 +738,17 @@
     .qty-item {
       position: relative;
 
-      flex: 0 1 30%;
+      flex:
+        0 1 30%;
 
-      max-width: 48px;
-      max-height: 48px;
+      max-width:
+        48px;
 
-      aspect-ratio: 1 / 1;
+      max-height:
+        48px;
+
+      aspect-ratio:
+        1 / 1;
 
       display: flex;
       align-items: center;
@@ -298,7 +756,8 @@
 
       opacity: .30;
 
-      border-radius: 50%;
+      border-radius:
+        50%;
 
       transition:
         opacity .25s ease,
@@ -311,10 +770,14 @@
       width: 96%;
       height: 96%;
 
-      object-fit: contain;
+      object-fit:
+        contain;
 
-      user-select: none;
-      pointer-events: none;
+      user-select:
+        none;
+
+      pointer-events:
+        none;
     }
 
     .qty-item.done {
@@ -348,11 +811,17 @@
       align-items: center;
       justify-content: center;
 
-      background: #61b965;
-      color: white;
+      background:
+        #61b965;
 
-      font-size: 11px;
-      font-weight: 900;
+      color:
+        white;
+
+      font-size:
+        11px;
+
+      font-weight:
+        900;
     }
 
     .list-row.one .qty-item {
@@ -373,9 +842,10 @@
       flex-basis: 27%;
     }
 
-    /* =========================
+
+    /* ==================================================
        ПОКУПАТЕЛЬ
-    ========================= */
+    ================================================== */
 
     .buyer-zone {
       position: absolute;
@@ -423,22 +893,29 @@
     }
 
     @keyframes buyerEnter {
+
       from {
         transform:
           translateX(130%);
-        opacity: 0;
+
+        opacity:
+          0;
       }
 
       to {
         transform:
           translateX(0);
-        opacity: 1;
+
+        opacity:
+          1;
       }
+
     }
 
-    /* =========================
+
+    /* ==================================================
        КНОПКИ
-    ========================= */
+    ================================================== */
 
     .controls {
       position: absolute;
@@ -461,30 +938,43 @@
       padding:
         14px 22px;
 
-      border-radius: 16px;
+      border-radius:
+        16px;
 
-      font-size: 18px;
-      font-weight: 800;
+      font-size:
+        18px;
 
-      cursor: pointer;
+      font-weight:
+        800;
+
+      cursor:
+        pointer;
 
       box-shadow:
-        0 5px 12px rgba(0,0,0,.14);
+        0 5px 12px
+        rgba(0,0,0,.14);
     }
 
     .btn-check {
-      background: #66bb6a;
-      color: white;
+      background:
+        #66bb6a;
+
+      color:
+        white;
     }
 
     .btn-next {
-      background: #ffca5b;
-      color: #5b4027;
+      background:
+        #ffca5b;
+
+      color:
+        #5b4027;
     }
 
-    /* =========================
+
+    /* ==================================================
        СООБЩЕНИЯ
-    ========================= */
+    ================================================== */
 
     .message {
       position: absolute;
@@ -500,23 +990,30 @@
       background:
         rgba(255,255,255,.97);
 
-      border-radius: 16px;
+      border-radius:
+        16px;
 
       padding:
         11px 20px;
 
-      font-size: 18px;
-      font-weight: 800;
+      font-size:
+        18px;
+
+      font-weight:
+        800;
 
       color:
         #7b4b2c;
 
       box-shadow:
-        0 5px 15px rgba(0,0,0,.15);
+        0 5px 15px
+        rgba(0,0,0,.15);
 
-      opacity: 0;
+      opacity:
+        0;
 
-      pointer-events: none;
+      pointer-events:
+        none;
 
       transition:
         opacity .25s;
@@ -542,9 +1039,10 @@
         #b24d3e;
     }
 
-    /* =========================
+
+    /* ==================================================
        ОПЛАТА
-    ========================= */
+    ================================================== */
 
     .payment-overlay {
       position: absolute;
@@ -560,7 +1058,8 @@
       background:
         rgba(255, 248, 236, .72);
 
-      backdrop-filter: blur(4px);
+      backdrop-filter:
+        blur(4px);
     }
 
     .payment-overlay.show {
@@ -570,16 +1069,21 @@
     .payment-panel {
       position: relative;
 
-      width: min(720px, 72vw);
-      height: min(500px, 68vh);
+      width:
+        min(720px, 72vw);
+
+      height:
+        min(500px, 68vh);
 
       background:
         rgba(255,255,255,.96);
 
-      border-radius: 32px;
+      border-radius:
+        32px;
 
       box-shadow:
-        0 14px 45px rgba(71, 44, 24, .22);
+        0 14px 45px
+        rgba(71, 44, 24, .22);
 
       border:
         4px solid #f0dcc1;
@@ -603,9 +1107,11 @@
       font-size:
         clamp(24px, 2.4vw, 38px);
 
-      font-weight: 900;
+      font-weight:
+        900;
 
-      color: #70472a;
+      color:
+        #70472a;
     }
 
     .terminal-wrap {
@@ -623,9 +1129,11 @@
       width: 100%;
       height: 100%;
 
-      object-fit: contain;
+      object-fit:
+        contain;
 
-      pointer-events: none;
+      pointer-events:
+        none;
 
       transition:
         filter .25s ease,
@@ -634,20 +1142,30 @@
 
     .terminal-wrap.ready {
       animation:
-        terminalPulse 1.2s ease-in-out infinite;
+        terminalPulse
+        1.2s
+        ease-in-out
+        infinite;
     }
 
     @keyframes terminalPulse {
-      0%,100% {
-        transform: scale(1);
+
+      0%,
+      100% {
+        transform:
+          scale(1);
       }
 
       50% {
-        transform: scale(1.04);
+        transform:
+          scale(1.04);
       }
+
     }
 
-    .terminal-wrap.paid .terminal-img {
+    .terminal-wrap.paid
+    .terminal-img {
+
       filter:
         drop-shadow(
           0 0 18px
@@ -673,18 +1191,26 @@
       width: 92%;
       height: 92%;
 
-      object-fit: contain;
+      object-fit:
+        contain;
 
-      cursor: grab;
+      cursor:
+        grab;
 
-      user-select: none;
-      -webkit-user-drag: none;
+      user-select:
+        none;
 
-      touch-action: none;
+      -webkit-user-drag:
+        none;
 
-      position: relative;
+      touch-action:
+        none;
 
-      z-index: 2;
+      position:
+        relative;
+
+      z-index:
+        2;
 
       transition:
         transform .2s ease,
@@ -692,15 +1218,19 @@
     }
 
     .card-img:active {
-      cursor: grabbing;
+      cursor:
+        grabbing;
     }
 
     .card-img.dragging {
-      position: fixed;
+      position:
+        fixed;
 
-      z-index: 500;
+      z-index:
+        500;
 
-      pointer-events: none;
+      pointer-events:
+        none;
 
       transform:
         scale(1.05);
@@ -723,14 +1253,17 @@
 
       width: 100%;
 
-      text-align: center;
+      text-align:
+        center;
 
       font-size:
         clamp(17px, 1.6vw, 25px);
 
-      font-weight: 800;
+      font-weight:
+        800;
 
-      color: #8b6749;
+      color:
+        #8b6749;
     }
 
     .paid-badge {
@@ -746,23 +1279,30 @@
       width: 120px;
       height: 120px;
 
-      border-radius: 50%;
+      border-radius:
+        50%;
 
       background:
         #65c86a;
 
-      color: white;
+      color:
+        white;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      font-size: 72px;
-      font-weight: 900;
+      font-size:
+        72px;
 
-      opacity: 0;
+      font-weight:
+        900;
 
-      z-index: 600;
+      opacity:
+        0;
+
+      z-index:
+        600;
 
       transition:
         opacity .3s ease,
@@ -783,209 +1323,279 @@
 
 <body>
 
-  <div class="game">
+<div class="game">
 
 
-    <div class="game-title">
-      Магазин
-    </div>
+  <!-- ==================================================
+       СТАРТОВЫЕ ПРАВИЛА
+  ================================================== -->
+
+  <div
+    id="rulesOverlay"
+    class="rules-overlay"
+  >
+
+    <div class="rules-card">
+
+      <h1 class="rules-title">
+        🛒 Правила игры
+      </h1>
 
 
-    <div
-      class="message"
-      id="message"
-    >
-      Готово!
-    </div>
+      <div class="rules-subtitle">
+        Помоги покупателям собрать покупки!
+      </div>
 
 
-    <!-- ШКАФЫ -->
-
-    <div class="shelves">
+      <div class="rules-text">
 
 
-      <div class="shelf-wrap">
+        <div class="rule-line">
 
-        <img
-          src="assets/shelves/shelf-01.png"
-          class="shelf"
-          alt=""
-        >
+          <div class="rule-icon">
+            📋
+          </div>
 
-        <div class="products-layer">
+          <div>
+            Посмотри на
+            <b>список покупок</b>
+            и найди нужные товары
+            на полках.
+          </div>
 
-          <img src="assets/products/pik-01.png" class="product p1" data-id="pik-01" alt="">
-          <img src="assets/products/pik-02.png" class="product p2" data-id="pik-02" alt="">
-          <img src="assets/products/pik-03.png" class="product p3" data-id="pik-03" alt="">
+        </div>
 
-          <img src="assets/products/pik-04.png" class="product p4" data-id="pik-04" alt="">
-          <img src="assets/products/pik-05.png" class="product p5" data-id="pik-05" alt="">
-          <img src="assets/products/pik-06.png" class="product p6" data-id="pik-06" alt="">
 
-          <img src="assets/products/pik-07.png" class="product p7" data-id="pik-07" alt="">
-          <img src="assets/products/pik-08.png" class="product p8" data-id="pik-08" alt="">
-          <img src="assets/products/pik-09.png" class="product p9" data-id="pik-09" alt="">
+        <div class="rule-line">
+
+          <div class="rule-icon">
+            👆
+          </div>
+
+          <div>
+            Нажимай на товар
+            <b>столько раз, сколько
+            показано в списке.</b>
+          </div>
+
+        </div>
+
+
+        <div class="rule-line">
+
+          <div class="rule-icon">
+            🗣️
+          </div>
+
+          <div>
+            Каждый раз
+            <b>чётко называй товар</b>
+            и правильно произноси
+            <b>звук Ш.</b>
+          </div>
+
+        </div>
+
+
+        <div class="rule-line">
+
+          <div class="rule-icon">
+            🔢
+          </div>
+
+          <div>
+            Называй товар
+            <b>вместе с его количеством.</b>
+          </div>
 
         </div>
 
       </div>
 
 
-      <div class="shelf-wrap">
+      <div class="speech-task">
 
-        <img
-          src="assets/shelves/shelf-01.png"
-          class="shelf"
-          alt=""
-        >
+        Говори целую фразу:
+        <br>
+        <b>одна шапка — две шапки — три шапки</b>
 
-        <div class="products-layer">
+      </div>
 
-          <img src="assets/products/pik-10.png" class="product q1" data-id="pik-10" alt="">
-          <img src="assets/products/pik-11.png" class="product q2" data-id="pik-11" alt="">
-          <img src="assets/products/pik-12.png" class="product q3" data-id="pik-12" alt="">
 
-          <img src="assets/products/pik-13.png" class="product q4" data-id="pik-13" alt="">
-          <img src="assets/products/pik-14.png" class="product q5" data-id="pik-14" alt="">
-          <img src="assets/products/pik-15.png" class="product q6" data-id="pik-15" alt="">
+      <div class="examples">
 
-          <img src="assets/products/pik-16.png" class="product q7" data-id="pik-16" alt="">
-          <img src="assets/products/pik-17.png" class="product q8" data-id="pik-17" alt="">
-          <img src="assets/products/pik-18.png" class="product q9" data-id="pik-18" alt="">
+        Например:
+        <br>
+        одна груша — две груши — три груши
+        <br>
+        одна шоколадка — две шоколадки — три шоколадки
+
+      </div>
+
+
+      <div class="rules-text">
+
+
+        <div class="rule-line">
+
+          <div class="rule-icon">
+            ✅
+          </div>
+
+          <div>
+            Когда всё собрал,
+            нажми
+            <b>«Проверить».</b>
+          </div>
+
+        </div>
+
+
+        <div class="rule-line">
+
+          <div class="rule-icon">
+            💳
+          </div>
+
+          <div>
+            Если всё правильно —
+            <b>перетащи карту
+            к терминалу</b>
+            и оплати покупки.
+          </div>
+
+        </div>
+
+
+        <div class="rule-line">
+
+          <div class="rule-icon">
+            🛒
+          </div>
+
+          <div>
+            После оплаты придёт
+            <b>следующий покупатель.</b>
+          </div>
 
         </div>
 
       </div>
 
 
-      <div class="shelf-wrap">
-
-        <img
-          src="assets/shelves/shelf-01.png"
-          class="shelf"
-          alt=""
-        >
-
-        <div class="products-layer">
-
-          <img src="assets/products/pik-19.png" class="product r1" data-id="pik-19" alt="">
-          <img src="assets/products/pik-20.png" class="product r2" data-id="pik-20" alt="">
-          <img src="assets/products/pik-21.png" class="product r3" data-id="pik-21" alt="">
-
-          <img src="assets/products/pik-22.png" class="product r4" data-id="pik-22" alt="">
-          <img src="assets/products/pik-23.png" class="product r5" data-id="pik-23" alt="">
-          <img src="assets/products/pik-24.png" class="product r6" data-id="pik-24" alt="">
-
-          <img src="assets/products/pik-25.png" class="product r7" data-id="pik-25" alt="">
-          <img src="assets/products/pik-26.png" class="product r8" data-id="pik-26" alt="">
-          <img src="assets/products/pik-27.png" class="product r9" data-id="pik-27" alt="">
-
-        </div>
-
-      </div>
+      <button
+        id="startBtn"
+        class="start-btn"
+      >
+        НАЧАТЬ
+      </button>
 
     </div>
 
-
-    <!-- СПИСОК -->
-
-    <div class="shopping-list">
-
-      <div
-        id="listItems"
-        class="list-items"
-      ></div>
-
-    </div>
+  </div>
 
 
-    <!-- ПОКУПАТЕЛЬ -->
+  <div class="game-title">
+    Магазин
+  </div>
 
-    <div class="buyer-zone">
+
+  <div
+    class="message"
+    id="message"
+  >
+    Готово!
+  </div>
+
+
+  <!-- ==================================================
+       ШКАФЫ
+  ================================================== -->
+
+  <div class="shelves">
+
+
+    <!-- ПЕРВЫЙ -->
+
+    <div class="shelf-wrap">
 
       <img
-        id="buyerImage"
-        class="buyer-img"
-        src="assets/buyers/buyer-cart-01.png"
+        src="assets/shelves/shelf-01.png"
+        class="shelf"
         alt=""
       >
 
-    </div>
+      <div class="products-layer">
 
+        <img src="assets/products/pik-01.png" class="product p1" data-id="pik-01" alt="">
+        <img src="assets/products/pik-02.png" class="product p2" data-id="pik-02" alt="">
+        <img src="assets/products/pik-03.png" class="product p3" data-id="pik-03" alt="">
 
-    <!-- КНОПКИ -->
+        <img src="assets/products/pik-04.png" class="product p4" data-id="pik-04" alt="">
+        <img src="assets/products/pik-05.png" class="product p5" data-id="pik-05" alt="">
+        <img src="assets/products/pik-06.png" class="product p6" data-id="pik-06" alt="">
 
-    <div class="controls">
+        <img src="assets/products/pik-07.png" class="product p7" data-id="pik-07" alt="">
+        <img src="assets/products/pik-08.png" class="product p8" data-id="pik-08" alt="">
+        <img src="assets/products/pik-09.png" class="product p9" data-id="pik-09" alt="">
 
-      <button
-        id="checkBtn"
-        class="btn btn-check"
-      >
-        Проверить
-      </button>
-
-
-      <button
-        id="nextBtn"
-        class="btn btn-next"
-      >
-        Следующий покупатель
-      </button>
+      </div>
 
     </div>
 
 
-    <!-- ОПЛАТА -->
+    <!-- ВТОРОЙ -->
 
-    <div
-      id="paymentOverlay"
-      class="payment-overlay"
-    >
+    <div class="shelf-wrap">
 
-      <div class="payment-panel">
+      <img
+        src="assets/shelves/shelf-01.png"
+        class="shelf"
+        alt=""
+      >
 
-        <div class="payment-title">
-          Оплата
-        </div>
+      <div class="products-layer">
 
+        <img src="assets/products/pik-10.png" class="product q1" data-id="pik-10" alt="">
+        <img src="assets/products/pik-11.png" class="product q2" data-id="pik-11" alt="">
+        <img src="assets/products/pik-12.png" class="product q3" data-id="pik-12" alt="">
 
-        <div
-          id="terminalWrap"
-          class="terminal-wrap ready"
-        >
+        <img src="assets/products/pik-13.png" class="product q4" data-id="pik-13" alt="">
+        <img src="assets/products/pik-14.png" class="product q5" data-id="pik-14" alt="">
+        <img src="assets/products/pik-15.png" class="product q6" data-id="pik-15" alt="">
 
-          <img
-            src="assets/ui/terminal.png"
-            class="terminal-img"
-            alt=""
-          >
+        <img src="assets/products/pik-16.png" class="product q7" data-id="pik-16" alt="">
+        <img src="assets/products/pik-17.png" class="product q8" data-id="pik-17" alt="">
+        <img src="assets/products/pik-18.png" class="product q9" data-id="pik-18" alt="">
 
-        </div>
+      </div>
 
-
-        <div class="card-zone">
-
-          <img
-            id="paymentCard"
-            src="assets/ui/card.png"
-            class="card-img"
-            alt=""
-          >
-
-        </div>
+    </div>
 
 
-        <div class="tap-hint">
-          Приложи карту к терминалу
-        </div>
+    <!-- ТРЕТИЙ -->
 
+    <div class="shelf-wrap">
 
-        <div
-          id="paidBadge"
-          class="paid-badge"
-        >
-          ✓
-        </div>
+      <img
+        src="assets/shelves/shelf-01.png"
+        class="shelf"
+        alt=""
+      >
+
+      <div class="products-layer">
+
+        <img src="assets/products/pik-19.png" class="product r1" data-id="pik-19" alt="">
+        <img src="assets/products/pik-20.png" class="product r2" data-id="pik-20" alt="">
+        <img src="assets/products/pik-21.png" class="product r3" data-id="pik-21" alt="">
+
+        <img src="assets/products/pik-22.png" class="product r4" data-id="pik-22" alt="">
+        <img src="assets/products/pik-23.png" class="product r5" data-id="pik-23" alt="">
+        <img src="assets/products/pik-24.png" class="product r6" data-id="pik-24" alt="">
+
+        <img src="assets/products/pik-25.png" class="product r7" data-id="pik-25" alt="">
+        <img src="assets/products/pik-26.png" class="product r8" data-id="pik-26" alt="">
+        <img src="assets/products/pik-27.png" class="product r9" data-id="pik-27" alt="">
 
       </div>
 
@@ -994,637 +1604,1100 @@
   </div>
 
 
-  <script>
+  <!-- ==================================================
+       СПИСОК ПОКУПОК
+  ================================================== -->
 
-    const BUYERS = [
+  <div class="shopping-list">
 
-      {
-        image: "assets/buyers/buyer-cart-01.png",
+    <div
+      id="listItems"
+      class="list-items"
+    ></div>
 
-        list: [
-          { id: "pik-01", need: 1 },
-          { id: "pik-11", need: 3 },
-          { id: "pik-22", need: 1 },
-          { id: "pik-18", need: 2 },
-          { id: "pik-27", need: 1 },
-          { id: "pik-10", need: 3 }
-        ]
-      },
+  </div>
 
 
-      {
-        image: "assets/buyers/buyer-cart-02.png",
+  <!-- ==================================================
+       ПОКУПАТЕЛЬ
+  ================================================== -->
 
-        list: [
-          { id: "pik-04", need: 1 },
-          { id: "pik-13", need: 2 },
-          { id: "pik-24", need: 1 },
-          { id: "pik-17", need: 1 },
-          { id: "pik-25", need: 2 },
-          { id: "pik-02", need: 1 }
-        ]
-      },
+  <div class="buyer-zone">
 
+    <img
+      id="buyerImage"
+      class="buyer-img"
+      src="assets/buyers/buyer-cart-01.png"
+      alt=""
+    >
 
-      {
-        image: "assets/buyers/buyer-cart-03.png",
-
-        list: [
-          { id: "pik-05", need: 1 },
-          { id: "pik-08", need: 2 },
-          { id: "pik-12", need: 2 },
-          { id: "pik-16", need: 1 },
-          { id: "pik-19", need: 1 },
-          { id: "pik-26", need: 2 }
-        ]
-      },
+  </div>
 
 
-      {
-        image: "assets/buyers/buyer-cart-04.png",
+  <!-- ==================================================
+       КНОПКИ
+  ================================================== -->
 
-        list: [
-          { id: "pik-03", need: 1 },
-          { id: "pik-06", need: 2 },
-          { id: "pik-07", need: 1 },
-          { id: "pik-14", need: 2 },
-          { id: "pik-15", need: 1 },
-          { id: "pik-23", need: 2 }
-        ]
-      }
+  <div class="controls">
 
-    ];
+    <button
+      id="checkBtn"
+      class="btn btn-check"
+    >
+      Проверить
+    </button>
 
 
-    let currentBuyer = 0;
-    let collected = {};
+    <button
+      id="nextBtn"
+      class="btn btn-next"
+    >
+      Следующий покупатель
+    </button>
 
-    let paymentComplete = false;
-    let draggingCard = false;
-
-    let dragOffsetX = 0;
-    let dragOffsetY = 0;
-
-
-    const buyerImage =
-      document.getElementById("buyerImage");
-
-    const listItems =
-      document.getElementById("listItems");
-
-    const message =
-      document.getElementById("message");
-
-    const paymentOverlay =
-      document.getElementById("paymentOverlay");
-
-    const paymentCard =
-      document.getElementById("paymentCard");
-
-    const terminalWrap =
-      document.getElementById("terminalWrap");
-
-    const paidBadge =
-      document.getElementById("paidBadge");
+  </div>
 
 
-    function resetCollected() {
+  <!-- ==================================================
+       ОПЛАТА
+  ================================================== -->
 
-      collected = {};
+  <div
+    id="paymentOverlay"
+    class="payment-overlay"
+  >
 
-      BUYERS[currentBuyer].list.forEach(
-        item => {
+    <div class="payment-panel">
 
-          collected[item.id] = 0;
 
-        }
+      <div class="payment-title">
+        Оплата
+      </div>
+
+
+      <div
+        id="terminalWrap"
+        class="terminal-wrap ready"
+      >
+
+        <img
+          src="assets/ui/terminal.png"
+          class="terminal-img"
+          alt=""
+        >
+
+      </div>
+
+
+      <div class="card-zone">
+
+        <img
+          id="paymentCard"
+          src="assets/ui/card.png"
+          class="card-img"
+          alt=""
+        >
+
+      </div>
+
+
+      <div class="tap-hint">
+        Приложи карту к терминалу
+      </div>
+
+
+      <div
+        id="paidBadge"
+        class="paid-badge"
+      >
+        ✓
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  /* ==================================================
+     СТАРТОВАЯ ПЛАШКА
+  ================================================== */
+
+  const rulesOverlay =
+    document.getElementById(
+      "rulesOverlay"
+    );
+
+  const startBtn =
+    document.getElementById(
+      "startBtn"
+    );
+
+
+  startBtn.addEventListener(
+    "click",
+    () => {
+
+      rulesOverlay.classList.add(
+        "hide"
       );
-
-    }
-
-
-    function renderList() {
-
-      const buyer =
-        BUYERS[currentBuyer];
-
-      listItems.innerHTML = "";
-
-
-      buyer.list.forEach(
-        item => {
-
-
-          const current =
-            collected[item.id] || 0;
-
-
-          const row =
-            document.createElement("div");
-
-
-          row.className =
-            "list-row";
-
-
-          if (item.need === 1) {
-
-            row.classList.add("one");
-
-          }
-
-          else if (item.need === 2) {
-
-            row.classList.add("two");
-
-          }
-
-          else {
-
-            row.classList.add("three");
-
-          }
-
-
-          let qtyHtml = "";
-
-
-          for (
-            let i = 0;
-            i < item.need;
-            i++
-          ) {
-
-
-            const doneClass =
-              i < current
-                ? "done"
-                : "";
-
-
-            qtyHtml += `
-
-              <div class="qty-item ${doneClass}">
-
-                <img
-                  src="assets/products/${item.id}.png"
-                  alt=""
-                >
-
-              </div>
-
-            `;
-
-          }
-
-
-          row.innerHTML = `
-
-            <div class="qty-track">
-
-              ${qtyHtml}
-
-            </div>
-
-          `;
-
-
-          listItems.appendChild(row);
-
-        }
-      );
-
-    }
-
-
-    function renderBuyer() {
-
-      const buyer =
-        BUYERS[currentBuyer];
-
-
-      buyerImage.src =
-        buyer.image;
-
-
-      buyerImage.classList.remove("enter");
-
-
-      void buyerImage.offsetWidth;
-
-
-      buyerImage.classList.add("enter");
-
-
-      resetCollected();
-
-      renderList();
-
-    }
-
-
-    function showMessage(
-      text,
-      type = ""
-    ) {
-
-      message.textContent =
-        text;
-
-
-      message.classList.remove(
-        "success",
-        "error"
-      );
-
-
-      if (type) {
-
-        message.classList.add(type);
-
-      }
-
-
-      message.classList.add("show");
-
-
-      clearTimeout(
-        showMessage.timer
-      );
-
-
-      showMessage.timer =
-        setTimeout(
-          () => {
-
-            message.classList.remove("show");
-
-          },
-          1400
-        );
-
-    }
-
-
-    function findListItem(
-      productId
-    ) {
-
-      return BUYERS[currentBuyer].list.find(
-        item =>
-          item.id === productId
-      );
-
-    }
-
-
-    function isEverythingCollected() {
-
-      return BUYERS[currentBuyer].list.every(
-        item =>
-          collected[item.id] >=
-          item.need
-      );
-
-    }
-
-
-    document
-      .querySelectorAll(".product")
-      .forEach(
-        product => {
-
-          product.addEventListener(
-            "click",
-            () => {
-
-
-              const productId =
-                product.dataset.id;
-
-
-              const item =
-                findListItem(productId);
-
-
-              if (!item) {
-
-                product.classList.remove(
-                  "wrong-shake"
-                );
-
-
-                void product.offsetWidth;
-
-
-                product.classList.add(
-                  "wrong-shake"
-                );
-
-
-                showMessage(
-                  "Этого товара нет в списке",
-                  "error"
-                );
-
-
-                return;
-
-              }
-
-
-              if (
-                collected[productId] >=
-                item.need
-              ) {
-
-                showMessage(
-                  "Этот товар уже собран",
-                  "error"
-                );
-
-
-                return;
-
-              }
-
-
-              collected[productId]++;
-
-
-              product.classList.remove(
-                "correct-pulse"
-              );
-
-
-              void product.offsetWidth;
-
-
-              product.classList.add(
-                "correct-pulse"
-              );
-
-
-              renderList();
-
-
-              if (
-                isEverythingCollected()
-              ) {
-
-                setTimeout(
-                  () => {
-
-                    showMessage(
-                      "Все покупки собраны!",
-                      "success"
-                    );
-
-                  },
-                  350
-                );
-
-              }
-
-            }
-          );
-
-        }
-      );
-
-
-    document
-      .getElementById("checkBtn")
-      .addEventListener(
-        "click",
-        () => {
-
-
-          if (
-            isEverythingCollected()
-          ) {
-
-            showMessage(
-              "Всё правильно!",
-              "success"
-            );
-
-
-            setTimeout(
-              openPayment,
-              650
-            );
-
-          }
-
-          else {
-
-            showMessage(
-              "Найди остальные покупки",
-              "error"
-            );
-
-          }
-
-        }
-      );
-
-
-    function openPayment() {
-
-      paymentComplete = false;
-
-
-      paidBadge.classList.remove("show");
-
-      terminalWrap.classList.remove("paid");
-
-      terminalWrap.classList.add("ready");
-
-
-      resetCardPosition();
-
-
-      paymentOverlay.classList.add("show");
-
-    }
-
-
-    function closePayment() {
-
-      paymentOverlay.classList.remove("show");
-
-    }
-
-
-    function resetCardPosition() {
-
-      paymentCard.classList.remove("dragging");
-
-      paymentCard.style.left = "";
-      paymentCard.style.top = "";
-      paymentCard.style.width = "";
-      paymentCard.style.height = "";
-
-    }
-
-
-    function beginDrag(
-      clientX,
-      clientY
-    ) {
-
-      if (paymentComplete) {
-        return;
-      }
-
-
-      draggingCard = true;
-
-
-      const rect =
-        paymentCard.getBoundingClientRect();
-
-
-      dragOffsetX =
-        clientX - rect.left;
-
-
-      dragOffsetY =
-        clientY - rect.top;
-
-
-      paymentCard.style.width =
-        rect.width + "px";
-
-
-      paymentCard.style.height =
-        rect.height + "px";
-
-
-      paymentCard.classList.add("dragging");
-
-
-      moveCard(
-        clientX,
-        clientY
-      );
-
-    }
-
-
-    function moveCard(
-      clientX,
-      clientY
-    ) {
-
-      if (!draggingCard) {
-        return;
-      }
-
-
-      paymentCard.style.left =
-        (
-          clientX -
-          dragOffsetX
-        ) + "px";
-
-
-      paymentCard.style.top =
-        (
-          clientY -
-          dragOffsetY
-        ) + "px";
-
-    }
-
-
-    function endDrag() {
-
-      if (!draggingCard) {
-        return;
-      }
-
-
-      draggingCard = false;
-
-
-      const cardRect =
-        paymentCard.getBoundingClientRect();
-
-
-      const terminalRect =
-        terminalWrap.getBoundingClientRect();
-
-
-      const cardCenterX =
-        cardRect.left +
-        cardRect.width / 2;
-
-
-      const cardCenterY =
-        cardRect.top +
-        cardRect.height / 2;
-
-
-      const insideTerminal =
-
-        cardCenterX >= terminalRect.left &&
-        cardCenterX <= terminalRect.right &&
-        cardCenterY >= terminalRect.top &&
-        cardCenterY <= terminalRect.bottom;
-
-
-      if (insideTerminal) {
-
-        completePayment();
-
-      }
-
-      else {
-
-        resetCardPosition();
-
-      }
-
-    }
-
-
-    function completePayment() {
-
-      paymentComplete = true;
-
-
-      paymentCard.classList.remove("dragging");
-
-
-      terminalWrap.classList.remove("ready");
-
-      terminalWrap.classList.add("paid");
-
-
-      paidBadge.classList.add("show");
 
 
       setTimeout(
         () => {
 
-          closePayment();
-
-          nextBuyer();
+          rulesOverlay.style.display =
+            "none";
 
         },
-        1300
+        420
+      );
+
+    }
+  );
+
+
+  /* ==================================================
+     ПОКУПАТЕЛИ
+  ================================================== */
+
+  const BUYERS = [
+
+    {
+      image:
+        "assets/buyers/buyer-cart-01.png",
+
+      list: [
+
+        {
+          id: "pik-01",
+          need: 1
+        },
+
+        {
+          id: "pik-11",
+          need: 3
+        },
+
+        {
+          id: "pik-22",
+          need: 1
+        },
+
+        {
+          id: "pik-18",
+          need: 2
+        },
+
+        {
+          id: "pik-27",
+          need: 1
+        },
+
+        {
+          id: "pik-10",
+          need: 3
+        }
+
+      ]
+    },
+
+
+    {
+      image:
+        "assets/buyers/buyer-cart-02.png",
+
+      list: [
+
+        {
+          id: "pik-04",
+          need: 1
+        },
+
+        {
+          id: "pik-13",
+          need: 2
+        },
+
+        {
+          id: "pik-24",
+          need: 1
+        },
+
+        {
+          id: "pik-17",
+          need: 1
+        },
+
+        {
+          id: "pik-25",
+          need: 2
+        },
+
+        {
+          id: "pik-02",
+          need: 1
+        }
+
+      ]
+    },
+
+
+    {
+      image:
+        "assets/buyers/buyer-cart-03.png",
+
+      list: [
+
+        {
+          id: "pik-05",
+          need: 1
+        },
+
+        {
+          id: "pik-08",
+          need: 2
+        },
+
+        {
+          id: "pik-12",
+          need: 2
+        },
+
+        {
+          id: "pik-16",
+          need: 1
+        },
+
+        {
+          id: "pik-19",
+          need: 1
+        },
+
+        {
+          id: "pik-26",
+          need: 2
+        }
+
+      ]
+    },
+
+
+    {
+      image:
+        "assets/buyers/buyer-cart-04.png",
+
+      list: [
+
+        {
+          id: "pik-03",
+          need: 1
+        },
+
+        {
+          id: "pik-06",
+          need: 2
+        },
+
+        {
+          id: "pik-07",
+          need: 1
+        },
+
+        {
+          id: "pik-14",
+          need: 2
+        },
+
+        {
+          id: "pik-15",
+          need: 1
+        },
+
+        {
+          id: "pik-23",
+          need: 2
+        }
+
+      ]
+    }
+
+  ];
+
+
+  let currentBuyer = 0;
+
+  let collected = {};
+
+  let paymentComplete = false;
+
+  let draggingCard = false;
+
+  let dragOffsetX = 0;
+
+  let dragOffsetY = 0;
+
+
+  const buyerImage =
+    document.getElementById(
+      "buyerImage"
+    );
+
+
+  const listItems =
+    document.getElementById(
+      "listItems"
+    );
+
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  const paymentOverlay =
+    document.getElementById(
+      "paymentOverlay"
+    );
+
+
+  const paymentCard =
+    document.getElementById(
+      "paymentCard"
+    );
+
+
+  const terminalWrap =
+    document.getElementById(
+      "terminalWrap"
+    );
+
+
+  const paidBadge =
+    document.getElementById(
+      "paidBadge"
+    );
+
+
+  /* ==================================================
+     СБРОС
+  ================================================== */
+
+  function resetCollected() {
+
+    collected = {};
+
+
+    BUYERS[currentBuyer]
+      .list
+      .forEach(
+        item => {
+
+          collected[item.id] =
+            0;
+
+        }
+      );
+
+  }
+
+
+  /* ==================================================
+     СПИСОК
+  ================================================== */
+
+  function renderList() {
+
+    const buyer =
+      BUYERS[currentBuyer];
+
+
+    listItems.innerHTML =
+      "";
+
+
+    buyer.list.forEach(
+      item => {
+
+
+        const current =
+          collected[item.id] || 0;
+
+
+        const row =
+          document.createElement(
+            "div"
+          );
+
+
+        row.className =
+          "list-row";
+
+
+        if (
+          item.need === 1
+        ) {
+
+          row.classList.add(
+            "one"
+          );
+
+        }
+
+        else if (
+          item.need === 2
+        ) {
+
+          row.classList.add(
+            "two"
+          );
+
+        }
+
+        else {
+
+          row.classList.add(
+            "three"
+          );
+
+        }
+
+
+        let qtyHtml =
+          "";
+
+
+        for (
+          let i = 0;
+          i < item.need;
+          i++
+        ) {
+
+
+          const doneClass =
+            i < current
+              ? "done"
+              : "";
+
+
+          qtyHtml += `
+
+            <div
+              class="qty-item ${doneClass}"
+            >
+
+              <img
+                src="assets/products/${item.id}.png"
+                alt=""
+              >
+
+            </div>
+
+          `;
+
+        }
+
+
+        row.innerHTML = `
+
+          <div class="qty-track">
+
+            ${qtyHtml}
+
+          </div>
+
+        `;
+
+
+        listItems.appendChild(
+          row
+        );
+
+      }
+    );
+
+  }
+
+
+  /* ==================================================
+     ПОКУПАТЕЛЬ
+  ================================================== */
+
+  function renderBuyer() {
+
+    const buyer =
+      BUYERS[currentBuyer];
+
+
+    buyerImage.src =
+      buyer.image;
+
+
+    buyerImage.classList.remove(
+      "enter"
+    );
+
+
+    void buyerImage.offsetWidth;
+
+
+    buyerImage.classList.add(
+      "enter"
+    );
+
+
+    resetCollected();
+
+    renderList();
+
+  }
+
+
+  /* ==================================================
+     СООБЩЕНИЕ
+  ================================================== */
+
+  function showMessage(
+    text,
+    type = ""
+  ) {
+
+    message.textContent =
+      text;
+
+
+    message.classList.remove(
+      "success",
+      "error"
+    );
+
+
+    if (type) {
+
+      message.classList.add(
+        type
       );
 
     }
 
 
-    paymentCard.addEventListener(
+    message.classList.add(
+      "show"
+    );
+
+
+    clearTimeout(
+      showMessage.timer
+    );
+
+
+    showMessage.timer =
+      setTimeout(
+        () => {
+
+          message.classList.remove(
+            "show"
+          );
+
+        },
+        1400
+      );
+
+  }
+
+
+  /* ==================================================
+     ПОИСК ТОВАРА
+  ================================================== */
+
+  function findListItem(
+    productId
+  ) {
+
+    return BUYERS[
+      currentBuyer
+    ].list.find(
+      item =>
+        item.id === productId
+    );
+
+  }
+
+
+  /* ==================================================
+     ПРОВЕРКА
+  ================================================== */
+
+  function isEverythingCollected() {
+
+    return BUYERS[
+      currentBuyer
+    ].list.every(
+      item =>
+        collected[item.id] >=
+        item.need
+    );
+
+  }
+
+
+  /* ==================================================
+     КЛИК ПО ТОВАРУ
+  ================================================== */
+
+  document
+    .querySelectorAll(
+      ".product"
+    )
+    .forEach(
+      product => {
+
+        product.addEventListener(
+          "click",
+          () => {
+
+
+            const productId =
+              product.dataset.id;
+
+
+            const item =
+              findListItem(
+                productId
+              );
+
+
+            if (!item) {
+
+              product
+                .classList
+                .remove(
+                  "wrong-shake"
+                );
+
+
+              void product.offsetWidth;
+
+
+              product
+                .classList
+                .add(
+                  "wrong-shake"
+                );
+
+
+              showMessage(
+                "Этого товара нет в списке",
+                "error"
+              );
+
+
+              return;
+
+            }
+
+
+            if (
+              collected[productId] >=
+              item.need
+            ) {
+
+              showMessage(
+                "Этот товар уже собран",
+                "error"
+              );
+
+
+              return;
+
+            }
+
+
+            collected[
+              productId
+            ]++;
+
+
+            product
+              .classList
+              .remove(
+                "correct-pulse"
+              );
+
+
+            void product.offsetWidth;
+
+
+            product
+              .classList
+              .add(
+                "correct-pulse"
+              );
+
+
+            renderList();
+
+
+            if (
+              isEverythingCollected()
+            ) {
+
+              setTimeout(
+                () => {
+
+                  showMessage(
+                    "Все покупки собраны!",
+                    "success"
+                  );
+
+                },
+                350
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+  /* ==================================================
+     ПРОВЕРИТЬ
+  ================================================== */
+
+  document
+    .getElementById(
+      "checkBtn"
+    )
+    .addEventListener(
+      "click",
+      () => {
+
+
+        if (
+          isEverythingCollected()
+        ) {
+
+          showMessage(
+            "Всё правильно!",
+            "success"
+          );
+
+
+          setTimeout(
+            openPayment,
+            650
+          );
+
+        }
+
+        else {
+
+          showMessage(
+            "Найди остальные покупки",
+            "error"
+          );
+
+        }
+
+      }
+    );
+
+
+  /* ==================================================
+     ОПЛАТА
+  ================================================== */
+
+  function openPayment() {
+
+    paymentComplete =
+      false;
+
+
+    paidBadge
+      .classList
+      .remove(
+        "show"
+      );
+
+
+    terminalWrap
+      .classList
+      .remove(
+        "paid"
+      );
+
+
+    terminalWrap
+      .classList
+      .add(
+        "ready"
+      );
+
+
+    resetCardPosition();
+
+
+    paymentOverlay
+      .classList
+      .add(
+        "show"
+      );
+
+  }
+
+
+  function closePayment() {
+
+    paymentOverlay
+      .classList
+      .remove(
+        "show"
+      );
+
+  }
+
+
+  function resetCardPosition() {
+
+    paymentCard
+      .classList
+      .remove(
+        "dragging"
+      );
+
+
+    paymentCard.style.left =
+      "";
+
+    paymentCard.style.top =
+      "";
+
+    paymentCard.style.width =
+      "";
+
+    paymentCard.style.height =
+      "";
+
+  }
+
+
+  function beginDrag(
+    clientX,
+    clientY
+  ) {
+
+    if (
+      paymentComplete
+    ) {
+
+      return;
+
+    }
+
+
+    draggingCard =
+      true;
+
+
+    const rect =
+      paymentCard
+        .getBoundingClientRect();
+
+
+    dragOffsetX =
+      clientX -
+      rect.left;
+
+
+    dragOffsetY =
+      clientY -
+      rect.top;
+
+
+    paymentCard.style.width =
+      rect.width +
+      "px";
+
+
+    paymentCard.style.height =
+      rect.height +
+      "px";
+
+
+    paymentCard
+      .classList
+      .add(
+        "dragging"
+      );
+
+
+    moveCard(
+      clientX,
+      clientY
+    );
+
+  }
+
+
+  function moveCard(
+    clientX,
+    clientY
+  ) {
+
+    if (
+      !draggingCard
+    ) {
+
+      return;
+
+    }
+
+
+    paymentCard.style.left =
+      (
+        clientX -
+        dragOffsetX
+      ) + "px";
+
+
+    paymentCard.style.top =
+      (
+        clientY -
+        dragOffsetY
+      ) + "px";
+
+  }
+
+
+  function endDrag() {
+
+    if (
+      !draggingCard
+    ) {
+
+      return;
+
+    }
+
+
+    draggingCard =
+      false;
+
+
+    const cardRect =
+      paymentCard
+        .getBoundingClientRect();
+
+
+    const terminalRect =
+      terminalWrap
+        .getBoundingClientRect();
+
+
+    const cardCenterX =
+      cardRect.left +
+      cardRect.width / 2;
+
+
+    const cardCenterY =
+      cardRect.top +
+      cardRect.height / 2;
+
+
+    const insideTerminal =
+
+      cardCenterX >=
+      terminalRect.left &&
+
+      cardCenterX <=
+      terminalRect.right &&
+
+      cardCenterY >=
+      terminalRect.top &&
+
+      cardCenterY <=
+      terminalRect.bottom;
+
+
+    if (
+      insideTerminal
+    ) {
+
+      completePayment();
+
+    }
+
+    else {
+
+      resetCardPosition();
+
+    }
+
+  }
+
+
+  function completePayment() {
+
+    paymentComplete =
+      true;
+
+
+    paymentCard
+      .classList
+      .remove(
+        "dragging"
+      );
+
+
+    terminalWrap
+      .classList
+      .remove(
+        "ready"
+      );
+
+
+    terminalWrap
+      .classList
+      .add(
+        "paid"
+      );
+
+
+    paidBadge
+      .classList
+      .add(
+        "show"
+      );
+
+
+    setTimeout(
+      () => {
+
+        closePayment();
+
+        nextBuyer();
+
+      },
+      1300
+    );
+
+  }
+
+
+  paymentCard
+    .addEventListener(
       "pointerdown",
       event => {
 
         event.preventDefault();
+
 
         beginDrag(
           event.clientX,
@@ -1635,13 +2708,17 @@
     );
 
 
-    window.addEventListener(
+  window
+    .addEventListener(
       "pointermove",
       event => {
 
-        if (draggingCard) {
+        if (
+          draggingCard
+        ) {
 
           event.preventDefault();
+
 
           moveCard(
             event.clientX,
@@ -1654,7 +2731,8 @@
     );
 
 
-    window.addEventListener(
+  window
+    .addEventListener(
       "pointerup",
       () => {
 
@@ -1664,52 +2742,71 @@
     );
 
 
-    function nextBuyer() {
+  /* ==================================================
+     СЛЕДУЮЩИЙ ПОКУПАТЕЛЬ
+  ================================================== */
 
-      buyerImage.classList.add("exit");
+  function nextBuyer() {
 
-
-      setTimeout(
-        () => {
-
-
-          currentBuyer++;
-
-
-          if (
-            currentBuyer >=
-            BUYERS.length
-          ) {
-
-            currentBuyer = 0;
-
-          }
-
-
-          buyerImage.classList.remove("exit");
-
-
-          renderBuyer();
-
-
-        },
-        750
-      );
-
-    }
-
-
-    document
-      .getElementById("nextBtn")
-      .addEventListener(
-        "click",
-        nextBuyer
+    buyerImage
+      .classList
+      .add(
+        "exit"
       );
 
 
-    renderBuyer();
+    setTimeout(
+      () => {
 
-  </script>
+
+        currentBuyer++;
+
+
+        if (
+          currentBuyer >=
+          BUYERS.length
+        ) {
+
+          currentBuyer =
+            0;
+
+        }
+
+
+        buyerImage
+          .classList
+          .remove(
+            "exit"
+          );
+
+
+        renderBuyer();
+
+
+      },
+      750
+    );
+
+  }
+
+
+  document
+    .getElementById(
+      "nextBtn"
+    )
+    .addEventListener(
+      "click",
+      nextBuyer
+    );
+
+
+  /* ==================================================
+     СТАРТ
+  ================================================== */
+
+  renderBuyer();
+
+</script>
 
 </body>
 </html>
