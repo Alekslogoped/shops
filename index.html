@@ -28,6 +28,7 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
+
       background-image: url("fon.png");
       background-size: cover;
       background-position: center;
@@ -40,14 +41,21 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 30;
+
       background: rgba(255,255,255,.92);
       padding: 10px 28px;
       border-radius: 18px;
+
       font-size: clamp(20px, 2vw, 34px);
       font-weight: 800;
       color: #70472a;
+
       box-shadow: 0 5px 14px rgba(0,0,0,.12);
     }
+
+    /* ==================================================
+       ШКАФЫ
+    ================================================== */
 
     .shelves {
       position: absolute;
@@ -55,10 +63,12 @@
       bottom: 13%;
       width: 70%;
       height: 60%;
+
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       gap: 2%;
+
       z-index: 5;
     }
 
@@ -66,6 +76,7 @@
       position: relative;
       width: 31%;
       height: 100%;
+
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -74,13 +85,17 @@
     .shelf {
       position: absolute;
       inset: 0;
+
       width: 100%;
       height: 100%;
+
       object-fit: contain;
       object-position: bottom center;
+
       user-select: none;
       -webkit-user-drag: none;
       pointer-events: none;
+
       z-index: 1;
     }
 
@@ -93,11 +108,17 @@
     .product {
       position: absolute;
       object-fit: contain;
+
       cursor: pointer;
+
       user-select: none;
       -webkit-user-drag: none;
       pointer-events: auto;
-      transition: transform .18s ease, filter .18s ease, opacity .2s ease;
+
+      transition:
+        transform .18s ease,
+        filter .18s ease;
+
       transform-origin: bottom center;
     }
 
@@ -120,7 +141,7 @@
 
     @keyframes correctPulse {
       0%   { filter: brightness(1); }
-      50%  { filter: brightness(1.35); }
+      50%  { filter: brightness(1.4); }
       100% { filter: brightness(1); }
     }
 
@@ -147,15 +168,6 @@
       left: 38%;
       bottom: 55.5%;
       width: 24%;
-      transform: rotate(0deg);
-    }
-
-    .p2:hover {
-      transform: scale(1.08);
-    }
-
-    .p2:active {
-      transform: scale(.97);
     }
 
     .p3 {
@@ -326,117 +338,203 @@
     }
 
     /* ==================================================
-       ПРАВАЯ ЗОНА
+       ПРАВАЯ ЧАСТЬ
     ================================================== */
 
     .right-zone {
       position: absolute;
       right: 1.2%;
-      top: 9%;
+      top: 5%;
       bottom: 2%;
       width: 27%;
+
       z-index: 20;
+
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: space-between;
     }
 
+    /* ==================================================
+       НАШ СОБСТВЕННЫЙ СПИСОК ПОКУПОК
+    ================================================== */
+
     .shopping-list {
-      width: 100%;
-      max-height: 49%;
-      background: rgba(255,255,255,.96);
-      border-radius: 24px;
-      box-shadow: 0 6px 18px rgba(0,0,0,.12);
-      padding: 14px 14px 12px;
-      color: #70472a;
-      overflow-y: auto;
-      border: 3px solid #f2e3cf;
+      position: relative;
+
+      width: 82%;
+      aspect-ratio: 1102 / 1408;
+
+      flex: 0 0 auto;
+
+      background-image: url("assets/ui/shopping-list.png");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
-    .shopping-list h3 {
-      margin: 0 0 10px;
-      text-align: center;
-      font-size: clamp(18px, 1.45vw, 25px);
-      font-weight: 800;
-    }
+    /*
+      ВАЖНО:
+      эта зона находится точно поверх 6 строк
+      нарисованного листочка
+    */
 
     .list-items {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      position: absolute;
+
+      left: 10.5%;
+      right: 8.5%;
+
+      top: 20.8%;
+      bottom: 8.7%;
+
+      display: grid;
+      grid-template-rows: repeat(6, 1fr);
+
+      gap: 1.2%;
     }
 
     .list-row {
+      position: relative;
+
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      min-height: 68px;
-      background: #fffaf4;
-      border: 2px solid #efdcc7;
-      border-radius: 16px;
-      padding: 7px 9px;
-      transition: background .25s, border-color .25s, box-shadow .25s;
+
+      width: 100%;
+      height: 100%;
+
+      padding-left: 1%;
     }
 
-    .list-row.done {
-      background: #eff9ee;
-      border-color: #7fd186;
-      box-shadow: inset 0 0 0 1px rgba(78, 160, 88, 0.15);
-    }
+    /* Большая картинка слева */
 
     .list-main-thumb {
-      width: 52px;
-      height: 52px;
+      position: absolute;
+
+      left: 1%;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      width: 16%;
+      height: 72%;
+
       object-fit: contain;
-      flex: 0 0 auto;
-      display: block;
+
+      user-select: none;
+      pointer-events: none;
     }
 
+    /* Зона количества справа */
+
     .qty-track {
+      position: absolute;
+
+      left: 23%;
+      right: 3%;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      height: 72%;
+
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 6px;
-      flex-wrap: wrap;
-      flex: 1;
-      min-height: 40px;
+
+      gap: 6%;
     }
 
     .qty-item {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background: #f4efe7;
-      border: 2px solid #ead6bd;
+      position: relative;
+
+      width: 25%;
+      max-width: 54px;
+
+      aspect-ratio: 1 / 1;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: .35;
-      transition: transform .2s ease, opacity .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
-      flex: 0 0 auto;
+
+      border-radius: 50%;
+
+      opacity: .3;
+
+      transition:
+        opacity .25s ease,
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
     }
 
     .qty-item img {
-      width: 22px;
-      height: 22px;
+      width: 88%;
+      height: 88%;
+
       object-fit: contain;
-      display: block;
+
+      user-select: none;
+      pointer-events: none;
     }
+
+    /* Уже найденная покупка */
 
     .qty-item.done {
       opacity: 1;
-      background: #dff6df;
-      border-color: #78c97d;
-      box-shadow: 0 3px 8px rgba(90, 170, 100, 0.18);
-      transform: scale(1.02);
+
+      background: rgba(214, 246, 211, .9);
+
+      box-shadow:
+        0 0 0 3px rgba(91, 177, 91, .55),
+        0 4px 10px rgba(0,0,0,.12);
+
+      transform: scale(1.06);
+    }
+
+    /* маленькая галочка */
+
+    .qty-item.done::after {
+      content: "✓";
+
+      position: absolute;
+
+      right: -4px;
+      top: -6px;
+
+      width: 20px;
+      height: 20px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #61b965;
+      color: white;
+
+      font-size: 13px;
+      font-weight: 900;
+
+      box-shadow: 0 2px 5px rgba(0,0,0,.15);
     }
 
     .empty-list {
+      position: absolute;
+
+      inset: 25% 15% 15%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       text-align: center;
-      padding: 16px 10px;
+
+      font-size: 16px;
       font-weight: 700;
-      color: #8a684f;
+
+      color: #8d6748;
     }
 
     /* ==================================================
@@ -445,20 +543,28 @@
 
     .buyer-zone {
       position: relative;
+
       width: 100%;
-      height: 49%;
+      height: 43%;
+
       display: flex;
       align-items: flex-end;
       justify-content: center;
+
       overflow: visible;
     }
 
     .buyer-img {
       max-width: 100%;
       max-height: 100%;
+
       object-fit: contain;
       display: block;
-      transition: transform .75s ease, opacity .75s ease;
+
+      transition:
+        transform .75s ease,
+        opacity .75s ease;
+
       opacity: 1;
     }
 
@@ -472,10 +578,12 @@
     }
 
     @keyframes buyerEnter {
+
       from {
         transform: translateX(130%);
         opacity: 0;
       }
+
       to {
         transform: translateX(0);
         opacity: 1;
@@ -488,21 +596,30 @@
 
     .controls {
       position: absolute;
+
       left: 50%;
       bottom: 2%;
+
       transform: translateX(-50%);
+
       z-index: 50;
+
       display: flex;
       gap: 12px;
     }
 
     .btn {
       border: none;
+
       padding: 14px 22px;
+
       border-radius: 16px;
+
       font-size: 18px;
       font-weight: 800;
+
       cursor: pointer;
+
       box-shadow: 0 5px 12px rgba(0,0,0,.14);
     }
 
@@ -522,19 +639,31 @@
 
     .message {
       position: absolute;
+
       left: 50%;
       top: 9%;
+
       transform: translateX(-50%);
+
       z-index: 100;
+
       background: rgba(255,255,255,.97);
+
       border-radius: 16px;
+
       padding: 11px 20px;
+
       font-size: 18px;
       font-weight: 800;
+
       color: #7b4b2c;
+
       box-shadow: 0 5px 15px rgba(0,0,0,.15);
+
       opacity: 0;
+
       pointer-events: none;
+
       transition: opacity .25s;
     }
 
@@ -553,6 +682,7 @@
     }
 
     @media (max-width: 1100px) {
+
       .shelves {
         width: 68%;
         height: 56%;
@@ -563,378 +693,750 @@
         width: 29%;
       }
 
+      .shopping-list {
+        width: 85%;
+      }
+
       .buyer-zone {
-        height: 47%;
+        height: 41%;
       }
 
-      .list-main-thumb {
-        width: 46px;
-        height: 46px;
-      }
-
-      .qty-item {
-        width: 31px;
-        height: 31px;
-      }
-
-      .qty-item img {
-        width: 20px;
-        height: 20px;
-      }
     }
   </style>
 </head>
 
 <body>
+
   <div class="game">
 
     <div class="game-title">
       Магазин
     </div>
 
-    <div class="message" id="message">
+    <div
+      class="message"
+      id="message">
       Готово!
     </div>
+
 
     <div class="shelves">
 
       <!-- ПЕРВЫЙ ШКАФ -->
+
       <div class="shelf-wrap">
-        <img src="assets/shelves/shelf-01.png" class="shelf" alt="">
+
+        <img
+          src="assets/shelves/shelf-01.png"
+          class="shelf"
+          alt=""
+        >
 
         <div class="products-layer">
-          <img src="assets/products/pik-01.png" class="product p1" data-id="pik-01" alt="Мишка">
-          <img src="assets/products/pik-02.png" class="product p2" data-id="pik-02" alt="Погремушка">
-          <img src="assets/products/pik-03.png" class="product p3" data-id="pik-03" alt="Шут">
 
-          <img src="assets/products/pik-04.png" class="product p4" data-id="pik-04" alt="Машинка">
-          <img src="assets/products/pik-05.png" class="product p5" data-id="pik-05" alt="Пушка">
-          <img src="assets/products/pik-06.png" class="product p6" data-id="pik-06" alt="Лягушка">
+          <img src="assets/products/pik-01.png" class="product p1" data-id="pik-01" alt="">
+          <img src="assets/products/pik-02.png" class="product p2" data-id="pik-02" alt="">
+          <img src="assets/products/pik-03.png" class="product p3" data-id="pik-03" alt="">
 
-          <img src="assets/products/pik-07.png" class="product p7" data-id="pik-07" alt="Шахматы">
-          <img src="assets/products/pik-08.png" class="product p8" data-id="pik-08" alt="Шарик">
-          <img src="assets/products/pik-09.png" class="product p9" data-id="pik-09" alt="Шайба и клюшка">
+          <img src="assets/products/pik-04.png" class="product p4" data-id="pik-04" alt="">
+          <img src="assets/products/pik-05.png" class="product p5" data-id="pik-05" alt="">
+          <img src="assets/products/pik-06.png" class="product p6" data-id="pik-06" alt="">
+
+          <img src="assets/products/pik-07.png" class="product p7" data-id="pik-07" alt="">
+          <img src="assets/products/pik-08.png" class="product p8" data-id="pik-08" alt="">
+          <img src="assets/products/pik-09.png" class="product p9" data-id="pik-09" alt="">
+
         </div>
+
       </div>
+
 
       <!-- ВТОРОЙ ШКАФ -->
+
       <div class="shelf-wrap">
-        <img src="assets/shelves/shelf-01.png" class="shelf" alt="">
+
+        <img
+          src="assets/shelves/shelf-01.png"
+          class="shelf"
+          alt=""
+        >
 
         <div class="products-layer">
-          <img src="assets/products/pik-10.png" class="product q1" data-id="pik-10" alt="Груша">
-          <img src="assets/products/pik-11.png" class="product q2" data-id="pik-11" alt="Шоколад">
-          <img src="assets/products/pik-12.png" class="product q3" data-id="pik-12" alt="Шашлык">
 
-          <img src="assets/products/pik-13.png" class="product q4" data-id="pik-13" alt="Ватрушка">
-          <img src="assets/products/pik-14.png" class="product q5" data-id="pik-14" alt="Шаурма">
-          <img src="assets/products/pik-15.png" class="product q6" data-id="pik-15" alt="Шарлотка">
+          <img src="assets/products/pik-10.png" class="product q1" data-id="pik-10" alt="">
+          <img src="assets/products/pik-11.png" class="product q2" data-id="pik-11" alt="">
+          <img src="assets/products/pik-12.png" class="product q3" data-id="pik-12" alt="">
 
-          <img src="assets/products/pik-16.png" class="product q7" data-id="pik-16" alt="Шампиньоны">
-          <img src="assets/products/pik-17.png" class="product q8" data-id="pik-17" alt="Каша">
-          <img src="assets/products/pik-18.png" class="product q9" data-id="pik-18" alt="Вишня">
+          <img src="assets/products/pik-13.png" class="product q4" data-id="pik-13" alt="">
+          <img src="assets/products/pik-14.png" class="product q5" data-id="pik-14" alt="">
+          <img src="assets/products/pik-15.png" class="product q6" data-id="pik-15" alt="">
+
+          <img src="assets/products/pik-16.png" class="product q7" data-id="pik-16" alt="">
+          <img src="assets/products/pik-17.png" class="product q8" data-id="pik-17" alt="">
+          <img src="assets/products/pik-18.png" class="product q9" data-id="pik-18" alt="">
+
         </div>
+
       </div>
 
+
       <!-- ТРЕТИЙ ШКАФ -->
+
       <div class="shelf-wrap">
-        <img src="assets/shelves/shelf-01.png" class="shelf" alt="">
+
+        <img
+          src="assets/shelves/shelf-01.png"
+          class="shelf"
+          alt=""
+        >
 
         <div class="products-layer">
-          <img src="assets/products/pik-19.png" class="product r1" data-id="pik-19" alt="Рубашка">
-          <img src="assets/products/pik-20.png" class="product r2" data-id="pik-20" alt="Штаны">
-          <img src="assets/products/pik-21.png" class="product r3" data-id="pik-21" alt="Шорты">
 
-          <img src="assets/products/pik-22.png" class="product r4" data-id="pik-22" alt="Шапка">
-          <img src="assets/products/pik-23.png" class="product r5" data-id="pik-23" alt="Шаль">
-          <img src="assets/products/pik-24.png" class="product r6" data-id="pik-24" alt="Шуба">
+          <img src="assets/products/pik-19.png" class="product r1" data-id="pik-19" alt="">
+          <img src="assets/products/pik-20.png" class="product r2" data-id="pik-20" alt="">
+          <img src="assets/products/pik-21.png" class="product r3" data-id="pik-21" alt="">
 
-          <img src="assets/products/pik-25.png" class="product r7" data-id="pik-25" alt="Шляпа">
-          <img src="assets/products/pik-26.png" class="product r8" data-id="pik-26" alt="Ушанка">
-          <img src="assets/products/pik-27.png" class="product r9" data-id="pik-27" alt="Тёплые наушники">
+          <img src="assets/products/pik-22.png" class="product r4" data-id="pik-22" alt="">
+          <img src="assets/products/pik-23.png" class="product r5" data-id="pik-23" alt="">
+          <img src="assets/products/pik-24.png" class="product r6" data-id="pik-24" alt="">
+
+          <img src="assets/products/pik-25.png" class="product r7" data-id="pik-25" alt="">
+          <img src="assets/products/pik-26.png" class="product r8" data-id="pik-26" alt="">
+          <img src="assets/products/pik-27.png" class="product r9" data-id="pik-27" alt="">
+
         </div>
+
       </div>
 
     </div>
+
+
+    <!-- ПРАВАЯ ЗОНА -->
 
     <div class="right-zone">
 
       <div class="shopping-list">
-        <h3>Список покупок</h3>
-        <div id="listItems" class="list-items"></div>
+
+        <div
+          id="listItems"
+          class="list-items">
+        </div>
+
       </div>
 
+
       <div class="buyer-zone">
+
         <img
           id="buyerImage"
           class="buyer-img"
           src="assets/buyers/buyer-cart-01.png"
-          alt="Покупатель с тележкой"
+          alt=""
         >
+
       </div>
 
     </div>
 
+
+    <!-- КНОПКИ -->
+
     <div class="controls">
-      <button id="checkBtn" class="btn btn-check">
+
+      <button
+        id="checkBtn"
+        class="btn btn-check">
+
         Проверить
+
       </button>
 
-      <button id="nextBtn" class="btn btn-next">
+      <button
+        id="nextBtn"
+        class="btn btn-next">
+
         Следующий покупатель
+
       </button>
+
     </div>
 
   </div>
 
+
   <script>
-    const PRODUCT_NAMES = {
-      "pik-01": "Мишка",
-      "pik-02": "Погремушка",
-      "pik-03": "Шут",
-      "pik-04": "Машинка",
-      "pik-05": "Пушка",
-      "pik-06": "Лягушка",
-      "pik-07": "Шахматы",
-      "pik-08": "Шарик",
-      "pik-09": "Шайба и клюшка",
 
-      "pik-10": "Груша",
-      "pik-11": "Шоколад",
-      "pik-12": "Шашлык",
-      "pik-13": "Ватрушка",
-      "pik-14": "Шаурма",
-      "pik-15": "Шарлотка",
-      "pik-16": "Шампиньоны",
-      "pik-17": "Каша",
-      "pik-18": "Вишня",
-
-      "pik-19": "Рубашка",
-      "pik-20": "Штаны",
-      "pik-21": "Шорты",
-      "pik-22": "Шапка",
-      "pik-23": "Шаль",
-      "pik-24": "Шуба",
-      "pik-25": "Шляпа",
-      "pik-26": "Ушанка",
-      "pik-27": "Тёплые наушники"
-    };
+    /* ==================================================
+       ПОКУПАТЕЛИ
+    ================================================== */
 
     const BUYERS = [
+
       {
-        image: "assets/buyers/buyer-cart-01.png",
+        image:
+          "assets/buyers/buyer-cart-01.png",
+
         list: [
-          { id: "pik-01", need: 1 },
-          { id: "pik-11", need: 3 },
-          { id: "pik-22", need: 1 },
-          { id: "pik-18", need: 2 },
-          { id: "pik-27", need: 1 },
-          { id: "pik-10", need: 3 }
+
+          {
+            id: "pik-01",
+            need: 1
+          },
+
+          {
+            id: "pik-11",
+            need: 3
+          },
+
+          {
+            id: "pik-22",
+            need: 1
+          },
+
+          {
+            id: "pik-18",
+            need: 2
+          },
+
+          {
+            id: "pik-27",
+            need: 1
+          },
+
+          {
+            id: "pik-10",
+            need: 3
+          }
+
         ]
       },
 
+
       {
-        image: "assets/buyers/buyer-cart-02.png",
+        image:
+          "assets/buyers/buyer-cart-02.png",
+
         list: []
       },
 
+
       {
-        image: "assets/buyers/buyer-cart-03.png",
+        image:
+          "assets/buyers/buyer-cart-03.png",
+
         list: []
       },
 
+
       {
-        image: "assets/buyers/buyer-cart-04.png",
+        image:
+          "assets/buyers/buyer-cart-04.png",
+
         list: []
       }
+
     ];
 
+
     let currentBuyer = 0;
+
     let collected = {};
 
-    const buyerImage = document.getElementById("buyerImage");
-    const listItems = document.getElementById("listItems");
-    const message = document.getElementById("message");
+
+    const buyerImage =
+      document.getElementById(
+        "buyerImage"
+      );
+
+
+    const listItems =
+      document.getElementById(
+        "listItems"
+      );
+
+
+    const message =
+      document.getElementById(
+        "message"
+      );
+
+
+    /* ==================================================
+       СБРОС ПОКУПОК
+    ================================================== */
 
     function resetCollected() {
-      collected = {};
-      const buyer = BUYERS[currentBuyer];
 
-      buyer.list.forEach(item => {
-        collected[item.id] = 0;
-      });
+      collected = {};
+
+
+      const buyer =
+        BUYERS[currentBuyer];
+
+
+      buyer.list.forEach(
+        item => {
+
+          collected[item.id] = 0;
+
+        }
+      );
+
     }
+
+
+    /* ==================================================
+       РИСУЕМ СПИСОК НА НАШЕМ ЛИСТОЧКЕ
+    ================================================== */
 
     function renderList() {
-      const buyer = BUYERS[currentBuyer];
+
+      const buyer =
+        BUYERS[currentBuyer];
+
+
       listItems.innerHTML = "";
 
-      if (buyer.list.length === 0) {
+
+      if (
+        buyer.list.length === 0
+      ) {
+
         listItems.innerHTML = `
           <div class="empty-list">
-            Список этого покупателя<br>
-            добавим позже
           </div>
         `;
+
         return;
+
       }
 
-      buyer.list.forEach(item => {
-        const current = collected[item.id] || 0;
-        const row = document.createElement("div");
-        row.className = "list-row";
 
-        if (current >= item.need) {
-          row.classList.add("done");
-        }
+      buyer.list.forEach(
+        item => {
 
-        let qtyHtml = "";
+          const current =
+            collected[item.id] || 0;
 
-        for (let i = 0; i < item.need; i++) {
-          const doneClass = i < current ? "done" : "";
-          qtyHtml += `
-            <div class="qty-item ${doneClass}">
-              <img src="assets/products/${item.id}.png" alt="">
+
+          const row =
+            document.createElement(
+              "div"
+            );
+
+
+          row.className =
+            "list-row";
+
+
+          let qtyHtml = "";
+
+
+          for (
+            let i = 0;
+            i < item.need;
+            i++
+          ) {
+
+            const doneClass =
+              i < current
+                ? "done"
+                : "";
+
+
+            qtyHtml += `
+
+              <div
+                class="qty-item ${doneClass}"
+              >
+
+                <img
+                  src="assets/products/${item.id}.png"
+                  alt=""
+                >
+
+              </div>
+
+            `;
+
+          }
+
+
+          row.innerHTML = `
+
+            <img
+              src="assets/products/${item.id}.png"
+              class="list-main-thumb"
+              alt=""
+            >
+
+
+            <div class="qty-track">
+
+              ${qtyHtml}
+
             </div>
+
           `;
+
+
+          listItems.appendChild(
+            row
+          );
+
         }
+      );
 
-        row.innerHTML = `
-          <img
-            src="assets/products/${item.id}.png"
-            class="list-main-thumb"
-            alt="${PRODUCT_NAMES[item.id]}"
-          >
-
-          <div class="qty-track">
-            ${qtyHtml}
-          </div>
-        `;
-
-        listItems.appendChild(row);
-      });
     }
+
+
+    /* ==================================================
+       ПОКУПАТЕЛЬ
+    ================================================== */
 
     function renderBuyer() {
-      const buyer = BUYERS[currentBuyer];
 
-      buyerImage.src = buyer.image;
+      const buyer =
+        BUYERS[currentBuyer];
 
-      buyerImage.classList.remove("enter");
+
+      buyerImage.src =
+        buyer.image;
+
+
+      buyerImage.classList.remove(
+        "enter"
+      );
+
+
       void buyerImage.offsetWidth;
-      buyerImage.classList.add("enter");
+
+
+      buyerImage.classList.add(
+        "enter"
+      );
+
 
       resetCollected();
+
       renderList();
+
     }
 
-    function nextBuyer() {
-      buyerImage.classList.add("exit");
 
-      setTimeout(() => {
-        currentBuyer++;
+    /* ==================================================
+       СООБЩЕНИЯ
+    ================================================== */
 
-        if (currentBuyer >= BUYERS.length) {
-          currentBuyer = 0;
-        }
+    function showMessage(
+      text,
+      type = ""
+    ) {
 
-        buyerImage.classList.remove("exit");
-        renderBuyer();
-        showMessage("Пришёл новый покупатель!");
-      }, 750);
-    }
+      message.textContent =
+        text;
 
-    function showMessage(text, type = "") {
-      message.textContent = text;
-      message.classList.remove("success", "error");
+
+      message.classList.remove(
+        "success",
+        "error"
+      );
+
 
       if (type) {
-        message.classList.add(type);
+
+        message.classList.add(
+          type
+        );
+
       }
 
-      message.classList.add("show");
 
-      clearTimeout(showMessage.timer);
-      showMessage.timer = setTimeout(() => {
-        message.classList.remove("show");
-      }, 1400);
+      message.classList.add(
+        "show"
+      );
+
+
+      clearTimeout(
+        showMessage.timer
+      );
+
+
+      showMessage.timer =
+        setTimeout(
+          () => {
+
+            message.classList.remove(
+              "show"
+            );
+
+          },
+          1400
+        );
+
     }
 
-    function findListItem(productId) {
-      const buyer = BUYERS[currentBuyer];
-      return buyer.list.find(item => item.id === productId);
+
+    /* ==================================================
+       ПОИСК ТОВАРА В СПИСКЕ
+    ================================================== */
+
+    function findListItem(
+      productId
+    ) {
+
+      const buyer =
+        BUYERS[currentBuyer];
+
+
+      return buyer.list.find(
+        item =>
+          item.id === productId
+      );
+
     }
+
+
+    /* ==================================================
+       ВСЁ ЛИ СОБРАНО
+    ================================================== */
 
     function isEverythingCollected() {
-      const buyer = BUYERS[currentBuyer];
 
-      if (buyer.list.length === 0) {
+      const buyer =
+        BUYERS[currentBuyer];
+
+
+      if (
+        buyer.list.length === 0
+      ) {
+
         return false;
+
       }
 
-      return buyer.list.every(item => collected[item.id] >= item.need);
+
+      return buyer.list.every(
+        item =>
+
+          collected[item.id] >=
+          item.need
+      );
+
     }
 
-    document.querySelectorAll(".product").forEach(product => {
-      product.addEventListener("click", () => {
-        const productId = product.dataset.id;
-        const item = findListItem(productId);
 
-        if (!item) {
-          product.classList.remove("wrong-shake");
-          void product.offsetWidth;
-          product.classList.add("wrong-shake");
+    /* ==================================================
+       КЛИК ПО ТОВАРУ
+    ================================================== */
 
-          showMessage("Этого товара нет в списке", "error");
-          return;
+    document
+      .querySelectorAll(
+        ".product"
+      )
+      .forEach(
+        product => {
+
+          product.addEventListener(
+            "click",
+            () => {
+
+              const productId =
+                product.dataset.id;
+
+
+              const item =
+                findListItem(
+                  productId
+                );
+
+
+              /* ТОВАРА НЕТ В СПИСКЕ */
+
+              if (!item) {
+
+                product.classList.remove(
+                  "wrong-shake"
+                );
+
+
+                void product.offsetWidth;
+
+
+                product.classList.add(
+                  "wrong-shake"
+                );
+
+
+                showMessage(
+                  "Этого товара нет в списке",
+                  "error"
+                );
+
+
+                return;
+
+              }
+
+
+              /* УЖЕ СОБРАНО */
+
+              if (
+                collected[productId] >=
+                item.need
+              ) {
+
+                showMessage(
+                  "Этот товар уже собран",
+                  "error"
+                );
+
+
+                return;
+
+              }
+
+
+              /* ДОБАВЛЯЕМ */
+
+              collected[productId]++;
+
+
+              product.classList.remove(
+                "correct-pulse"
+              );
+
+
+              void product.offsetWidth;
+
+
+              product.classList.add(
+                "correct-pulse"
+              );
+
+
+              renderList();
+
+
+              if (
+                isEverythingCollected()
+              ) {
+
+                setTimeout(
+                  () => {
+
+                    showMessage(
+                      "Все покупки собраны!",
+                      "success"
+                    );
+
+                  },
+                  350
+                );
+
+              }
+
+            }
+          );
+
         }
+      );
 
-        if (collected[productId] >= item.need) {
-          showMessage("Этот товар уже собран", "error");
-          return;
+
+    /* ==================================================
+       ПРОВЕРИТЬ
+    ================================================== */
+
+    document
+      .getElementById(
+        "checkBtn"
+      )
+      .addEventListener(
+        "click",
+        () => {
+
+          if (
+            isEverythingCollected()
+          ) {
+
+            showMessage(
+              "Всё правильно!",
+              "success"
+            );
+
+          }
+
+          else {
+
+            showMessage(
+              "Найди остальные покупки",
+              "error"
+            );
+
+          }
+
         }
+      );
 
-        collected[productId]++;
 
-        product.classList.remove("correct-pulse");
-        void product.offsetWidth;
-        product.classList.add("correct-pulse");
+    /* ==================================================
+       СЛЕДУЮЩИЙ ПОКУПАТЕЛЬ
+    ================================================== */
 
-        renderList();
+    function nextBuyer() {
 
-        showMessage(PRODUCT_NAMES[productId] + " добавлен в тележку", "success");
+      buyerImage.classList.add(
+        "exit"
+      );
 
-        if (isEverythingCollected()) {
-          setTimeout(() => {
-            showMessage("Все покупки собраны! Нажмите «Проверить»", "success");
-          }, 450);
-        }
-      });
-    });
 
-    document.getElementById("checkBtn").addEventListener("click", () => {
-      const buyer = BUYERS[currentBuyer];
+      setTimeout(
+        () => {
 
-      if (buyer.list.length === 0) {
-        showMessage("Для этого покупателя список пока не задан", "error");
-        return;
-      }
+          currentBuyer++;
 
-      if (isEverythingCollected()) {
-        showMessage("Верно! Все покупки собраны!", "success");
-      } else {
-        const remaining = buyer.list.reduce((sum, item) => {
-          const current = collected[item.id] || 0;
-          return sum + Math.max(item.need - current, 0);
-        }, 0);
 
-        showMessage("Нужно найти ещё: " + remaining, "error");
-      }
-    });
+          if (
+            currentBuyer >=
+            BUYERS.length
+          ) {
 
-    document.getElementById("nextBtn").addEventListener("click", nextBuyer);
+            currentBuyer = 0;
+
+          }
+
+
+          buyerImage.classList.remove(
+            "exit"
+          );
+
+
+          renderBuyer();
+
+        },
+        750
+      );
+
+    }
+
+
+    document
+      .getElementById(
+        "nextBtn"
+      )
+      .addEventListener(
+        "click",
+        nextBuyer
+      );
+
+
+    /* ==================================================
+       СТАРТ
+    ================================================== */
 
     renderBuyer();
+
   </script>
+
 </body>
 </html>
