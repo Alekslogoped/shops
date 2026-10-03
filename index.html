@@ -93,8 +93,6 @@
       object-fit: contain;
       object-position: bottom center;
 
-      user-select: none;
-      -webkit-user-drag: none;
       pointer-events: none;
 
       z-index: 1;
@@ -114,7 +112,6 @@
 
       user-select: none;
       -webkit-user-drag: none;
-      pointer-events: auto;
 
       transition:
         transform .18s ease,
@@ -222,17 +219,17 @@
 
 
     /* ==============================
-       ГОРИЗОНТАЛЬНЫЙ СПИСОК
-       УМЕНЬШЕН И ПОДНЯТ
+       СПИСОК ПОКУПОК
+       СИЛЬНЕЕ УМЕНЬШЕН
     ============================== */
 
     .shopping-list {
       position: absolute;
 
-      top: 8.5%;
-      left: 46%;
+      top: 8%;
+      left: 55%;
 
-      width: 48%;
+      width: 39%;
       aspect-ratio: 1600 / 900;
 
       background-image:
@@ -244,7 +241,6 @@
 
       z-index: 14;
     }
-
 
     .list-items {
       position: absolute;
@@ -267,7 +263,6 @@
       row-gap: 6%;
     }
 
-
     .list-row {
       position: relative;
 
@@ -278,7 +273,6 @@
       align-items: center;
       justify-content: center;
     }
-
 
     .qty-track {
       width: 92%;
@@ -291,14 +285,13 @@
       gap: 4%;
     }
 
-
     .qty-item {
       position: relative;
 
       flex: 0 1 30%;
 
-      max-width: 68px;
-      max-height: 68px;
+      max-width: 55px;
+      max-height: 55px;
 
       aspect-ratio: 1 / 1;
 
@@ -317,7 +310,6 @@
         box-shadow .25s ease;
     }
 
-
     .qty-item img {
       width: 96%;
       height: 96%;
@@ -327,7 +319,6 @@
       user-select: none;
       pointer-events: none;
     }
-
 
     .qty-item.done {
       opacity: 1;
@@ -343,7 +334,6 @@
         scale(1.06);
     }
 
-
     .qty-item.done::after {
       content: "✓";
 
@@ -352,8 +342,8 @@
       right: -4px;
       top: -5px;
 
-      width: 19px;
-      height: 19px;
+      width: 18px;
+      height: 18px;
 
       border-radius: 50%;
 
@@ -364,29 +354,26 @@
       background: #61b965;
       color: white;
 
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 900;
     }
 
-
     .list-row.one .qty-item {
-      max-width: 88px;
-      max-height: 88px;
-      flex-basis: 42%;
-    }
-
-
-    .list-row.two .qty-item {
       max-width: 72px;
       max-height: 72px;
-      flex-basis: 34%;
+      flex-basis: 40%;
     }
 
-
-    .list-row.three .qty-item {
+    .list-row.two .qty-item {
       max-width: 60px;
       max-height: 60px;
-      flex-basis: 28%;
+      flex-basis: 32%;
+    }
+
+    .list-row.three .qty-item {
+      max-width: 50px;
+      max-height: 50px;
+      flex-basis: 27%;
     }
 
 
@@ -408,10 +395,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
-
-      overflow: visible;
     }
-
 
     .buyer-img {
       width: 96%;
@@ -430,12 +414,10 @@
       opacity: 1;
     }
 
-
     .buyer-img.enter {
       animation:
         buyerEnter .75s ease-out;
     }
-
 
     .buyer-img.exit {
       transform:
@@ -444,9 +426,7 @@
       opacity: 0;
     }
 
-
     @keyframes buyerEnter {
-
       from {
         transform:
           translateX(130%);
@@ -458,7 +438,6 @@
           translateX(0);
         opacity: 1;
       }
-
     }
 
 
@@ -481,7 +460,6 @@
       gap: 12px;
     }
 
-
     .btn {
       border: none;
 
@@ -499,12 +477,10 @@
         0 5px 12px rgba(0,0,0,.14);
     }
 
-
     .btn-check {
       background: #66bb6a;
       color: white;
     }
-
 
     .btn-next {
       background: #ffca5b;
@@ -552,11 +528,9 @@
         opacity .25s;
     }
 
-
     .message.show {
       opacity: 1;
     }
-
 
     .message.success {
       background:
@@ -565,7 +539,6 @@
       color:
         #32833a;
     }
-
 
     .message.error {
       background:
@@ -597,11 +570,9 @@
       backdrop-filter: blur(4px);
     }
 
-
     .payment-overlay.show {
       display: flex;
     }
-
 
     .payment-panel {
       position: relative;
@@ -627,7 +598,6 @@
       overflow: hidden;
     }
 
-
     .payment-title {
       position: absolute;
 
@@ -645,7 +615,6 @@
       color: #70472a;
     }
 
-
     .terminal-wrap {
       position: relative;
 
@@ -657,14 +626,12 @@
       justify-content: center;
     }
 
-
     .terminal-img {
       width: 100%;
       height: 100%;
 
       object-fit: contain;
 
-      user-select: none;
       pointer-events: none;
 
       transition:
@@ -672,15 +639,12 @@
         transform .25s ease;
     }
 
-
     .terminal-wrap.ready {
       animation:
         terminalPulse 1.2s ease-in-out infinite;
     }
 
-
     @keyframes terminalPulse {
-
       0%,100% {
         transform: scale(1);
       }
@@ -688,9 +652,7 @@
       50% {
         transform: scale(1.04);
       }
-
     }
-
 
     .terminal-wrap.paid .terminal-img {
       filter:
@@ -703,7 +665,6 @@
         scale(1.03);
     }
 
-
     .card-zone {
       position: relative;
 
@@ -714,7 +675,6 @@
       align-items: center;
       justify-content: center;
     }
-
 
     .card-img {
       width: 92%;
@@ -738,11 +698,9 @@
         filter .2s ease;
     }
 
-
     .card-img:active {
       cursor: grabbing;
     }
-
 
     .card-img.dragging {
       position: fixed;
@@ -760,7 +718,6 @@
           rgba(0,0,0,.2)
         );
     }
-
 
     .tap-hint {
       position: absolute;
@@ -782,7 +739,6 @@
 
       color: #8b6749;
     }
-
 
     .paid-badge {
       position: absolute;
@@ -815,15 +771,10 @@
 
       z-index: 600;
 
-      box-shadow:
-        0 10px 24px
-        rgba(54,132,64,.26);
-
       transition:
         opacity .3s ease,
         transform .3s ease;
     }
-
 
     .paid-badge.show {
       opacity: 1;
@@ -943,7 +894,7 @@
     </div>
 
 
-    <!-- СПИСОК -->
+    <!-- СПИСОК ПОКУПОК -->
 
     <div class="shopping-list">
 
@@ -999,7 +950,6 @@
     >
 
       <div class="payment-panel">
-
 
         <div class="payment-title">
           Оплата
@@ -1115,6 +1065,7 @@
 
     let currentBuyer = 0;
     let collected = {};
+
     let paymentComplete = false;
     let draggingCard = false;
 
@@ -1148,10 +1099,7 @@
 
       collected = {};
 
-      const buyer =
-        BUYERS[currentBuyer];
-
-      buyer.list.forEach(
+      BUYERS[currentBuyer].list.forEach(
         item => {
 
           collected[item.id] = 0;
@@ -1266,17 +1214,13 @@
         buyer.image;
 
 
-      buyerImage.classList.remove(
-        "enter"
-      );
+      buyerImage.classList.remove("enter");
 
 
       void buyerImage.offsetWidth;
 
 
-      buyerImage.classList.add(
-        "enter"
-      );
+      buyerImage.classList.add("enter");
 
 
       resetCollected();
@@ -1308,9 +1252,7 @@
       }
 
 
-      message.classList.add(
-        "show"
-      );
+      message.classList.add("show");
 
 
       clearTimeout(
@@ -1322,9 +1264,7 @@
         setTimeout(
           () => {
 
-            message.classList.remove(
-              "show"
-            );
+            message.classList.remove("show");
 
           },
           1400
@@ -1337,11 +1277,7 @@
       productId
     ) {
 
-      const buyer =
-        BUYERS[currentBuyer];
-
-
-      return buyer.list.find(
+      return BUYERS[currentBuyer].list.find(
         item =>
           item.id === productId
       );
@@ -1351,11 +1287,7 @@
 
     function isEverythingCollected() {
 
-      const buyer =
-        BUYERS[currentBuyer];
-
-
-      return buyer.list.every(
+      return BUYERS[currentBuyer].list.every(
         item =>
           collected[item.id] >=
           item.need
@@ -1510,46 +1442,31 @@
       paymentComplete = false;
 
 
-      paidBadge.classList.remove(
-        "show"
-      );
+      paidBadge.classList.remove("show");
 
+      terminalWrap.classList.remove("paid");
 
-      terminalWrap.classList.remove(
-        "paid"
-      );
-
-
-      terminalWrap.classList.add(
-        "ready"
-      );
+      terminalWrap.classList.add("ready");
 
 
       resetCardPosition();
 
 
-      paymentOverlay.classList.add(
-        "show"
-      );
+      paymentOverlay.classList.add("show");
 
     }
 
 
     function closePayment() {
 
-      paymentOverlay.classList.remove(
-        "show"
-      );
+      paymentOverlay.classList.remove("show");
 
     }
 
 
     function resetCardPosition() {
 
-      paymentCard.classList.remove(
-        "dragging"
-      );
-
+      paymentCard.classList.remove("dragging");
 
       paymentCard.style.left = "";
       paymentCard.style.top = "";
@@ -1564,12 +1481,8 @@
       clientY
     ) {
 
-      if (
-        paymentComplete
-      ) {
-
+      if (paymentComplete) {
         return;
-
       }
 
 
@@ -1577,8 +1490,7 @@
 
 
       const rect =
-        paymentCard
-          .getBoundingClientRect();
+        paymentCard.getBoundingClientRect();
 
 
       dragOffsetX =
@@ -1597,9 +1509,7 @@
         rect.height + "px";
 
 
-      paymentCard.classList.add(
-        "dragging"
-      );
+      paymentCard.classList.add("dragging");
 
 
       moveCard(
@@ -1615,12 +1525,8 @@
       clientY
     ) {
 
-      if (
-        !draggingCard
-      ) {
-
+      if (!draggingCard) {
         return;
-
       }
 
 
@@ -1642,12 +1548,8 @@
 
     function endDrag() {
 
-      if (
-        !draggingCard
-      ) {
-
+      if (!draggingCard) {
         return;
-
       }
 
 
@@ -1655,13 +1557,11 @@
 
 
       const cardRect =
-        paymentCard
-          .getBoundingClientRect();
+        paymentCard.getBoundingClientRect();
 
 
       const terminalRect =
-        terminalWrap
-          .getBoundingClientRect();
+        terminalWrap.getBoundingClientRect();
 
 
       const cardCenterX =
@@ -1676,22 +1576,13 @@
 
       const insideTerminal =
 
-        cardCenterX >=
-        terminalRect.left &&
-
-        cardCenterX <=
-        terminalRect.right &&
-
-        cardCenterY >=
-        terminalRect.top &&
-
-        cardCenterY <=
-        terminalRect.bottom;
+        cardCenterX >= terminalRect.left &&
+        cardCenterX <= terminalRect.right &&
+        cardCenterY >= terminalRect.top &&
+        cardCenterY <= terminalRect.bottom;
 
 
-      if (
-        insideTerminal
-      ) {
+      if (insideTerminal) {
 
         completePayment();
 
@@ -1711,24 +1602,15 @@
       paymentComplete = true;
 
 
-      paymentCard.classList.remove(
-        "dragging"
-      );
+      paymentCard.classList.remove("dragging");
 
 
-      terminalWrap.classList.remove(
-        "ready"
-      );
+      terminalWrap.classList.remove("ready");
+
+      terminalWrap.classList.add("paid");
 
 
-      terminalWrap.classList.add(
-        "paid"
-      );
-
-
-      paidBadge.classList.add(
-        "show"
-      );
+      paidBadge.classList.add("show");
 
 
       setTimeout(
@@ -1751,7 +1633,6 @@
 
         event.preventDefault();
 
-
         beginDrag(
           event.clientX,
           event.clientY
@@ -1765,12 +1646,9 @@
       "pointermove",
       event => {
 
-        if (
-          draggingCard
-        ) {
+        if (draggingCard) {
 
           event.preventDefault();
-
 
           moveCard(
             event.clientX,
@@ -1795,9 +1673,7 @@
 
     function nextBuyer() {
 
-      buyerImage.classList.add(
-        "exit"
-      );
+      buyerImage.classList.add("exit");
 
 
       setTimeout(
@@ -1817,9 +1693,7 @@
           }
 
 
-          buyerImage.classList.remove(
-            "exit"
-          );
+          buyerImage.classList.remove("exit");
 
 
           renderBuyer();
