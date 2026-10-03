@@ -53,6 +53,7 @@
       box-shadow: 0 5px 14px rgba(0,0,0,.12);
     }
 
+
     /* ==================================================
        ШКАФЫ
     ================================================== */
@@ -154,6 +155,7 @@
       100% { margin-left: 0; }
     }
 
+
     /* ==================================================
        ПЕРВЫЙ ШКАФ
     ================================================== */
@@ -211,6 +213,7 @@
       bottom: 20%;
       width: 25%;
     }
+
 
     /* ==================================================
        ВТОРОЙ ШКАФ
@@ -279,6 +282,7 @@
       width: 24%;
     }
 
+
     /* ==================================================
        ТРЕТИЙ ШКАФ
     ================================================== */
@@ -337,16 +341,19 @@
       width: 24%;
     }
 
+
     /* ==================================================
        ПРАВАЯ ЧАСТЬ
     ================================================== */
 
     .right-zone {
       position: absolute;
-      right: 1.2%;
-      top: 5%;
-      bottom: 2%;
-      width: 27%;
+
+      right: 0.5%;
+      top: 1.5%;
+      bottom: 1.5%;
+
+      width: 29%;
 
       z-index: 20;
 
@@ -356,29 +363,30 @@
       justify-content: space-between;
     }
 
+
     /* ==================================================
-       НАШ СОБСТВЕННЫЙ СПИСОК ПОКУПОК
+       КРАСИВЫЙ СПИСОК ПОКУПОК
     ================================================== */
 
     .shopping-list {
       position: relative;
 
-      width: 82%;
+      width: 94%;
+
       aspect-ratio: 1102 / 1408;
 
       flex: 0 0 auto;
 
-      background-image: url("assets/ui/shopping-list.png");
+      background-image:
+        url("assets/ui/shopping-list.png");
+
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    /*
-      ВАЖНО:
-      эта зона находится точно поверх 6 строк
-      нарисованного листочка
-    */
+
+    /* 6 нарисованных строк */
 
     .list-items {
       position: absolute;
@@ -386,39 +394,44 @@
       left: 10.5%;
       right: 8.5%;
 
-      top: 20.8%;
-      bottom: 8.7%;
+      top: 21%;
+      bottom: 8.5%;
 
       display: grid;
-      grid-template-rows: repeat(6, 1fr);
 
-      gap: 1.2%;
+      grid-template-rows:
+        repeat(6, 1fr);
+
+      gap: 0.4%;
     }
+
 
     .list-row {
       position: relative;
 
-      display: flex;
-      align-items: center;
-
       width: 100%;
       height: 100%;
 
-      padding-left: 1%;
+      display: flex;
+      align-items: center;
     }
 
-    /* Большая картинка слева */
+
+    /* ==================================================
+       БОЛЬШАЯ КАРТИНКА ТОВАРА
+    ================================================== */
 
     .list-main-thumb {
       position: absolute;
 
-      left: 1%;
+      left: 0.5%;
       top: 50%;
 
-      transform: translateY(-50%);
+      transform:
+        translateY(-50%);
 
-      width: 16%;
-      height: 72%;
+      width: 17%;
+      height: 76%;
 
       object-fit: contain;
 
@@ -426,30 +439,36 @@
       pointer-events: none;
     }
 
-    /* Зона количества справа */
+
+    /* ==================================================
+       КОЛИЧЕСТВО
+    ================================================== */
 
     .qty-track {
       position: absolute;
 
       left: 23%;
-      right: 3%;
+      right: 2%;
+
       top: 50%;
 
-      transform: translateY(-50%);
+      transform:
+        translateY(-50%);
 
-      height: 72%;
+      height: 75%;
 
       display: flex;
       align-items: center;
 
-      gap: 6%;
+      gap: 5%;
     }
+
 
     .qty-item {
       position: relative;
 
-      width: 25%;
-      max-width: 54px;
+      width: 26%;
+      max-width: 58px;
 
       aspect-ratio: 1 / 1;
 
@@ -459,7 +478,7 @@
 
       border-radius: 50%;
 
-      opacity: .3;
+      opacity: .30;
 
       transition:
         opacity .25s ease,
@@ -468,9 +487,10 @@
         box-shadow .25s ease;
     }
 
+
     .qty-item img {
-      width: 88%;
-      height: 88%;
+      width: 92%;
+      height: 92%;
 
       object-fit: contain;
 
@@ -478,21 +498,25 @@
       pointer-events: none;
     }
 
-    /* Уже найденная покупка */
+
+    /* уже найденный товар */
 
     .qty-item.done {
       opacity: 1;
 
-      background: rgba(214, 246, 211, .9);
+      background:
+        rgba(214,246,211,.95);
 
       box-shadow:
-        0 0 0 3px rgba(91, 177, 91, .55),
-        0 4px 10px rgba(0,0,0,.12);
+        0 0 0 3px
+        rgba(91,177,91,.55),
+        0 4px 10px
+        rgba(0,0,0,.12);
 
-      transform: scale(1.06);
+      transform:
+        scale(1.06);
     }
 
-    /* маленькая галочка */
 
     .qty-item.done::after {
       content: "✓";
@@ -500,7 +524,7 @@
       position: absolute;
 
       right: -4px;
-      top: -6px;
+      top: -5px;
 
       width: 20px;
       height: 20px;
@@ -517,8 +541,11 @@
       font-size: 13px;
       font-weight: 900;
 
-      box-shadow: 0 2px 5px rgba(0,0,0,.15);
+      box-shadow:
+        0 2px 5px
+        rgba(0,0,0,.15);
     }
+
 
     .empty-list {
       position: absolute;
@@ -528,14 +555,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
-      text-align: center;
-
-      font-size: 16px;
-      font-weight: 700;
-
-      color: #8d6748;
     }
+
 
     /* ==================================================
        ПОКУПАТЕЛЬ
@@ -545,7 +566,7 @@
       position: relative;
 
       width: 100%;
-      height: 43%;
+      height: 38%;
 
       display: flex;
       align-items: flex-end;
@@ -554,11 +575,13 @@
       overflow: visible;
     }
 
+
     .buyer-img {
       max-width: 100%;
       max-height: 100%;
 
       object-fit: contain;
+
       display: block;
 
       transition:
@@ -568,27 +591,39 @@
       opacity: 1;
     }
 
+
     .buyer-img.enter {
-      animation: buyerEnter .75s ease-out;
+      animation:
+        buyerEnter .75s ease-out;
     }
 
+
     .buyer-img.exit {
-      transform: translateX(130%);
+      transform:
+        translateX(130%);
+
       opacity: 0;
     }
+
 
     @keyframes buyerEnter {
 
       from {
-        transform: translateX(130%);
+        transform:
+          translateX(130%);
+
         opacity: 0;
       }
 
       to {
-        transform: translateX(0);
+        transform:
+          translateX(0);
+
         opacity: 1;
       }
+
     }
+
 
     /* ==================================================
        КНОПКИ
@@ -600,7 +635,8 @@
       left: 50%;
       bottom: 2%;
 
-      transform: translateX(-50%);
+      transform:
+        translateX(-50%);
 
       z-index: 50;
 
@@ -608,10 +644,12 @@
       gap: 12px;
     }
 
+
     .btn {
       border: none;
 
-      padding: 14px 22px;
+      padding:
+        14px 22px;
 
       border-radius: 16px;
 
@@ -620,18 +658,28 @@
 
       cursor: pointer;
 
-      box-shadow: 0 5px 12px rgba(0,0,0,.14);
+      box-shadow:
+        0 5px 12px
+        rgba(0,0,0,.14);
     }
 
+
     .btn-check {
-      background: #66bb6a;
+      background:
+        #66bb6a;
+
       color: white;
     }
 
+
     .btn-next {
-      background: #ffca5b;
-      color: #5b4027;
+      background:
+        #ffca5b;
+
+      color:
+        #5b4027;
     }
+
 
     /* ==================================================
        СООБЩЕНИЯ
@@ -643,43 +691,64 @@
       left: 50%;
       top: 9%;
 
-      transform: translateX(-50%);
+      transform:
+        translateX(-50%);
 
       z-index: 100;
 
-      background: rgba(255,255,255,.97);
+      background:
+        rgba(255,255,255,.97);
 
       border-radius: 16px;
 
-      padding: 11px 20px;
+      padding:
+        11px 20px;
 
       font-size: 18px;
       font-weight: 800;
 
-      color: #7b4b2c;
+      color:
+        #7b4b2c;
 
-      box-shadow: 0 5px 15px rgba(0,0,0,.15);
+      box-shadow:
+        0 5px 15px
+        rgba(0,0,0,.15);
 
       opacity: 0;
 
       pointer-events: none;
 
-      transition: opacity .25s;
+      transition:
+        opacity .25s;
     }
+
 
     .message.show {
       opacity: 1;
     }
 
+
     .message.success {
-      background: #eaf8e9;
-      color: #32833a;
+      background:
+        #eaf8e9;
+
+      color:
+        #32833a;
     }
 
+
     .message.error {
-      background: #fff0ed;
-      color: #b24d3e;
+      background:
+        #fff0ed;
+
+      color:
+        #b24d3e;
     }
+
+
+    /* ==================================================
+       АДАПТАЦИЯ
+    ================================================== */
 
     @media (max-width: 1100px) {
 
@@ -690,18 +759,19 @@
       }
 
       .right-zone {
-        width: 29%;
+        width: 30%;
       }
 
       .shopping-list {
-        width: 85%;
+        width: 96%;
       }
 
       .buyer-zone {
-        height: 41%;
+        height: 35%;
       }
 
     }
+
   </style>
 </head>
 
@@ -713,14 +783,22 @@
       Магазин
     </div>
 
+
     <div
       class="message"
       id="message">
+
       Готово!
+
     </div>
 
 
+    <!-- ==================================================
+         ШКАФЫ
+    ================================================== -->
+
     <div class="shelves">
+
 
       <!-- ПЕРВЫЙ ШКАФ -->
 
@@ -734,17 +812,68 @@
 
         <div class="products-layer">
 
-          <img src="assets/products/pik-01.png" class="product p1" data-id="pik-01" alt="">
-          <img src="assets/products/pik-02.png" class="product p2" data-id="pik-02" alt="">
-          <img src="assets/products/pik-03.png" class="product p3" data-id="pik-03" alt="">
+          <img
+            src="assets/products/pik-01.png"
+            class="product p1"
+            data-id="pik-01"
+            alt=""
+          >
 
-          <img src="assets/products/pik-04.png" class="product p4" data-id="pik-04" alt="">
-          <img src="assets/products/pik-05.png" class="product p5" data-id="pik-05" alt="">
-          <img src="assets/products/pik-06.png" class="product p6" data-id="pik-06" alt="">
+          <img
+            src="assets/products/pik-02.png"
+            class="product p2"
+            data-id="pik-02"
+            alt=""
+          >
 
-          <img src="assets/products/pik-07.png" class="product p7" data-id="pik-07" alt="">
-          <img src="assets/products/pik-08.png" class="product p8" data-id="pik-08" alt="">
-          <img src="assets/products/pik-09.png" class="product p9" data-id="pik-09" alt="">
+          <img
+            src="assets/products/pik-03.png"
+            class="product p3"
+            data-id="pik-03"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-04.png"
+            class="product p4"
+            data-id="pik-04"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-05.png"
+            class="product p5"
+            data-id="pik-05"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-06.png"
+            class="product p6"
+            data-id="pik-06"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-07.png"
+            class="product p7"
+            data-id="pik-07"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-08.png"
+            class="product p8"
+            data-id="pik-08"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-09.png"
+            class="product p9"
+            data-id="pik-09"
+            alt=""
+          >
 
         </div>
 
@@ -763,17 +892,68 @@
 
         <div class="products-layer">
 
-          <img src="assets/products/pik-10.png" class="product q1" data-id="pik-10" alt="">
-          <img src="assets/products/pik-11.png" class="product q2" data-id="pik-11" alt="">
-          <img src="assets/products/pik-12.png" class="product q3" data-id="pik-12" alt="">
+          <img
+            src="assets/products/pik-10.png"
+            class="product q1"
+            data-id="pik-10"
+            alt=""
+          >
 
-          <img src="assets/products/pik-13.png" class="product q4" data-id="pik-13" alt="">
-          <img src="assets/products/pik-14.png" class="product q5" data-id="pik-14" alt="">
-          <img src="assets/products/pik-15.png" class="product q6" data-id="pik-15" alt="">
+          <img
+            src="assets/products/pik-11.png"
+            class="product q2"
+            data-id="pik-11"
+            alt=""
+          >
 
-          <img src="assets/products/pik-16.png" class="product q7" data-id="pik-16" alt="">
-          <img src="assets/products/pik-17.png" class="product q8" data-id="pik-17" alt="">
-          <img src="assets/products/pik-18.png" class="product q9" data-id="pik-18" alt="">
+          <img
+            src="assets/products/pik-12.png"
+            class="product q3"
+            data-id="pik-12"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-13.png"
+            class="product q4"
+            data-id="pik-13"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-14.png"
+            class="product q5"
+            data-id="pik-14"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-15.png"
+            class="product q6"
+            data-id="pik-15"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-16.png"
+            class="product q7"
+            data-id="pik-16"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-17.png"
+            class="product q8"
+            data-id="pik-17"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-18.png"
+            class="product q9"
+            data-id="pik-18"
+            alt=""
+          >
 
         </div>
 
@@ -792,17 +972,68 @@
 
         <div class="products-layer">
 
-          <img src="assets/products/pik-19.png" class="product r1" data-id="pik-19" alt="">
-          <img src="assets/products/pik-20.png" class="product r2" data-id="pik-20" alt="">
-          <img src="assets/products/pik-21.png" class="product r3" data-id="pik-21" alt="">
+          <img
+            src="assets/products/pik-19.png"
+            class="product r1"
+            data-id="pik-19"
+            alt=""
+          >
 
-          <img src="assets/products/pik-22.png" class="product r4" data-id="pik-22" alt="">
-          <img src="assets/products/pik-23.png" class="product r5" data-id="pik-23" alt="">
-          <img src="assets/products/pik-24.png" class="product r6" data-id="pik-24" alt="">
+          <img
+            src="assets/products/pik-20.png"
+            class="product r2"
+            data-id="pik-20"
+            alt=""
+          >
 
-          <img src="assets/products/pik-25.png" class="product r7" data-id="pik-25" alt="">
-          <img src="assets/products/pik-26.png" class="product r8" data-id="pik-26" alt="">
-          <img src="assets/products/pik-27.png" class="product r9" data-id="pik-27" alt="">
+          <img
+            src="assets/products/pik-21.png"
+            class="product r3"
+            data-id="pik-21"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-22.png"
+            class="product r4"
+            data-id="pik-22"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-23.png"
+            class="product r5"
+            data-id="pik-23"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-24.png"
+            class="product r6"
+            data-id="pik-24"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-25.png"
+            class="product r7"
+            data-id="pik-25"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-26.png"
+            class="product r8"
+            data-id="pik-26"
+            alt=""
+          >
+
+          <img
+            src="assets/products/pik-27.png"
+            class="product r9"
+            data-id="pik-27"
+            alt=""
+          >
 
         </div>
 
@@ -811,9 +1042,12 @@
     </div>
 
 
-    <!-- ПРАВАЯ ЗОНА -->
+    <!-- ==================================================
+         ПРАВАЯ ЗОНА
+    ================================================== -->
 
     <div class="right-zone">
+
 
       <div class="shopping-list">
 
@@ -839,7 +1073,9 @@
     </div>
 
 
-    <!-- КНОПКИ -->
+    <!-- ==================================================
+         КНОПКИ
+    ================================================== -->
 
     <div class="controls">
 
@@ -850,6 +1086,7 @@
         Проверить
 
       </button>
+
 
       <button
         id="nextBtn"
@@ -867,7 +1104,7 @@
   <script>
 
     /* ==================================================
-       ПОКУПАТЕЛИ
+       СПИСОК ПОКУПАТЕЛЕЙ
     ================================================== */
 
     const BUYERS = [
@@ -938,6 +1175,10 @@
     ];
 
 
+    /* ==================================================
+       ПЕРЕМЕННЫЕ
+    ================================================== */
+
     let currentBuyer = 0;
 
     let collected = {};
@@ -986,7 +1227,7 @@
 
 
     /* ==================================================
-       РИСУЕМ СПИСОК НА НАШЕМ ЛИСТОЧКЕ
+       РИСУЕМ СПИСОК
     ================================================== */
 
     function renderList() {
@@ -1003,8 +1244,7 @@
       ) {
 
         listItems.innerHTML = `
-          <div class="empty-list">
-          </div>
+          <div class="empty-list"></div>
         `;
 
         return;
@@ -1014,6 +1254,7 @@
 
       buyer.list.forEach(
         item => {
+
 
           const current =
             collected[item.id] || 0;
@@ -1037,6 +1278,7 @@
             i < item.need;
             i++
           ) {
+
 
             const doneClass =
               i < current
@@ -1125,7 +1367,7 @@
 
 
     /* ==================================================
-       СООБЩЕНИЯ
+       СООБЩЕНИЕ
     ================================================== */
 
     function showMessage(
@@ -1178,7 +1420,7 @@
 
 
     /* ==================================================
-       ПОИСК ТОВАРА В СПИСКЕ
+       ИЩЕМ ТОВАР В СПИСКЕ
     ================================================== */
 
     function findListItem(
@@ -1241,6 +1483,7 @@
             "click",
             () => {
 
+
               const productId =
                 product.dataset.id;
 
@@ -1251,7 +1494,7 @@
                 );
 
 
-              /* ТОВАРА НЕТ В СПИСКЕ */
+              /* НЕТ В СПИСКЕ */
 
               if (!item) {
 
@@ -1279,7 +1522,7 @@
               }
 
 
-              /* УЖЕ СОБРАНО */
+              /* УЖЕ НАБРАЛИ НУЖНОЕ КОЛИЧЕСТВО */
 
               if (
                 collected[productId] >=
@@ -1318,6 +1561,8 @@
               renderList();
 
 
+              /* ВСЁ СОБРАНО */
+
               if (
                 isEverythingCollected()
               ) {
@@ -1344,7 +1589,7 @@
 
 
     /* ==================================================
-       ПРОВЕРИТЬ
+       КНОПКА ПРОВЕРИТЬ
     ================================================== */
 
     document
@@ -1354,6 +1599,7 @@
       .addEventListener(
         "click",
         () => {
+
 
           if (
             isEverythingCollected()
@@ -1393,6 +1639,7 @@
       setTimeout(
         () => {
 
+
           currentBuyer++;
 
 
@@ -1412,6 +1659,7 @@
 
 
           renderBuyer();
+
 
         },
         750
