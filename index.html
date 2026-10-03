@@ -6,7 +6,6 @@
   <title>Магазин</title>
 
   <style>
-
     * {
       box-sizing: border-box;
     }
@@ -36,7 +35,6 @@
       background-repeat: no-repeat;
     }
 
-
     /* ==================================================
        НАЗВАНИЕ
     ================================================== */
@@ -58,7 +56,6 @@
 
       box-shadow: 0 5px 14px rgba(0,0,0,.12);
     }
-
 
     /* ==================================================
        СТАРТОВАЯ ПЛАШКА С ПРАВИЛАМИ
@@ -93,13 +90,10 @@
     .rules-card {
       position: relative;
 
-      width: min(700px, 88vw);
-      max-height: 88vh;
+      width: min(620px, 84vw);
+      max-height: 82vh;
 
-      overflow-y: auto;
-
-      padding:
-        26px 34px 28px;
+      padding: 18px 26px 20px;
 
       background:
         linear-gradient(
@@ -112,13 +106,15 @@
         4px solid #e5a848;
 
       border-radius:
-        30px;
+        26px;
 
       box-shadow:
         0 18px 50px
         rgba(70, 40, 15, .28);
 
       text-align: center;
+
+      overflow: hidden;
     }
 
     .rules-card::before {
@@ -126,14 +122,14 @@
 
       position: absolute;
 
-      inset: 9px;
+      inset: 8px;
 
       border:
         2px dashed
         rgba(201, 135, 47, .38);
 
       border-radius:
-        22px;
+        20px;
 
       pointer-events: none;
     }
@@ -141,14 +137,12 @@
     .rules-title {
       position: relative;
 
-      margin:
-        0 0 15px;
+      margin: 0 0 8px;
 
       font-size:
-        clamp(28px, 3vw, 42px);
+        clamp(24px, 2.5vw, 34px);
 
-      color:
-        #8b4c23;
+      color: #8b4c23;
 
       font-weight: 900;
     }
@@ -156,14 +150,12 @@
     .rules-subtitle {
       position: relative;
 
-      margin:
-        0 auto 18px;
+      margin: 0 auto 10px;
 
       font-size:
-        clamp(19px, 2vw, 27px);
+        clamp(17px, 1.7vw, 22px);
 
-      color:
-        #d67827;
+      color: #d67827;
 
       font-weight: 900;
     }
@@ -171,151 +163,117 @@
     .rules-text {
       position: relative;
 
-      margin:
-        0 auto;
+      margin: 0 auto;
 
-      max-width:
-        600px;
+      max-width: 560px;
 
       text-align: left;
 
-      color:
-        #65432d;
+      color: #65432d;
 
       font-size:
-        clamp(16px, 1.55vw, 22px);
+        clamp(14px, 1.25vw, 18px);
 
-      line-height:
-        1.45;
+      line-height: 1.3;
 
-      font-weight:
-        700;
+      font-weight: 700;
     }
 
     .rule-line {
       display: flex;
       align-items: flex-start;
 
-      gap: 12px;
+      gap: 9px;
 
-      margin:
-        11px 0;
+      margin: 7px 0;
     }
 
     .rule-icon {
-      flex:
-        0 0 36px;
+      flex: 0 0 28px;
 
-      width:
-        36px;
+      width: 28px;
 
-      font-size:
-        27px;
+      font-size: 21px;
 
-      text-align:
-        center;
+      text-align: center;
     }
 
     .speech-task {
       position: relative;
 
-      margin:
-        18px auto;
+      margin: 10px auto;
 
-      padding:
-        14px 18px;
+      padding: 9px 14px;
 
-      max-width:
-        590px;
+      max-width: 540px;
 
-      border-radius:
-        18px;
+      border-radius: 15px;
 
-      background:
-        #fff0c7;
+      background: #fff0c7;
 
       border:
-        2px solid
-        #efc068;
+        2px solid #efc068;
 
-      color:
-        #75461e;
+      color: #75461e;
 
       font-size:
-        clamp(17px, 1.7vw, 23px);
+        clamp(14px, 1.35vw, 18px);
 
-      font-weight:
-        900;
+      font-weight: 900;
 
-      line-height:
-        1.35;
+      line-height: 1.25;
     }
 
     .examples {
       position: relative;
 
-      margin:
-        14px auto 19px;
+      margin: 8px auto 10px;
 
-      padding:
-        13px 18px;
+      padding: 8px 14px;
 
-      max-width:
-        570px;
+      max-width: 530px;
 
-      border-radius:
-        18px;
+      border-radius: 15px;
 
-      background:
-        #ffffff;
+      background: #ffffff;
 
       box-shadow:
         0 4px 12px
         rgba(0,0,0,.08);
 
-      color:
-        #69472f;
+      color: #69472f;
 
       font-size:
-        clamp(15px, 1.45vw, 20px);
+        clamp(13px, 1.15vw, 16px);
 
-      line-height:
-        1.55;
+      line-height: 1.35;
 
-      font-weight:
-        800;
+      font-weight: 800;
     }
 
     .start-btn {
       position: relative;
 
-      border:
-        none;
+      border: none;
 
-      padding:
-        15px 42px;
+      padding: 11px 34px;
 
-      border-radius:
-        18px;
+      border-radius: 16px;
 
-      background:
-        #67bd68;
+      background: #67bd68;
 
-      color:
-        white;
+      color: white;
 
       font-size:
-        clamp(20px, 2vw, 28px);
+        clamp(18px, 1.7vw, 23px);
 
-      font-weight:
-        900;
+      font-weight: 900;
 
-      cursor:
-        pointer;
+      cursor: pointer;
 
       box-shadow:
-        0 6px 0 #46964b,
-        0 9px 18px
+        0 5px 0 #46964b,
+        0 8px 16px
         rgba(0,0,0,.14);
 
       transition:
@@ -330,12 +288,11 @@
 
     .start-btn:active {
       transform:
-        translateY(3px);
+        translateY(2px);
 
       box-shadow:
-        0 3px 0 #46964b;
+        0 2px 0 #46964b;
     }
-
 
     /* ==================================================
        ШКАФЫ
@@ -414,253 +371,89 @@
     }
 
     .product.correct-pulse {
-      animation:
-        correctPulse .35s ease;
+      animation: correctPulse .35s ease;
     }
 
     .product.wrong-shake {
-      animation:
-        wrongShake .4s ease;
+      animation: wrongShake .4s ease;
     }
 
     @keyframes correctPulse {
-
-      0% {
-        filter:
-          brightness(1);
-      }
-
-      50% {
-        filter:
-          brightness(1.4);
-      }
-
-      100% {
-        filter:
-          brightness(1);
-      }
-
+      0%   { filter: brightness(1); }
+      50%  { filter: brightness(1.4); }
+      100% { filter: brightness(1); }
     }
 
     @keyframes wrongShake {
-
-      0% {
-        margin-left: 0;
-      }
-
-      20% {
-        margin-left: -8px;
-      }
-
-      40% {
-        margin-left: 8px;
-      }
-
-      60% {
-        margin-left: -6px;
-      }
-
-      80% {
-        margin-left: 6px;
-      }
-
-      100% {
-        margin-left: 0;
-      }
-
+      0%   { margin-left: 0; }
+      20%  { margin-left: -8px; }
+      40%  { margin-left: 8px; }
+      60%  { margin-left: -6px; }
+      80%  { margin-left: 6px; }
+      100% { margin-left: 0; }
     }
-
 
     /* ==================================================
        ПЕРВЫЙ ШКАФ
     ================================================== */
 
-    .p1 {
-      left: 6.5%;
-      bottom: 55.5%;
-      width: 27%;
-    }
+    .p1 { left: 6.5%; bottom: 55.5%; width: 27%; }
+    .p2 { left: 38%; bottom: 55.5%; width: 24%; }
+    .p3 { left: 67%; bottom: 54.8%; width: 28%; }
 
-    .p2 {
-      left: 38%;
-      bottom: 55.5%;
-      width: 24%;
-    }
+    .p4 { left: 6%; bottom: 36.5%; width: 27%; }
+    .p5 { left: 35%; bottom: 37%; width: 28%; }
+    .p6 { left: 67%; bottom: 36.2%; width: 27%; }
 
-    .p3 {
-      left: 67%;
-      bottom: 54.8%;
-      width: 28%;
-    }
-
-    .p4 {
-      left: 6%;
-      bottom: 36.5%;
-      width: 27%;
-    }
-
-    .p5 {
-      left: 35%;
-      bottom: 37%;
-      width: 28%;
-    }
-
-    .p6 {
-      left: 67%;
-      bottom: 36.2%;
-      width: 27%;
-    }
-
-    .p7 {
-      left: 5%;
-      bottom: 20.5%;
-      width: 26%;
-    }
-
-    .p8 {
-      left: 34%;
-      bottom: 18.5%;
-      width: 28%;
-    }
-
-    .p9 {
-      left: 64%;
-      bottom: 20%;
-      width: 25%;
-    }
-
+    .p7 { left: 5%; bottom: 20.5%; width: 26%; }
+    .p8 { left: 34%; bottom: 18.5%; width: 28%; }
+    .p9 { left: 64%; bottom: 20%; width: 25%; }
 
     /* ==================================================
        ВТОРОЙ ШКАФ
     ================================================== */
 
-    .q1 {
-      left: 8%;
-      bottom: 56%;
-      width: 24%;
-    }
-
-    .q2 {
-      left: 38%;
-      bottom: 57%;
-      width: 25%;
-    }
+    .q1 { left: 8%; bottom: 56%; width: 24%; }
+    .q2 { left: 38%; bottom: 57%; width: 25%; }
 
     .q3 {
       left: 68%;
       bottom: 56%;
       width: 25%;
-      transform:
-        rotate(-8deg);
+      transform: rotate(-8deg);
     }
 
     .q3:hover {
-      transform:
-        rotate(-8deg)
-        scale(1.08);
+      transform: rotate(-8deg) scale(1.08);
     }
 
     .q3:active {
-      transform:
-        rotate(-8deg)
-        scale(.97);
+      transform: rotate(-8deg) scale(.97);
     }
 
-    .q4 {
-      left: 8%;
-      bottom: 37%;
-      width: 25%;
-    }
+    .q4 { left: 8%; bottom: 37%; width: 25%; }
+    .q5 { left: 38%; bottom: 36%; width: 23%; }
+    .q6 { left: 67%; bottom: 37%; width: 26%; }
 
-    .q5 {
-      left: 38%;
-      bottom: 36%;
-      width: 23%;
-    }
-
-    .q6 {
-      left: 67%;
-      bottom: 37%;
-      width: 26%;
-    }
-
-    .q7 {
-      left: 7%;
-      bottom: 19%;
-      width: 25%;
-    }
-
-    .q8 {
-      left: 37%;
-      bottom: 19%;
-      width: 25%;
-    }
-
-    .q9 {
-      left: 68%;
-      bottom: 19%;
-      width: 24%;
-    }
-
+    .q7 { left: 7%; bottom: 19%; width: 25%; }
+    .q8 { left: 37%; bottom: 19%; width: 25%; }
+    .q9 { left: 68%; bottom: 19%; width: 24%; }
 
     /* ==================================================
        ТРЕТИЙ ШКАФ
     ================================================== */
 
-    .r1 {
-      left: 7%;
-      bottom: 54.5%;
-      width: 25%;
-    }
+    .r1 { left: 7%; bottom: 54.5%; width: 25%; }
+    .r2 { left: 37%; bottom: 54%; width: 24%; }
+    .r3 { left: 68%; bottom: 55%; width: 24%; }
 
-    .r2 {
-      left: 37%;
-      bottom: 54%;
-      width: 24%;
-    }
+    .r4 { left: 8%; bottom: 36.5%; width: 24%; }
+    .r5 { left: 37%; bottom: 36%; width: 25%; }
+    .r6 { left: 68%; bottom: 35.5%; width: 25%; }
 
-    .r3 {
-      left: 68%;
-      bottom: 55%;
-      width: 24%;
-    }
-
-    .r4 {
-      left: 8%;
-      bottom: 36.5%;
-      width: 24%;
-    }
-
-    .r5 {
-      left: 37%;
-      bottom: 36%;
-      width: 25%;
-    }
-
-    .r6 {
-      left: 68%;
-      bottom: 35.5%;
-      width: 25%;
-    }
-
-    .r7 {
-      left: 7%;
-      bottom: 19%;
-      width: 25%;
-    }
-
-    .r8 {
-      left: 37%;
-      bottom: 18.5%;
-      width: 24%;
-    }
-
-    .r9 {
-      left: 68%;
-      bottom: 19%;
-      width: 24%;
-    }
-
+    .r7 { left: 7%; bottom: 19%; width: 25%; }
+    .r8 { left: 37%; bottom: 18.5%; width: 24%; }
+    .r9 { left: 68%; bottom: 19%; width: 24%; }
 
     /* ==================================================
        СПИСОК ПОКУПОК
@@ -673,21 +466,14 @@
       right: 1.2%;
 
       width: 34%;
-
-      aspect-ratio:
-        1600 / 900;
+      aspect-ratio: 1600 / 900;
 
       background-image:
         url("assets/ui/shopping-list-horizontal.png");
 
-      background-size:
-        contain;
-
-      background-position:
-        center;
-
-      background-repeat:
-        no-repeat;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
 
       z-index: 14;
     }
@@ -738,17 +524,12 @@
     .qty-item {
       position: relative;
 
-      flex:
-        0 1 30%;
+      flex: 0 1 30%;
 
-      max-width:
-        48px;
+      max-width: 48px;
+      max-height: 48px;
 
-      max-height:
-        48px;
-
-      aspect-ratio:
-        1 / 1;
+      aspect-ratio: 1 / 1;
 
       display: flex;
       align-items: center;
@@ -756,8 +537,7 @@
 
       opacity: .30;
 
-      border-radius:
-        50%;
+      border-radius: 50%;
 
       transition:
         opacity .25s ease,
@@ -770,14 +550,10 @@
       width: 96%;
       height: 96%;
 
-      object-fit:
-        contain;
+      object-fit: contain;
 
-      user-select:
-        none;
-
-      pointer-events:
-        none;
+      user-select: none;
+      pointer-events: none;
     }
 
     .qty-item.done {
@@ -842,7 +618,6 @@
       flex-basis: 27%;
     }
 
-
     /* ==================================================
        ПОКУПАТЕЛЬ
     ================================================== */
@@ -893,7 +668,6 @@
     }
 
     @keyframes buyerEnter {
-
       from {
         transform:
           translateX(130%);
@@ -909,9 +683,7 @@
         opacity:
           1;
       }
-
     }
-
 
     /* ==================================================
        КНОПКИ
@@ -970,7 +742,6 @@
       color:
         #5b4027;
     }
-
 
     /* ==================================================
        СООБЩЕНИЯ
@@ -1038,7 +809,6 @@
       color:
         #b24d3e;
     }
-
 
     /* ==================================================
        ОПЛАТА
@@ -1149,7 +919,6 @@
     }
 
     @keyframes terminalPulse {
-
       0%,
       100% {
         transform:
@@ -1160,7 +929,6 @@
         transform:
           scale(1.04);
       }
-
     }
 
     .terminal-wrap.paid
@@ -1349,7 +1117,6 @@
 
       <div class="rules-text">
 
-
         <div class="rule-line">
 
           <div class="rule-icon">
@@ -1359,8 +1126,7 @@
           <div>
             Посмотри на
             <b>список покупок</b>
-            и найди нужные товары
-            на полках.
+            и найди нужные товары на полках.
           </div>
 
         </div>
@@ -1374,8 +1140,7 @@
 
           <div>
             Нажимай на товар
-            <b>столько раз, сколько
-            показано в списке.</b>
+            <b>столько раз, сколько показано в списке.</b>
           </div>
 
         </div>
@@ -1435,7 +1200,6 @@
 
       <div class="rules-text">
 
-
         <div class="rule-line">
 
           <div class="rule-icon">
@@ -1459,8 +1223,7 @@
 
           <div>
             Если всё правильно —
-            <b>перетащи карту
-            к терминалу</b>
+            <b>перетащи карту к терминалу</b>
             и оплати покупки.
           </div>
 
@@ -1495,6 +1258,10 @@
   </div>
 
 
+  <!-- ==================================================
+       ИГРА
+  ================================================== -->
+
   <div class="game-title">
     Магазин
   </div>
@@ -1508,14 +1275,10 @@
   </div>
 
 
-  <!-- ==================================================
-       ШКАФЫ
-  ================================================== -->
+  <!-- ШКАФЫ -->
 
   <div class="shelves">
 
-
-    <!-- ПЕРВЫЙ -->
 
     <div class="shelf-wrap">
 
@@ -1544,8 +1307,6 @@
     </div>
 
 
-    <!-- ВТОРОЙ -->
-
     <div class="shelf-wrap">
 
       <img
@@ -1572,8 +1333,6 @@
 
     </div>
 
-
-    <!-- ТРЕТИЙ -->
 
     <div class="shelf-wrap">
 
@@ -1604,9 +1363,7 @@
   </div>
 
 
-  <!-- ==================================================
-       СПИСОК ПОКУПОК
-  ================================================== -->
+  <!-- СПИСОК ПОКУПОК -->
 
   <div class="shopping-list">
 
@@ -1618,9 +1375,7 @@
   </div>
 
 
-  <!-- ==================================================
-       ПОКУПАТЕЛЬ
-  ================================================== -->
+  <!-- ПОКУПАТЕЛЬ -->
 
   <div class="buyer-zone">
 
@@ -1634,9 +1389,7 @@
   </div>
 
 
-  <!-- ==================================================
-       КНОПКИ
-  ================================================== -->
+  <!-- КНОПКИ -->
 
   <div class="controls">
 
@@ -1658,9 +1411,7 @@
   </div>
 
 
-  <!-- ==================================================
-       ОПЛАТА
-  ================================================== -->
+  <!-- ОПЛАТА -->
 
   <div
     id="paymentOverlay"
@@ -1723,7 +1474,7 @@
 <script>
 
   /* ==================================================
-     СТАРТОВАЯ ПЛАШКА
+     ПРАВИЛА
   ================================================== */
 
   const rulesOverlay =
@@ -1771,37 +1522,12 @@
         "assets/buyers/buyer-cart-01.png",
 
       list: [
-
-        {
-          id: "pik-01",
-          need: 1
-        },
-
-        {
-          id: "pik-11",
-          need: 3
-        },
-
-        {
-          id: "pik-22",
-          need: 1
-        },
-
-        {
-          id: "pik-18",
-          need: 2
-        },
-
-        {
-          id: "pik-27",
-          need: 1
-        },
-
-        {
-          id: "pik-10",
-          need: 3
-        }
-
+        { id: "pik-01", need: 1 },
+        { id: "pik-11", need: 3 },
+        { id: "pik-22", need: 1 },
+        { id: "pik-18", need: 2 },
+        { id: "pik-27", need: 1 },
+        { id: "pik-10", need: 3 }
       ]
     },
 
@@ -1811,37 +1537,12 @@
         "assets/buyers/buyer-cart-02.png",
 
       list: [
-
-        {
-          id: "pik-04",
-          need: 1
-        },
-
-        {
-          id: "pik-13",
-          need: 2
-        },
-
-        {
-          id: "pik-24",
-          need: 1
-        },
-
-        {
-          id: "pik-17",
-          need: 1
-        },
-
-        {
-          id: "pik-25",
-          need: 2
-        },
-
-        {
-          id: "pik-02",
-          need: 1
-        }
-
+        { id: "pik-04", need: 1 },
+        { id: "pik-13", need: 2 },
+        { id: "pik-24", need: 1 },
+        { id: "pik-17", need: 1 },
+        { id: "pik-25", need: 2 },
+        { id: "pik-02", need: 1 }
       ]
     },
 
@@ -1851,37 +1552,12 @@
         "assets/buyers/buyer-cart-03.png",
 
       list: [
-
-        {
-          id: "pik-05",
-          need: 1
-        },
-
-        {
-          id: "pik-08",
-          need: 2
-        },
-
-        {
-          id: "pik-12",
-          need: 2
-        },
-
-        {
-          id: "pik-16",
-          need: 1
-        },
-
-        {
-          id: "pik-19",
-          need: 1
-        },
-
-        {
-          id: "pik-26",
-          need: 2
-        }
-
+        { id: "pik-05", need: 1 },
+        { id: "pik-08", need: 2 },
+        { id: "pik-12", need: 2 },
+        { id: "pik-16", need: 1 },
+        { id: "pik-19", need: 1 },
+        { id: "pik-26", need: 2 }
       ]
     },
 
@@ -1891,37 +1567,12 @@
         "assets/buyers/buyer-cart-04.png",
 
       list: [
-
-        {
-          id: "pik-03",
-          need: 1
-        },
-
-        {
-          id: "pik-06",
-          need: 2
-        },
-
-        {
-          id: "pik-07",
-          need: 1
-        },
-
-        {
-          id: "pik-14",
-          need: 2
-        },
-
-        {
-          id: "pik-15",
-          need: 1
-        },
-
-        {
-          id: "pik-23",
-          need: 2
-        }
-
+        { id: "pik-03", need: 1 },
+        { id: "pik-06", need: 2 },
+        { id: "pik-07", need: 1 },
+        { id: "pik-14", need: 2 },
+        { id: "pik-15", need: 1 },
+        { id: "pik-23", need: 2 }
       ]
     }
 
@@ -1983,10 +1634,6 @@
     );
 
 
-  /* ==================================================
-     СБРОС
-  ================================================== */
-
   function resetCollected() {
 
     collected = {};
@@ -1997,18 +1644,13 @@
       .forEach(
         item => {
 
-          collected[item.id] =
-            0;
+          collected[item.id] = 0;
 
         }
       );
 
   }
 
-
-  /* ==================================================
-     СПИСОК
-  ================================================== */
 
   function renderList() {
 
@@ -2123,10 +1765,6 @@
   }
 
 
-  /* ==================================================
-     ПОКУПАТЕЛЬ
-  ================================================== */
-
   function renderBuyer() {
 
     const buyer =
@@ -2156,10 +1794,6 @@
 
   }
 
-
-  /* ==================================================
-     СООБЩЕНИЕ
-  ================================================== */
 
   function showMessage(
     text,
@@ -2210,10 +1844,6 @@
   }
 
 
-  /* ==================================================
-     ПОИСК ТОВАРА
-  ================================================== */
-
   function findListItem(
     productId
   ) {
@@ -2228,10 +1858,6 @@
   }
 
 
-  /* ==================================================
-     ПРОВЕРКА
-  ================================================== */
-
   function isEverythingCollected() {
 
     return BUYERS[
@@ -2244,10 +1870,6 @@
 
   }
 
-
-  /* ==================================================
-     КЛИК ПО ТОВАРУ
-  ================================================== */
 
   document
     .querySelectorAll(
@@ -2367,10 +1989,6 @@
     );
 
 
-  /* ==================================================
-     ПРОВЕРИТЬ
-  ================================================== */
-
   document
     .getElementById(
       "checkBtn"
@@ -2409,10 +2027,6 @@
       }
     );
 
-
-  /* ==================================================
-     ОПЛАТА
-  ================================================== */
 
   function openPayment() {
 
@@ -2742,10 +2356,6 @@
     );
 
 
-  /* ==================================================
-     СЛЕДУЮЩИЙ ПОКУПАТЕЛЬ
-  ================================================== */
-
   function nextBuyer() {
 
     buyerImage
@@ -2799,10 +2409,6 @@
       nextBuyer
     );
 
-
-  /* ==================================================
-     СТАРТ
-  ================================================== */
 
   renderBuyer();
 
